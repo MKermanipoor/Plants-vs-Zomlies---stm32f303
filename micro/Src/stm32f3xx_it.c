@@ -38,14 +38,219 @@
 /* USER CODE BEGIN 0 */
 #include "LiquidCrystal.h"
 #include <string.h>
+#define TIME_TO_SEC 100
 
-double __rand = 1;
-int __rand_count = 0;
+int getRand(int);
 
+//timer 2 variable
+const char SHOW_DEMO = 0;
+const char TEMP = -1;
+
+char initFlag = 0;
+char state = TEMP;
+
+//timer 3 variable
 unsigned long __time_m = 0;
 
+//timer 4 variable
+unsigned char __numOf_7seg [4];
+
+//ADC 4 variable
+double __rand = 0;
+int __rand_count = 0;
+
+//zombies data
+struct Zombie{
+	long lastTimeMove;
+	unsigned char row;
+	unsigned char column;
+	unsigned char before_row;
+	unsigned char before_column;
+	unsigned char kind;
+	unsigned char hp;
+};
+
+struct Zombie __zombies [10];
+unsigned char __zombies_size = 0;
+
+unsigned int speed_time = 2 * TIME_TO_SEC;
+
+struct Zombie getZombie(char kind){
+	struct Zombie result;
+	result.column = getRand(20);
+	result.row = 0;
+	result.before_column = 0;
+	result.before_row = 0;
+	result.kind = kind;
+	
+	switch(kind){
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			result.hp = kind;
+			break;
+		default:
+			result.hp = 1;
+			result.kind = 1;
+	}
+	
+	result.lastTimeMove = __time_m;
+	
+	for(int i=0; i<__zombies_size; i++){
+		if(result.column == __zombies[i].column && result.row == __zombies[i].row)
+			return result;
+	}
+	
+	if(__zombies_size < 10){
+		__zombies[__zombies_size] = result;
+		__zombies_size++;
+	}
+	return result;
+}
+
+void print_zombie(struct Zombie z){
+	if(z.before_row != z.row){
+		setCursor(z.before_column, z.before_row);
+		write(32);
+	}
+	setCursor(z.column, z.row);
+	write(z.kind-1);
+}
+
+void print_all_zombies(){
+	for (int i=0; i<__zombies_size ; i++)
+		print_zombie(__zombies[i]);
+}
+
+void move_zombie(struct Zombie *z){
+	if(__time_m - z->lastTimeMove > speed_time){
+		z->row++;
+		z->lastTimeMove = __time_m;
+	}else{
+		z->before_column = z->column;
+		z->before_row = z->row;
+	}
+}
+
+void move_all_zombies(){
+	for (int i=0;i<__zombies_size;i++)
+		move_zombie(&__zombies[i]);
+}
+
+//palnt data
+struct Plant{
+	unsigned char row;
+	unsigned char column;
+	unsigned char kind;
+	unsigned char hp;
+};
+
+struct Plant plant_temp;
+
+struct Plant getPlant(char kind, char row, char column){
+	struct Plant result;
+	result.column = column;
+	result.row = row;
+	result.kind = kind;
+	switch(kind){
+		case 1:
+		case 2:
+		case 3:
+			result.hp = kind;
+			break;
+		default:
+			result.kind = 1;
+			result.hp = 1;
+			break;
+	}
+	return result;
+}
+
+void print_plant(struct Plant plant){
+	setCursor(plant.column,plant.row);
+	write(plant.kind + 3);
+	
+}
+
 int getRand(int range){
-	return __rand * range;
+	return ((int)(__rand * range)) % range;
+}
+
+void __numPrint(char num, char digit, char dot){
+	switch(num){
+		case 0:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 1:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 2:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 3:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 4:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 5:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 6:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 7:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
+			break;
+		case 8:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 1);
+			break;
+		case 9:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 1);
+			break;
+	}
+	
+	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, dot!=1);
+	
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, digit==0);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, digit==1);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, digit==2);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, digit==3);
+}
+
+void numPrint(char num, char digit){
+	__numOf_7seg[digit] = num;
 }
 
 
@@ -56,38 +261,59 @@ int getRand(int range){
 
 
 
-
-
-
-
-
+char clear_showDemo = 0;
 void showDemo(unsigned long time){
 	
-	int devide = time/1000;
+	int devide = (time)/TIME_TO_SEC;
+	
+	if(devide <= 10){
+		numPrint(10 - devide,0);
+		numPrint(10 - devide,1);
+		numPrint(10 - devide,2);
+		numPrint(10 - devide,3);
+	}
 	
 	if(devide>10){
-		clear();
-		return;
-	}
-	
-	for (int i=0 ;i<4;i++){
-		setCursor(0,i);
-		for (int j=0 ; j<10-devide;j++){
-			write(255);
+		if(clear_showDemo)
+			return;
+		
+		
+		for (int i=0 ; i<4; i++){
+			setCursor(0,i);
+			write(32);
+			setCursor(19,i);
+			write(32);
 		}
-			
-		if(devide>0){
+		state = TEMP;
+		clear_showDemo = 1;
+		return;
+	}else if(devide == 0){
+		for (int i=0 ; i<4; i++){
+			setCursor(0,i);
+			for (int j=0; j<20 ; j++){
+				write(255);
+			}
+		}
+	}else if (devide == 1){
+		for (int i=0 ; i<4; i++){
+			setCursor(9,i);
 			write(41);
-			for (int j=0; j<(devide-1)*2 ; j++)
-				write(32);
 			write(40);
 		}
-		
-		for (int j=0 ; j<10-devide;j++){
-				write(255);
+	}else{
+		for (int i=0 ; i<4; i++){
+			setCursor(10-devide,i);
+			write(41);
+			write(32);
+			setCursor(8+devide,i);
+			write(32);
+			write(40);
 		}
 	}
+	
 }
+
+
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -96,6 +322,8 @@ extern ADC_HandleTypeDef hadc3;
 extern ADC_HandleTypeDef hadc4;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim4;
+extern UART_HandleTypeDef huart2;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -107,13 +335,13 @@ extern TIM_HandleTypeDef htim3;
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-	__rand_count = (__rand_count+1)%89;
-	__rand = (double)__rand_count / 89;
+	
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+	__rand_count = (HAL_ADC_GetValue(&hadc4));
+	__rand = (double)__rand_count / 59;
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -134,7 +362,7 @@ void ADC1_2_IRQHandler(void)
   /* USER CODE END ADC1_2_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
   /* USER CODE BEGIN ADC1_2_IRQn 1 */
-
+	HAL_ADC_Start_IT(&hadc1);
   /* USER CODE END ADC1_2_IRQn 1 */
 }
 
@@ -144,7 +372,27 @@ void ADC1_2_IRQHandler(void)
 void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
-	showDemo(__time_m);
+	if(!initFlag){
+		HAL_ADC_Start_IT(&hadc1);
+		HAL_ADC_Start_IT(&hadc3);
+		HAL_ADC_Start_IT(&hadc4);
+		HAL_TIM_Base_Start_IT(&htim3);
+		HAL_TIM_Base_Start_IT(&htim4);
+		initFlag = 1;
+	}
+	
+	
+	switch(state){
+		case SHOW_DEMO:
+			showDemo(__time_m);
+			break;
+		case TEMP:
+			getZombie(getRand(4)+1);
+			move_all_zombies();
+			print_all_zombies();
+			break;
+	}
+	
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
@@ -167,6 +415,46 @@ void TIM3_IRQHandler(void)
 }
 
 /**
+* @brief This function handles TIM4 global interrupt.
+*/
+void TIM4_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM4_IRQn 0 */
+	__numPrint(__numOf_7seg[0], 0, 0);
+	HAL_Delay(1);
+	__numPrint(__numOf_7seg[1], 1, 1);
+	HAL_Delay(1);
+	__numPrint(__numOf_7seg[2], 2, 0);
+	HAL_Delay(1);
+	__numPrint(__numOf_7seg[3], 3, 0);
+	HAL_Delay(1);
+	
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);
+  /* USER CODE END TIM4_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim4);
+  /* USER CODE BEGIN TIM4_IRQn 1 */
+	HAL_TIM_Base_Start_IT(&htim4);
+  /* USER CODE END TIM4_IRQn 1 */
+}
+
+/**
+* @brief This function handles USART2 global interrupt / USART2 wake-up interrupt through EXTI line 26.
+*/
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
+}
+
+/**
 * @brief This function handles ADC3 global interrupt.
 */
 void ADC3_IRQHandler(void)
@@ -176,7 +464,7 @@ void ADC3_IRQHandler(void)
   /* USER CODE END ADC3_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc3);
   /* USER CODE BEGIN ADC3_IRQn 1 */
-
+	HAL_ADC_Start_IT(&hadc3);
   /* USER CODE END ADC3_IRQn 1 */
 }
 
@@ -186,7 +474,8 @@ void ADC3_IRQHandler(void)
 void ADC4_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC4_IRQn 0 */
-	__rand_count += (HAL_ADC_GetValue(&hadc4)*89)/4095;
+	__rand_count = (HAL_ADC_GetValue(&hadc4));
+	__rand = (double)__rand_count / 59;
   /* USER CODE END ADC4_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc4);
   /* USER CODE BEGIN ADC4_IRQn 1 */
