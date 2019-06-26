@@ -51,10 +51,12 @@ char min(char a, char b){
 
 //timer 2 variable
 const char SHOW_DEMO = 0;
+const char SHOW_MENU = 1;	
+const char SHOW_ABOUT = 2;
 const char TEMP = -1;
 
 char initFlag = 0;
-char state = TEMP;
+char state = SHOW_DEMO;
 
 //timer 3 variable
 unsigned long __time_m = 0;
@@ -76,7 +78,7 @@ unsigned char row_blink = 0;
 unsigned char column_blink = 0;
 unsigned char last_row_blink = 0;
 unsigned char last_column_blink = 0;
-char blinkEnable = 1;
+char blinkEnable = 0;
 char blinkChange = 0;
 unsigned char __now_blink_enable = 0;
 long __last_change_blink = 0;
@@ -411,7 +413,7 @@ void showDemo(unsigned long time){
 			setCursor(19,i);
 			write(32);
 		}
-		state = TEMP;
+		state = SHOW_MENU;
 		clear_showDemo = 1;
 		return;
 	}else if(devide == 0){
@@ -440,6 +442,33 @@ void showDemo(unsigned long time){
 	
 }
 
+char __init_show_menu = 0;
+char __init_show_about = 0;
+void show_menu(){
+	if(!__init_show_menu){
+		clear();
+		setCursor(1,0);
+		print("New Game");
+		setCursor(1,1);
+		print("Load Game");
+		setCursor(1,2);
+		print("About");
+		blink();
+		__init_show_menu = 1;
+		__init_show_about = 0;
+	}
+}
+
+void show_about(){
+	if (!__init_show_about){
+		noBlink();
+		clear();
+		setCursor(0,0);
+		print("Fuck sedaghat!!");
+		__init_show_about = 1;
+		__init_show_menu = 0;
+	}
+}
 
 /* USER CODE END 0 */
 
@@ -485,8 +514,26 @@ void SysTick_Handler(void)
 void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
-	//if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0))
+	/**** plant event plant 1
 	getPlant(1, row_blink, column_blink);
+	*****/
+	
+	if(state == SHOW_MENU){
+		switch(row_blink){
+			case 0:
+				clear();
+				noBlink();
+				blinkEnable = 1;
+				state = TEMP;
+				break;
+			case 2:
+				state = SHOW_ABOUT;
+				break;
+		}
+	}else if(state == SHOW_ABOUT){
+		state = SHOW_MENU;
+	}
+	
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
@@ -546,14 +593,24 @@ void EXTI9_5_IRQHandler(void)
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
 	if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_6)){
 		blinkChange=1;
+		if (blinkEnable){
 			__input_row_blink+=3;
 			__input_row_blink=__input_row_blink%4;
+		}else{
+			row_blink += 2;
+			row_blink = row_blink % 3;
+		}
 	
 	}
 	else if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_7)){
 		blinkChange=1;
-		__input_row_blink++;
-		__input_row_blink=__input_row_blink%4;
+		if (blinkEnable){
+			__input_row_blink++;
+			__input_row_blink=__input_row_blink%4;
+		}else{
+			row_blink ++;
+			row_blink = row_blink % 3;
+		}
 		
 	}
   /* USER CODE END EXTI9_5_IRQn 0 */
@@ -588,6 +645,13 @@ void TIM2_IRQHandler(void)
 	switch(state){
 		case SHOW_DEMO:
 			showDemo(__time_m);
+			break;
+		case SHOW_MENU:
+			show_menu();
+			setCursor(0,row_blink);
+			break;
+		case SHOW_ABOUT:
+			show_about();
 			break;
 		case TEMP:
 			getZombie(getRand(4)+1);
