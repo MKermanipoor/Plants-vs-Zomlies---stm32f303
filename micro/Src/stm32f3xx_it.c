@@ -42,6 +42,13 @@
 
 int getRand(int);
 
+
+char min(char a, char b){
+	if (a < b)
+		return a;
+	return b;
+}
+
 //timer 2 variable
 const char SHOW_DEMO = 0;
 const char TEMP = -1;
@@ -114,6 +121,72 @@ void show_blink(){
 	
 }
 
+//palnt data
+struct Plant{
+	unsigned char row;
+	unsigned char column;
+	unsigned char kind;
+	unsigned char hp;
+	unsigned char id;
+};
+
+unsigned char __plant_size = 0;
+struct Plant __plants [10];
+
+struct Plant getPlant(char kind, char row, char column){
+	struct Plant result;
+	result.column = column;
+	result.row = row;
+	result.kind = kind;
+	switch(kind){
+		case 1:
+		case 2:
+		case 3:
+			result.hp = kind;
+			break;
+		default:
+			result.kind = 1;
+			result.hp = 1;
+			break;
+	}
+	
+	if(__plant_size < 10){
+		for (char i=0 ; i<__plant_size ; i++){
+			if (__plants[i].column == column && __plants[i].row == row){
+				return result;
+			}
+		}
+		result.id = __plant_size;
+		__plants[__plant_size] = result;
+		__plant_size++;
+	}
+	
+	
+	return result;
+}
+
+void remove_plant(struct Plant plant){
+	if (plant.id < 0)
+		return;
+	
+	if (plant.id > __plant_size)
+		return;
+	
+	__plant_size --;
+	__plants[plant.id] = __plants[__plant_size];
+	__plants[plant.id].id = plant.id;
+	write_lcd(32, plant.column, plant.row);
+}
+
+void print_plant(struct Plant plant){
+	write_lcd(plant.kind + 3, plant.column,plant.row);
+}
+
+void print_all_plant(){
+	for(char i=0 ; i<__plant_size ; i++){
+		print_plant(__plants[i]);
+	}
+}
 
 //zombies data
 struct Zombie{
@@ -198,6 +271,20 @@ void move_zombie(struct Zombie *z){
 		z->row++;
 		z->lastTimeMove = __time_m;
 		
+		for (char i=0; i<__plant_size; i++){
+			if(__plants[i].column == z->column && __plants[i].row == z->row){
+				char temp = min(__plants[i].hp, z->hp);
+				__plants[i].hp -= temp;
+				if(__plants[i].hp <= 0)
+					remove_plant(__plants[i]);
+				
+				z->hp -= temp;
+				if(z->hp <= 0)
+						removeZombie(*z);
+				
+			}
+		}
+		
 		if(z->row >= 4){
 			removeZombie(*z);
 		}
@@ -212,38 +299,6 @@ void move_all_zombies(){
 		move_zombie(&__zombies[i]);
 }
 
-//palnt data
-struct Plant{
-	unsigned char row;
-	unsigned char column;
-	unsigned char kind;
-	unsigned char hp;
-};
-
-struct Plant plant_temp;
-
-struct Plant getPlant(char kind, char row, char column){
-	struct Plant result;
-	result.column = column;
-	result.row = row;
-	result.kind = kind;
-	switch(kind){
-		case 1:
-		case 2:
-		case 3:
-			result.hp = kind;
-			break;
-		default:
-			result.kind = 1;
-			result.hp = 1;
-			break;
-	}
-	return result;
-}
-
-void print_plant(struct Plant plant){
-	write_lcd(plant.kind + 3, plant.column,plant.row);
-}
 
 int getRand(int range){
 	return ((int)(__rand * range)) % range;
@@ -425,6 +480,51 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+* @brief This function handles EXTI line0 interrupt.
+*/
+void EXTI0_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI0_IRQn 0 */
+	//if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0))
+	getPlant(1, row_blink, column_blink);
+  /* USER CODE END EXTI0_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+  /* USER CODE BEGIN EXTI0_IRQn 1 */
+
+  /* USER CODE END EXTI0_IRQn 1 */
+}
+
+/**
+* @brief This function handles EXTI line1 interrupt.
+*/
+void EXTI1_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI1_IRQn 0 */
+	//if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1))
+		getPlant(2, row_blink, column_blink);
+  /* USER CODE END EXTI1_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
+  /* USER CODE BEGIN EXTI1_IRQn 1 */
+
+  /* USER CODE END EXTI1_IRQn 1 */
+}
+
+/**
+* @brief This function handles EXTI line2 and Touch Sense controller.
+*/
+void EXTI2_TSC_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI2_TSC_IRQn 0 */
+	//if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2))
+	getPlant(3, row_blink, column_blink);
+  /* USER CODE END EXTI2_TSC_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+  /* USER CODE BEGIN EXTI2_TSC_IRQn 1 */
+
+  /* USER CODE END EXTI2_TSC_IRQn 1 */
+}
+
+/**
 * @brief This function handles ADC1 and ADC2 interrupts.
 */
 void ADC1_2_IRQHandler(void)
@@ -436,6 +536,32 @@ void ADC1_2_IRQHandler(void)
   /* USER CODE BEGIN ADC1_2_IRQn 1 */
 	HAL_ADC_Start_IT(&hadc1);
   /* USER CODE END ADC1_2_IRQn 1 */
+}
+
+/**
+* @brief This function handles EXTI line[9:5] interrupts.
+*/
+void EXTI9_5_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+	if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_6)){
+		blinkChange=1;
+			__input_row_blink+=3;
+			__input_row_blink=__input_row_blink%4;
+	
+	}
+	else if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_7)){
+		blinkChange=1;
+		__input_row_blink++;
+		__input_row_blink=__input_row_blink%4;
+		
+	}
+  /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
+  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+
+  /* USER CODE END EXTI9_5_IRQn 1 */
 }
 
 /**
@@ -467,6 +593,7 @@ void TIM2_IRQHandler(void)
 			getZombie(getRand(4)+1);
 			move_all_zombies();
 			print_all_zombies();
+			print_all_plant();
 			break;
 	}
 	show_blink();
@@ -541,7 +668,7 @@ void ADC3_IRQHandler(void)
   /* USER CODE BEGIN ADC3_IRQn 0 */
 	if(blinkEnable){
 		char t = HAL_ADC_GetValue(&hadc3) * 19 / 63;
-		blinkChange = t!=column_blink;
+		blinkChange = (t!=column_blink)||blinkChange;
 		__input_column_blink = t;
 	}
   /* USER CODE END ADC3_IRQn 0 */
