@@ -38,7 +38,7 @@
 /* USER CODE BEGIN 0 */
 #include "LiquidCrystal.h"
 #include <string.h>
-#define TIME_TO_SEC 100
+#define TIME_TO_SEC 1000
 
 int getRand(int);
 
@@ -55,9 +55,65 @@ unsigned long __time_m = 0;
 //timer 4 variable
 unsigned char __numOf_7seg [4];
 
+
+
 //ADC 4 variable
 double __rand = 0;
 int __rand_count = 0;
+
+//ADC 3 variable
+unsigned char lcd [20][4];
+unsigned char __input_row_blink = 0;
+unsigned char __input_column_blink = 0;
+unsigned char row_blink = 0;
+unsigned char column_blink = 0;
+unsigned char last_row_blink = 0;
+unsigned char last_column_blink = 0;
+char blinkEnable = 1;
+char blinkChange = 0;
+unsigned char __now_blink_enable = 0;
+long __last_change_blink = 0;
+const long timeToBlink = TIME_TO_SEC / 6;
+
+
+void write_lcd(char c, char column, char row){
+	lcd[column][row] = c;
+	if(blinkEnable || column != column_blink || row != row_blink){
+		setCursor(column, row);
+		write(c);
+	}
+}
+
+void show_blink(){
+	if(blinkChange){
+		setCursor(last_column_blink, last_row_blink);
+		write(lcd[last_column_blink][last_row_blink]);
+		blinkChange = 0;
+	}
+	
+	if(blinkEnable){
+		column_blink = __input_column_blink;
+		row_blink = __input_row_blink;
+		if(__time_m - __last_change_blink > timeToBlink){
+			__now_blink_enable = ! __now_blink_enable;
+			if(__now_blink_enable){
+				setCursor(column_blink, row_blink);
+				write(95);
+				last_column_blink = column_blink;
+				last_row_blink = row_blink;
+			}else{
+				setCursor(column_blink, row_blink);
+				write(lcd[column_blink][row_blink]);
+			}
+			__last_change_blink = __time_m;
+		}
+	}else{
+		__now_blink_enable = 0;
+	}
+	
+	
+}
+
 
 //zombies data
 struct Zombie{
@@ -68,12 +124,13 @@ struct Zombie{
 	unsigned char before_column;
 	unsigned char kind;
 	unsigned char hp;
+	unsigned char id;
 };
 
 struct Zombie __zombies [10];
 unsigned char __zombies_size = 0;
 
-unsigned int speed_time = 2 * TIME_TO_SEC;
+unsigned int speed_time = 1.5 * TIME_TO_SEC;
 
 struct Zombie getZombie(char kind){
 	struct Zombie result;
@@ -82,6 +139,7 @@ struct Zombie getZombie(char kind){
 	result.before_column = 0;
 	result.before_row = 0;
 	result.kind = kind;
+	result.id = -1;
 	
 	switch(kind){
 		case 1:
@@ -103,19 +161,31 @@ struct Zombie getZombie(char kind){
 	}
 	
 	if(__zombies_size < 10){
+		result.id = __zombies_size;
 		__zombies[__zombies_size] = result;
 		__zombies_size++;
 	}
 	return result;
 }
 
+void removeZombie(struct Zombie z){
+	if (z.id < 0)
+		return;
+	
+	if (z.id > __zombies_size)
+		return;
+	
+	__zombies_size --;
+	__zombies[z.id] = __zombies[__zombies_size];
+	__zombies[z.id].id = z.id;
+	write_lcd(32, z.before_column, z.before_row);
+}
+
 void print_zombie(struct Zombie z){
 	if(z.before_row != z.row){
-		setCursor(z.before_column, z.before_row);
-		write(32);
+		write_lcd(32, z.before_column, z.before_row);
 	}
-	setCursor(z.column, z.row);
-	write(z.kind-1);
+	write_lcd(z.kind-1, z.column, z.row);
 }
 
 void print_all_zombies(){
@@ -127,6 +197,10 @@ void move_zombie(struct Zombie *z){
 	if(__time_m - z->lastTimeMove > speed_time){
 		z->row++;
 		z->lastTimeMove = __time_m;
+		
+		if(z->row >= 4){
+			removeZombie(*z);
+		}
 	}else{
 		z->before_column = z->column;
 		z->before_row = z->row;
@@ -168,9 +242,7 @@ struct Plant getPlant(char kind, char row, char column){
 }
 
 void print_plant(struct Plant plant){
-	setCursor(plant.column,plant.row);
-	write(plant.kind + 3);
-	
+	write_lcd(plant.kind + 3, plant.column,plant.row);
 }
 
 int getRand(int range){
@@ -379,6 +451,11 @@ void TIM2_IRQHandler(void)
 		HAL_TIM_Base_Start_IT(&htim3);
 		HAL_TIM_Base_Start_IT(&htim4);
 		initFlag = 1;
+		
+		for (int i=0 ; i<20 ; i++)
+			for (int j=0 ; j<4 ; j++)
+				lcd[i][j] = 32;
+			
 	}
 	
 	
@@ -392,7 +469,7 @@ void TIM2_IRQHandler(void)
 			print_all_zombies();
 			break;
 	}
-	
+	show_blink();
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
@@ -433,6 +510,8 @@ void TIM4_IRQHandler(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, 0);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);
+	
+	
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
@@ -460,7 +539,11 @@ void USART2_IRQHandler(void)
 void ADC3_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC3_IRQn 0 */
-
+	if(blinkEnable){
+		char t = HAL_ADC_GetValue(&hadc3) * 19 / 63;
+		blinkChange = t!=column_blink;
+		__input_column_blink = t;
+	}
   /* USER CODE END ADC3_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc3);
   /* USER CODE BEGIN ADC3_IRQn 1 */
