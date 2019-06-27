@@ -27,7 +27,39 @@ Project File Date:  06/27/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'F:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'micro'
-"micro\micro.axf" - 0 Error(s), 0 Warning(s).
+compiling object.c...
+../Inc/object.h(10): warning:  #1295-D: Deprecated declaration get_plant_size - give arg types
+  char get_plant_size();
+../Inc/object.h(13): warning:  #1-D: last line of file ends without a newline
+  void print_all_plant();
+../Inc/object.h(13): warning:  #1295-D: Deprecated declaration print_all_plant - give arg types
+  void print_all_plant();
+../Inc/LCDutill.h(3): warning:  #1295-D: Deprecated declaration show_blink - give arg types
+  void show_blink();
+../Inc/LCDutill.h(5): warning:  #1295-D: Deprecated declaration get_blink_row - give arg types
+  char get_blink_row();
+../Inc/LCDutill.h(6): warning:  #1295-D: Deprecated declaration get_blink_column - give arg types
+  char get_blink_column();
+../Inc/LCDutill.h(12): warning:  #1295-D: Deprecated declaration is_blink_enable - give arg types
+  char is_blink_enable();
+../Inc/LCDutill.h(13): warning:  #1295-D: Deprecated declaration enable_blink - give arg types
+  void enable_blink();
+../Inc/LCDutill.h(14): warning:  #1295-D: Deprecated declaration disable_blink - give arg types
+  void disable_blink();
+../Inc/LCDutill.h(17): warning:  #1295-D: Deprecated declaration is_blick_change - give arg types
+  char is_blick_change();
+../Inc/LCDutill.h(19): warning:  #1-D: last line of file ends without a newline
+  void clear_lcd();
+../Inc/LCDutill.h(19): warning:  #1295-D: Deprecated declaration clear_lcd - give arg types
+  void clear_lcd();
+..\Src\object.c(41): warning:  #186-D: pointless comparison of unsigned integer with zero
+  	if (plant.id < 0)
+..\Src\object.c(69): warning:  #1-D: last line of file ends without a newline
+  }
+..\Src\object.c: 14 warnings, 0 errors
+linking...
+Program Size: Code=17500 RO-data=480 RW-data=152 ZI-data=2960  
+"micro\micro.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +82,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.1
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

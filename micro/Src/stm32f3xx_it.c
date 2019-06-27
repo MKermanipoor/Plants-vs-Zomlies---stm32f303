@@ -53,128 +53,72 @@ const char TEMP = -1;
 char initFlag = 0;
 char state = SHOW_DEMO;
 
-//timer 3 variable
-//unsigned long __time_m = 0;
-
-//ADC 3 variable
-//unsigned char lcd [20][4];
-//unsigned char __input_row_blink = 0;
-//unsigned char __input_column_blink = 0;
-//unsigned char row_blink = 0;
-//unsigned char column_blink = 0;
-//unsigned char last_row_blink = 0;
-//unsigned char last_column_blink = 0;
-//char blinkEnable = 0;
-//char blinkChange = 0;
-//unsigned char __now_blink_enable = 0;
-//long __last_change_blink = 0;
-//const long timeToBlink = TIME_TO_SEC / 6;
-
-
-//void write_lcd(char c, char column, char row){
-//	lcd[column][row] = c;
-//	if(blinkEnable || column != column_blink || row != row_blink){
-//		setCursor(column, row);
-//		write(c);
-//	}
-//}
-
-//void show_blink(){
-//	if(blinkChange){
-//		setCursor(last_column_blink, last_row_blink);
-//		write(lcd[last_column_blink][last_row_blink]);
-//		blinkChange = 0;
-//	}
-//	
-//	if(blinkEnable){
-//		column_blink = __input_column_blink;
-//		row_blink = __input_row_blink;
-//		if(__time_m - __last_change_blink > timeToBlink){
-//			__now_blink_enable = ! __now_blink_enable;
-//			if(__now_blink_enable){
-//				setCursor(column_blink, row_blink);
-//				write(95);
-//				last_column_blink = column_blink;
-//				last_row_blink = row_blink;
-//			}else{
-//				setCursor(column_blink, row_blink);
-//				write(lcd[column_blink][row_blink]);
-//			}
-//			__last_change_blink = __time_m;
-//		}
-//	}else{
-//		__now_blink_enable = 0;
-//	}
-//	
-//	
-//}
-
 //palnt data
-struct Plant{
-	unsigned char row;
-	unsigned char column;
-	unsigned char kind;
-	unsigned char hp;
-	unsigned char id;
-};
+//struct Plant{
+//	unsigned char row;
+//	unsigned char column;
+//	unsigned char kind;
+//	unsigned char hp;
+//	unsigned char id;
+//};
 
-unsigned char __plant_size = 0;
-struct Plant __plants [10];
+//unsigned char __plant_size = 0;
+//struct Plant __plants [10];
 
-struct Plant getPlant(char kind, char row, char column){
-	struct Plant result;
-	result.column = column;
-	result.row = row;
-	result.kind = kind;
-	switch(kind){
-		case 1:
-		case 2:
-		case 3:
-			result.hp = kind;
-			break;
-		default:
-			result.kind = 1;
-			result.hp = 1;
-			break;
-	}
-	
-	if(__plant_size < 10){
-		for (char i=0 ; i<__plant_size ; i++){
-			if (__plants[i].column == column && __plants[i].row == row){
-				return result;
-			}
-		}
-		result.id = __plant_size;
-		__plants[__plant_size] = result;
-		__plant_size++;
-	}
-	
-	
-	return result;
-}
+//struct Plant getPlant(char kind, char row, char column){
+//	struct Plant result;
+//	result.column = column;
+//	result.row = row;
+//	result.kind = kind;
+//	switch(kind){
+//		case 1:
+//		case 2:
+//		case 3:
+//			result.hp = kind;
+//			break;
+//		default:
+//			result.kind = 1;
+//			result.hp = 1;
+//			break;
+//	}
+//	
+//	if(__plant_size < 10){
+//		for (char i=0 ; i<__plant_size ; i++){
+//			if (__plants[i].column == column && __plants[i].row == row){
+//				return result;
+//			}
+//		}
+//		result.id = __plant_size;
+//		__plants[__plant_size] = result;
+//		__plant_size++;
+//	}
+//	
+//	
+//	return result;
+//}
 
-void remove_plant(struct Plant plant){
-	if (plant.id < 0)
-		return;
-	
-	if (plant.id > __plant_size)
-		return;
-	
-	__plant_size --;
-	__plants[plant.id] = __plants[__plant_size];
-	__plants[plant.id].id = plant.id;
-	write_lcd(32, plant.column, plant.row);
-}
+//void remove_plant(struct Plant plant){
+//	if (plant.id < 0)
+//		return;
+//	
+//	if (plant.id > __plant_size)
+//		return;
+//	
+//	__plant_size --;
+//	__plants[plant.id] = __plants[__plant_size];
+//	__plants[plant.id].id = plant.id;
+//	write_lcd(32, plant.column, plant.row);
+//}
 
-void print_plant(struct Plant plant){
-	write_lcd(plant.kind + 3, plant.column,plant.row);
-}
+//void print_plant(struct Plant plant){
+//	write_lcd(plant.kind + 3, plant.column,plant.row);
+//}
 
-void print_all_plant(){
-	for(char i=0 ; i<__plant_size ; i++){
-		print_plant(__plants[i]);
-	}
-}
+//void print_all_plant(){
+//	for(char i=0 ; i<__plant_size ; i++){
+//		print_plant(__plants[i]);
+//	}
+//}
 
 //zombies data
 struct Zombie{
@@ -259,12 +203,12 @@ void move_zombie(struct Zombie *z){
 		z->row++;
 		z->lastTimeMove = getTime();
 		
-		for (char i=0; i<__plant_size; i++){
-			if(__plants[i].column == z->column && __plants[i].row == z->row){
-				char temp = min(__plants[i].hp, z->hp);
-				__plants[i].hp -= temp;
-				if(__plants[i].hp <= 0)
-					remove_plant(__plants[i]);
+		for (char i=0; i<get_plant_size(); i++){
+			if(get_plant(i)->column == z->column && get_plant(i)->row == z->row){
+				char temp = min(get_plant(i)->hp, z->hp);
+				get_plant(i)->hp -= temp;
+				if(get_plant(i)->hp <= 0)
+					remove_plant(*get_plant(i));
 				
 				z->hp -= temp;
 				if(z->hp <= 0)
@@ -446,7 +390,7 @@ void EXTI0_IRQHandler(void)
 void EXTI1_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI1_IRQn 0 */
-	getPlant(2, get_blink_row(), get_blink_column());
+	create_plant(2, get_blink_row(), get_blink_column());
   /* USER CODE END EXTI1_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
   /* USER CODE BEGIN EXTI1_IRQn 1 */
@@ -460,7 +404,7 @@ void EXTI1_IRQHandler(void)
 void EXTI2_TSC_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI2_TSC_IRQn 0 */
-	getPlant(3, get_blink_row(), get_blink_column());
+	create_plant(3, get_blink_row(), get_blink_column());
   /* USER CODE END EXTI2_TSC_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
   /* USER CODE BEGIN EXTI2_TSC_IRQn 1 */
