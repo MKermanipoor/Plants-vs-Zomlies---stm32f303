@@ -3,7 +3,7 @@
 <title>Static Call Graph - [micro\micro.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image micro\micro.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jun 27 11:58:39 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jun 27 12:11:01 2019
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -113,7 +113,7 @@ Global Symbols
 <P><STRONG><a name="[4e]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(.text)
 </UL>
-<P><STRONG><a name="[f1]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[f0]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[50]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -123,15 +123,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[f2]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[f1]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[f3]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[f2]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[f4]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[f3]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[f5]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[f4]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[f6]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[f5]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f303xc.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
@@ -366,10 +366,10 @@ Global Symbols
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[f7]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[f6]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
-<P><STRONG><a name="[e9]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
+<P><STRONG><a name="[e8]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
 </UL>
 
 <P><STRONG><a name="[52]"></a>__aeabi_dmul</STRONG> (Thumb, 228 bytes, Stack size 48 bytes, dmul.o(.text))
@@ -405,7 +405,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 </UL>
 
-<P><STRONG><a name="[f8]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[f7]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[55]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _double_round
@@ -431,13 +431,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[f9]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[f8]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[59]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[fa]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[f9]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[1c]"></a>ADC1_2_IRQHandler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.ADC1_2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = ADC1_2_IRQHandler &rArr; HAL_ADC_Start_IT &rArr; ADC_Enable
@@ -623,10 +623,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
 </UL>
 
 <P><STRONG><a name="[7d]"></a>HAL_GPIO_EXTI_Callback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_hal_gpio.o(i.HAL_GPIO_EXTI_Callback))
@@ -661,23 +661,23 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b6]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f3xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
+<BR><BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__numPrint
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
 </UL>
 
 <P><STRONG><a name="[65]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f3xx_hal.o(i.HAL_GetTick))
-<BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
+<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Disable
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 </UL>
@@ -1052,23 +1052,23 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(.text)
 </UL>
 <P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, stm32f3xx_it.o(i.TIM2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = TIM2_IRQHandler &rArr; getZombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = TIM2_IRQHandler &rArr; move_all_zombies &rArr; move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_plant
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_row
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lcd
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_IT
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getZombie
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
@@ -1169,11 +1169,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 </UL>
 
-<P><STRONG><a name="[fb]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[fa]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[fc]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[fb]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[fd]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[fc]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[d1]"></a>addTime</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, utill.o(i.addTime))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
@@ -1186,15 +1186,15 @@ Global Symbols
 <P><STRONG><a name="[d9]"></a>begin</STRONG> (Thumb, 304 bytes, Stack size 32 bytes, liquidcrystal.o(i.begin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = begin &rArr; clear &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enableClock
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRowOffsets
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enableClock
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRowOffsets
 </UL>
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1211,8 +1211,8 @@ Global Symbols
 <P><STRONG><a name="[68]"></a>clear</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, liquidcrystal.o(i.clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = clear &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
@@ -1241,10 +1241,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[e1]"></a>createChar</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, liquidcrystal.o(i.createChar))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = createChar &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = createChar &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1254,6 +1254,15 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI2_TSC_IRQHandler
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI1_IRQHandler
+</UL>
+
+<P><STRONG><a name="[cc]"></a>create_zombie</STRONG> (Thumb, 170 bytes, Stack size 32 bytes, object.o(i.create_zombie))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = create_zombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+</UL>
+<BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
 <P><STRONG><a name="[de]"></a>display</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, liquidcrystal.o(i.display))
@@ -1281,24 +1290,15 @@ Global Symbols
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getZombie
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
 <P><STRONG><a name="[c6]"></a>getTime</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, utill.o(i.getTime))
 <BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getZombie
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
-</UL>
-
-<P><STRONG><a name="[cc]"></a>getZombie</STRONG> (Thumb, 170 bytes, Stack size 32 bytes, stm32f3xx_it.o(i.getZombie))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = getZombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
-</UL>
-<BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
 <P><STRONG><a name="[5f]"></a>get_blink_column</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lcdutill.o(i.get_blink_column))
@@ -1316,10 +1316,6 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[e3]"></a>get_plant</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, object.o(i.get_plant))
-<BR><BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
-</UL>
-
-<P><STRONG><a name="[e7]"></a>get_plant_size</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, object.o(i.get_plant_size))
 <BR><BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
@@ -1367,23 +1363,22 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
-<P><STRONG><a name="[cd]"></a>move_all_zombies</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.move_all_zombies))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = move_all_zombies &rArr; move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
+<P><STRONG><a name="[cd]"></a>move_all_zombies</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, object.o(i.move_all_zombies))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = move_all_zombies &rArr; move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[e2]"></a>move_zombie</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.move_zombie))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
+<P><STRONG><a name="[e2]"></a>move_zombie</STRONG> (Thumb, 184 bytes, Stack size 24 bytes, object.o(i.move_zombie))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;min
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_size
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
+<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;min
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
 </UL>
@@ -1397,15 +1392,15 @@ Global Symbols
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ef]"></a>numPrint</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 7segment.o(i.numPrint))
+<P><STRONG><a name="[ee]"></a>numPrint</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 7segment.o(i.numPrint))
 <BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 </UL>
 
-<P><STRONG><a name="[e8]"></a>print</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, liquidcrystal.o(i.print))
+<P><STRONG><a name="[e7]"></a>print</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, liquidcrystal.o(i.print))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = print &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
@@ -1414,59 +1409,59 @@ Global Symbols
 <P><STRONG><a name="[cf]"></a>print_all_plant</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, object.o(i.print_all_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = print_all_plant &rArr; print_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
+<BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ce]"></a>print_all_zombies</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.print_all_zombies))
+<P><STRONG><a name="[ce]"></a>print_all_zombies</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, object.o(i.print_all_zombies))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = print_all_zombies &rArr; print_zombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
+<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ea]"></a>print_plant</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, object.o(i.print_plant))
+<P><STRONG><a name="[e9]"></a>print_plant</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, object.o(i.print_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = print_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_plant
 </UL>
 
-<P><STRONG><a name="[eb]"></a>print_zombie</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.print_zombie))
+<P><STRONG><a name="[ea]"></a>print_zombie</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, object.o(i.print_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = print_zombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
 </UL>
 
-<P><STRONG><a name="[ed]"></a>pulseEnable</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, liquidcrystal.o(i.pulseEnable))
+<P><STRONG><a name="[ec]"></a>pulseEnable</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, liquidcrystal.o(i.pulseEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
+<BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
 </UL>
 
 <P><STRONG><a name="[d2]"></a>refresh_7seg</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, 7segment.o(i.refresh_7seg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = refresh_7seg &rArr; __numPrint
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__numPrint
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[e6]"></a>removeZombie</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.removeZombie))
+<P><STRONG><a name="[e6]"></a>removeZombie</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, object.o(i.removeZombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
@@ -1474,7 +1469,7 @@ Global Symbols
 <P><STRONG><a name="[e5]"></a>remove_plant</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, object.o(i.remove_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
@@ -1482,13 +1477,13 @@ Global Symbols
 <P><STRONG><a name="[e0]"></a>send</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, liquidcrystal.o(i.send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
+<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
 </UL>
 
@@ -1497,12 +1492,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 
 <P><STRONG><a name="[63]"></a>setRandomCount</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, utill.o(i.setRandomCount))
@@ -1537,9 +1532,9 @@ Global Symbols
 <P><STRONG><a name="[c7]"></a>showDemo</STRONG> (Thumb, 222 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.showDemo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = showDemo &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1548,7 +1543,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_about &rArr; print &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;noBlink
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 </UL>
@@ -1558,7 +1553,7 @@ Global Symbols
 <P><STRONG><a name="[d0]"></a>show_blink</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, lcdutill.o(i.show_blink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_blink &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 </UL>
@@ -1569,52 +1564,52 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_menu &rArr; print &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;blink
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[f0]"></a>write</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, liquidcrystal.o(i.write))
+<P><STRONG><a name="[ef]"></a>write</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, liquidcrystal.o(i.write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 
 <P><STRONG><a name="[dc]"></a>write4bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write4bits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = write4bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 
-<P><STRONG><a name="[ee]"></a>write8bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write8bits))
+<P><STRONG><a name="[ed]"></a>write8bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write8bits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
 
-<P><STRONG><a name="[ec]"></a>write_lcd</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcdutill.o(i.write_lcd))
+<P><STRONG><a name="[eb]"></a>write_lcd</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcdutill.o(i.write_lcd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
 </UL>
 <P>
 <H3>

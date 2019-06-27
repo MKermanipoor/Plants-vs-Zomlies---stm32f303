@@ -156,9 +156,9 @@ Section Cross References
     stm32f3xx_it.o(i.TIM2_IRQHandler) refers to liquidcrystal.o(i.setCursor) for setCursor
     stm32f3xx_it.o(i.TIM2_IRQHandler) refers to stm32f3xx_it.o(i.show_about) for show_about
     stm32f3xx_it.o(i.TIM2_IRQHandler) refers to utill.o(i.getRand) for getRand
-    stm32f3xx_it.o(i.TIM2_IRQHandler) refers to stm32f3xx_it.o(i.getZombie) for getZombie
-    stm32f3xx_it.o(i.TIM2_IRQHandler) refers to stm32f3xx_it.o(i.move_all_zombies) for move_all_zombies
-    stm32f3xx_it.o(i.TIM2_IRQHandler) refers to stm32f3xx_it.o(i.print_all_zombies) for print_all_zombies
+    stm32f3xx_it.o(i.TIM2_IRQHandler) refers to object.o(i.create_zombie) for create_zombie
+    stm32f3xx_it.o(i.TIM2_IRQHandler) refers to object.o(i.move_all_zombies) for move_all_zombies
+    stm32f3xx_it.o(i.TIM2_IRQHandler) refers to object.o(i.print_all_zombies) for print_all_zombies
     stm32f3xx_it.o(i.TIM2_IRQHandler) refers to object.o(i.print_all_plant) for print_all_plant
     stm32f3xx_it.o(i.TIM2_IRQHandler) refers to lcdutill.o(i.show_blink) for show_blink
     stm32f3xx_it.o(i.TIM2_IRQHandler) refers to stm32f3xx_hal_tim.o(i.HAL_TIM_IRQHandler) for HAL_TIM_IRQHandler
@@ -174,27 +174,6 @@ Section Cross References
     stm32f3xx_it.o(i.TIM4_IRQHandler) refers to main.o(.bss) for htim4
     stm32f3xx_it.o(i.USART2_IRQHandler) refers to stm32f3xx_hal_uart.o(i.HAL_UART_IRQHandler) for HAL_UART_IRQHandler
     stm32f3xx_it.o(i.USART2_IRQHandler) refers to main.o(.bss) for huart2
-    stm32f3xx_it.o(i.getZombie) refers to utill.o(i.getRand) for getRand
-    stm32f3xx_it.o(i.getZombie) refers to utill.o(i.getTime) for getTime
-    stm32f3xx_it.o(i.getZombie) refers to stm32f3xx_it.o(.bss) for .bss
-    stm32f3xx_it.o(i.getZombie) refers to stm32f3xx_it.o(.data) for .data
-    stm32f3xx_it.o(i.move_all_zombies) refers to stm32f3xx_it.o(i.move_zombie) for move_zombie
-    stm32f3xx_it.o(i.move_all_zombies) refers to stm32f3xx_it.o(.bss) for .bss
-    stm32f3xx_it.o(i.move_all_zombies) refers to stm32f3xx_it.o(.data) for .data
-    stm32f3xx_it.o(i.move_zombie) refers to utill.o(i.getTime) for getTime
-    stm32f3xx_it.o(i.move_zombie) refers to object.o(i.get_plant) for get_plant
-    stm32f3xx_it.o(i.move_zombie) refers to utill.o(i.min) for min
-    stm32f3xx_it.o(i.move_zombie) refers to object.o(i.remove_plant) for remove_plant
-    stm32f3xx_it.o(i.move_zombie) refers to stm32f3xx_it.o(i.removeZombie) for removeZombie
-    stm32f3xx_it.o(i.move_zombie) refers to object.o(i.get_plant_size) for get_plant_size
-    stm32f3xx_it.o(i.move_zombie) refers to stm32f3xx_it.o(.data) for .data
-    stm32f3xx_it.o(i.print_all_zombies) refers to stm32f3xx_it.o(i.print_zombie) for print_zombie
-    stm32f3xx_it.o(i.print_all_zombies) refers to stm32f3xx_it.o(.bss) for .bss
-    stm32f3xx_it.o(i.print_all_zombies) refers to stm32f3xx_it.o(.data) for .data
-    stm32f3xx_it.o(i.print_zombie) refers to lcdutill.o(i.write_lcd) for write_lcd
-    stm32f3xx_it.o(i.removeZombie) refers to lcdutill.o(i.write_lcd) for write_lcd
-    stm32f3xx_it.o(i.removeZombie) refers to stm32f3xx_it.o(.data) for .data
-    stm32f3xx_it.o(i.removeZombie) refers to stm32f3xx_it.o(.bss) for .bss
     stm32f3xx_it.o(i.showDemo) refers to 7segment.o(i.numPrint) for numPrint
     stm32f3xx_it.o(i.showDemo) refers to liquidcrystal.o(i.setCursor) for setCursor
     stm32f3xx_it.o(i.showDemo) refers to liquidcrystal.o(i.write) for write
@@ -291,12 +270,32 @@ Section Cross References
     7segment.o(i.refresh_7seg) refers to 7segment.o(.data) for .data
     object.o(i.create_plant) refers to object.o(.data) for .data
     object.o(i.create_plant) refers to object.o(.bss) for .bss
+    object.o(i.create_zombie) refers to utill.o(i.getRand) for getRand
+    object.o(i.create_zombie) refers to utill.o(i.getTime) for getTime
+    object.o(i.create_zombie) refers to object.o(.bss) for .bss
+    object.o(i.create_zombie) refers to object.o(.data) for .data
     object.o(i.get_plant) refers to object.o(.bss) for .bss
     object.o(i.get_plant_size) refers to object.o(.data) for .data
+    object.o(i.move_all_zombies) refers to object.o(i.move_zombie) for move_zombie
+    object.o(i.move_all_zombies) refers to object.o(.bss) for .bss
+    object.o(i.move_all_zombies) refers to object.o(.data) for .data
+    object.o(i.move_zombie) refers to utill.o(i.getTime) for getTime
+    object.o(i.move_zombie) refers to object.o(i.get_plant) for get_plant
+    object.o(i.move_zombie) refers to utill.o(i.min) for min
+    object.o(i.move_zombie) refers to object.o(i.remove_plant) for remove_plant
+    object.o(i.move_zombie) refers to object.o(i.removeZombie) for removeZombie
+    object.o(i.move_zombie) refers to object.o(.data) for .data
     object.o(i.print_all_plant) refers to object.o(i.print_plant) for print_plant
     object.o(i.print_all_plant) refers to object.o(.bss) for .bss
     object.o(i.print_all_plant) refers to object.o(.data) for .data
+    object.o(i.print_all_zombies) refers to object.o(i.print_zombie) for print_zombie
+    object.o(i.print_all_zombies) refers to object.o(.bss) for .bss
+    object.o(i.print_all_zombies) refers to object.o(.data) for .data
     object.o(i.print_plant) refers to lcdutill.o(i.write_lcd) for write_lcd
+    object.o(i.print_zombie) refers to lcdutill.o(i.write_lcd) for write_lcd
+    object.o(i.removeZombie) refers to lcdutill.o(i.write_lcd) for write_lcd
+    object.o(i.removeZombie) refers to object.o(.data) for .data
+    object.o(i.removeZombie) refers to object.o(.bss) for .bss
     object.o(i.remove_plant) refers to lcdutill.o(i.write_lcd) for write_lcd
     object.o(i.remove_plant) refers to object.o(.data) for .data
     object.o(i.remove_plant) refers to object.o(.bss) for .bss
@@ -1117,6 +1116,7 @@ Removing Unused input sections from the image.
     Removing 7segment.o(.rev16_text), (4 bytes).
     Removing 7segment.o(.revsh_text), (4 bytes).
     Removing 7segment.o(.rrx_text), (6 bytes).
+    Removing object.o(i.get_plant_size), (12 bytes).
     Removing lcdutill.o(.rev16_text), (4 bytes).
     Removing lcdutill.o(.revsh_text), (4 bytes).
     Removing lcdutill.o(.rrx_text), (6 bytes).
@@ -1696,7 +1696,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f3xx.o(.rrx_text), (6 bytes).
     Removing system_stm32f3xx.o(i.SystemCoreClockUpdate), (112 bytes).
 
-616 unused section(s) (total 46359 bytes) removed from the image.
+617 unused section(s) (total 46371 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1732,23 +1732,23 @@ Image Symbol Table
     ../Src/stm32f3xx_hal_msp.c               0x00000000   Number         0  stm32f3xx_hal_msp.o ABSOLUTE
     ../Src/stm32f3xx_it.c                    0x00000000   Number         0  stm32f3xx_it.o ABSOLUTE
     ../Src/system_stm32f3xx.c                0x00000000   Number         0  system_stm32f3xx.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/strlen.c         0x00000000   Number         0  strlen.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
@@ -1813,8 +1813,8 @@ Image Symbol Table
     .text                                    0x080002d2   Section        0  ddiv.o(.text)
     .text                                    0x080003b0   Section        0  dflti.o(.text)
     .text                                    0x080003d2   Section        0  dfixi.o(.text)
-    .text                                    0x08000410   Section        0  iusefp.o(.text)
     .text                                    0x08000410   Section        0  depilogue.o(.text)
+    .text                                    0x08000410   Section        0  iusefp.o(.text)
     .text                                    0x080004cc   Section       36  init.o(.text)
     .text                                    0x080004f0   Section        0  llshl.o(.text)
     i.ADC1_2_IRQHandler                      0x08000510   Section        0  stm32f3xx_it.o(i.ADC1_2_IRQHandler)
@@ -1959,68 +1959,66 @@ Image Symbol Table
     i.command                                0x08003b40   Section        0  liquidcrystal.o(i.command)
     i.createChar                             0x08003b46   Section        0  liquidcrystal.o(i.createChar)
     i.create_plant                           0x08003b6c   Section        0  object.o(i.create_plant)
-    i.display                                0x08003bec   Section        0  liquidcrystal.o(i.display)
-    i.enableClock                            0x08003c04   Section        0  liquidcrystal.o(i.enableClock)
-    i.enable_blink                           0x08003cb0   Section        0  lcdutill.o(i.enable_blink)
-    i.getRand                                0x08003cbc   Section        0  utill.o(i.getRand)
-    i.getTime                                0x08003cec   Section        0  utill.o(i.getTime)
-    i.getZombie                              0x08003cf8   Section        0  stm32f3xx_it.o(i.getZombie)
+    i.create_zombie                          0x08003bec   Section        0  object.o(i.create_zombie)
+    i.display                                0x08003ca0   Section        0  liquidcrystal.o(i.display)
+    i.enableClock                            0x08003cb8   Section        0  liquidcrystal.o(i.enableClock)
+    i.enable_blink                           0x08003d64   Section        0  lcdutill.o(i.enable_blink)
+    i.getRand                                0x08003d70   Section        0  utill.o(i.getRand)
+    i.getTime                                0x08003da0   Section        0  utill.o(i.getTime)
     i.get_blink_column                       0x08003dac   Section        0  lcdutill.o(i.get_blink_column)
     i.get_blink_row                          0x08003db8   Section        0  lcdutill.o(i.get_blink_row)
     i.get_plant                              0x08003dc4   Section        0  object.o(i.get_plant)
-    i.get_plant_size                         0x08003dd4   Section        0  object.o(i.get_plant_size)
-    i.init                                   0x08003de0   Section        0  liquidcrystal.o(i.init)
-    i.is_blick_change                        0x08003e30   Section        0  lcdutill.o(i.is_blick_change)
-    i.is_blink_enable                        0x08003e3c   Section        0  lcdutill.o(i.is_blink_enable)
-    i.main                                   0x08003e48   Section        0  main.o(i.main)
-    i.min                                    0x08003f1c   Section        0  utill.o(i.min)
-    i.move_all_zombies                       0x08003f24   Section        0  stm32f3xx_it.o(i.move_all_zombies)
-    i.move_zombie                            0x08003f50   Section        0  stm32f3xx_it.o(i.move_zombie)
-    i.noBlink                                0x0800400c   Section        0  liquidcrystal.o(i.noBlink)
-    i.numPrint                               0x08004024   Section        0  7segment.o(i.numPrint)
-    i.print                                  0x08004030   Section        0  liquidcrystal.o(i.print)
-    i.print_all_plant                        0x08004058   Section        0  object.o(i.print_all_plant)
-    i.print_all_zombies                      0x0800408c   Section        0  stm32f3xx_it.o(i.print_all_zombies)
-    i.print_plant                            0x080040b8   Section        0  object.o(i.print_plant)
-    i.print_zombie                           0x080040c8   Section        0  stm32f3xx_it.o(i.print_zombie)
-    i.pulseEnable                            0x080040f4   Section        0  liquidcrystal.o(i.pulseEnable)
-    i.refresh_7seg                           0x08004130   Section        0  7segment.o(i.refresh_7seg)
-    i.removeZombie                           0x080041b4   Section        0  stm32f3xx_it.o(i.removeZombie)
-    i.remove_plant                           0x080041fc   Section        0  object.o(i.remove_plant)
-    i.send                                   0x0800423c   Section        0  liquidcrystal.o(i.send)
-    i.setCursor                              0x08004280   Section        0  liquidcrystal.o(i.setCursor)
-    i.setRandomCount                         0x080042a8   Section        0  utill.o(i.setRandomCount)
-    i.setRowOffsets                          0x080042d0   Section        0  liquidcrystal.o(i.setRowOffsets)
-    i.set_blink_change                       0x080042e4   Section        0  lcdutill.o(i.set_blink_change)
-    i.set_blink_column                       0x080042f0   Section        0  lcdutill.o(i.set_blink_column)
-    i.set_blink_row                          0x08004304   Section        0  lcdutill.o(i.set_blink_row)
-    i.showDemo                               0x08004318   Section        0  stm32f3xx_it.o(i.showDemo)
-    i.show_about                             0x080043fc   Section        0  stm32f3xx_it.o(i.show_about)
-    i.show_blink                             0x0800443c   Section        0  lcdutill.o(i.show_blink)
-    i.show_menu                              0x080044c8   Section        0  stm32f3xx_it.o(i.show_menu)
-    i.write                                  0x08004534   Section        0  liquidcrystal.o(i.write)
-    i.write4bits                             0x08004540   Section        0  liquidcrystal.o(i.write4bits)
-    i.write8bits                             0x08004574   Section        0  liquidcrystal.o(i.write8bits)
-    i.write_lcd                              0x080045a8   Section        0  lcdutill.o(i.write_lcd)
-    .constdata                               0x080045e4   Section       32  stm32f3xx_hal_rcc.o(.constdata)
-    .constdata                               0x08004604   Section       16  system_stm32f3xx.o(.constdata)
-    .constdata                               0x08004614   Section        8  system_stm32f3xx.o(.constdata)
+    i.init                                   0x08003dd4   Section        0  liquidcrystal.o(i.init)
+    i.is_blick_change                        0x08003e24   Section        0  lcdutill.o(i.is_blick_change)
+    i.is_blink_enable                        0x08003e30   Section        0  lcdutill.o(i.is_blink_enable)
+    i.main                                   0x08003e3c   Section        0  main.o(i.main)
+    i.min                                    0x08003f10   Section        0  utill.o(i.min)
+    i.move_all_zombies                       0x08003f18   Section        0  object.o(i.move_all_zombies)
+    i.move_zombie                            0x08003f44   Section        0  object.o(i.move_zombie)
+    i.noBlink                                0x08004000   Section        0  liquidcrystal.o(i.noBlink)
+    i.numPrint                               0x08004018   Section        0  7segment.o(i.numPrint)
+    i.print                                  0x08004024   Section        0  liquidcrystal.o(i.print)
+    i.print_all_plant                        0x0800404c   Section        0  object.o(i.print_all_plant)
+    i.print_all_zombies                      0x08004080   Section        0  object.o(i.print_all_zombies)
+    i.print_plant                            0x080040ac   Section        0  object.o(i.print_plant)
+    i.print_zombie                           0x080040bc   Section        0  object.o(i.print_zombie)
+    i.pulseEnable                            0x080040e8   Section        0  liquidcrystal.o(i.pulseEnable)
+    i.refresh_7seg                           0x08004124   Section        0  7segment.o(i.refresh_7seg)
+    i.removeZombie                           0x080041a8   Section        0  object.o(i.removeZombie)
+    i.remove_plant                           0x080041f0   Section        0  object.o(i.remove_plant)
+    i.send                                   0x08004230   Section        0  liquidcrystal.o(i.send)
+    i.setCursor                              0x08004274   Section        0  liquidcrystal.o(i.setCursor)
+    i.setRandomCount                         0x0800429c   Section        0  utill.o(i.setRandomCount)
+    i.setRowOffsets                          0x080042c4   Section        0  liquidcrystal.o(i.setRowOffsets)
+    i.set_blink_change                       0x080042d8   Section        0  lcdutill.o(i.set_blink_change)
+    i.set_blink_column                       0x080042e4   Section        0  lcdutill.o(i.set_blink_column)
+    i.set_blink_row                          0x080042f8   Section        0  lcdutill.o(i.set_blink_row)
+    i.showDemo                               0x0800430c   Section        0  stm32f3xx_it.o(i.showDemo)
+    i.show_about                             0x080043f0   Section        0  stm32f3xx_it.o(i.show_about)
+    i.show_blink                             0x08004430   Section        0  lcdutill.o(i.show_blink)
+    i.show_menu                              0x080044bc   Section        0  stm32f3xx_it.o(i.show_menu)
+    i.write                                  0x08004528   Section        0  liquidcrystal.o(i.write)
+    i.write4bits                             0x08004534   Section        0  liquidcrystal.o(i.write4bits)
+    i.write8bits                             0x08004568   Section        0  liquidcrystal.o(i.write8bits)
+    i.write_lcd                              0x0800459c   Section        0  lcdutill.o(i.write_lcd)
+    .constdata                               0x080045d8   Section       32  stm32f3xx_hal_rcc.o(.constdata)
+    .constdata                               0x080045f8   Section       16  system_stm32f3xx.o(.constdata)
+    .constdata                               0x08004608   Section        8  system_stm32f3xx.o(.constdata)
     .data                                    0x20000000   Section        4  stm32f3xx_hal_msp.o(.data)
     HAL_RCC_ADC34_CLK_ENABLED                0x20000000   Data           4  stm32f3xx_hal_msp.o(.data)
     .data                                    0x20000004   Section       56  main.o(.data)
-    .data                                    0x2000003c   Section       12  stm32f3xx_it.o(.data)
-    .data                                    0x20000048   Section       20  liquidcrystal.o(.data)
-    .data                                    0x20000060   Section       16  utill.o(.data)
-    .data                                    0x20000070   Section        4  7segment.o(.data)
-    .data                                    0x20000074   Section        1  object.o(.data)
-    .data                                    0x20000078   Section       16  lcdutill.o(.data)
-    .data                                    0x20000088   Section       12  stm32f3xx_hal.o(.data)
-    .data                                    0x20000094   Section        4  system_stm32f3xx.o(.data)
-    .bss                                     0x20000098   Section     1668  main.o(.bss)
-    .bss                                     0x2000071c   Section      120  stm32f3xx_it.o(.bss)
-    .bss                                     0x20000794   Section       16  liquidcrystal.o(.bss)
-    .bss                                     0x200007a4   Section       50  object.o(.bss)
-    .bss                                     0x200007d6   Section       80  lcdutill.o(.bss)
+    .data                                    0x2000003c   Section        5  stm32f3xx_it.o(.data)
+    .data                                    0x20000044   Section       20  liquidcrystal.o(.data)
+    .data                                    0x20000058   Section       16  utill.o(.data)
+    .data                                    0x20000068   Section        4  7segment.o(.data)
+    .data                                    0x2000006c   Section        8  object.o(.data)
+    .data                                    0x20000074   Section       16  lcdutill.o(.data)
+    .data                                    0x20000084   Section       12  stm32f3xx_hal.o(.data)
+    .data                                    0x20000090   Section        4  system_stm32f3xx.o(.data)
+    .bss                                     0x20000094   Section     1668  main.o(.bss)
+    .bss                                     0x20000718   Section       16  liquidcrystal.o(.bss)
+    .bss                                     0x20000728   Section      172  object.o(.bss)
+    .bss                                     0x200007d4   Section       80  lcdutill.o(.bss)
     STACK                                    0x20000828   Section     1024  startup_stm32f303xc.o(STACK)
 
     Global Symbols
@@ -2230,55 +2228,54 @@ Image Symbol Table
     command                                  0x08003b41   Thumb Code     6  liquidcrystal.o(i.command)
     createChar                               0x08003b47   Thumb Code    36  liquidcrystal.o(i.createChar)
     create_plant                             0x08003b6d   Thumb Code   120  object.o(i.create_plant)
-    display                                  0x08003bed   Thumb Code    18  liquidcrystal.o(i.display)
-    enableClock                              0x08003c05   Thumb Code   142  liquidcrystal.o(i.enableClock)
-    enable_blink                             0x08003cb1   Thumb Code     8  lcdutill.o(i.enable_blink)
-    getRand                                  0x08003cbd   Thumb Code    44  utill.o(i.getRand)
-    getTime                                  0x08003ced   Thumb Code     6  utill.o(i.getTime)
-    getZombie                                0x08003cf9   Thumb Code   170  stm32f3xx_it.o(i.getZombie)
+    create_zombie                            0x08003bed   Thumb Code   170  object.o(i.create_zombie)
+    display                                  0x08003ca1   Thumb Code    18  liquidcrystal.o(i.display)
+    enableClock                              0x08003cb9   Thumb Code   142  liquidcrystal.o(i.enableClock)
+    enable_blink                             0x08003d65   Thumb Code     8  lcdutill.o(i.enable_blink)
+    getRand                                  0x08003d71   Thumb Code    44  utill.o(i.getRand)
+    getTime                                  0x08003da1   Thumb Code     6  utill.o(i.getTime)
     get_blink_column                         0x08003dad   Thumb Code     6  lcdutill.o(i.get_blink_column)
     get_blink_row                            0x08003db9   Thumb Code     6  lcdutill.o(i.get_blink_row)
     get_plant                                0x08003dc5   Thumb Code    10  object.o(i.get_plant)
-    get_plant_size                           0x08003dd5   Thumb Code     6  object.o(i.get_plant_size)
-    init                                     0x08003de1   Thumb Code    72  liquidcrystal.o(i.init)
-    is_blick_change                          0x08003e31   Thumb Code     6  lcdutill.o(i.is_blick_change)
-    is_blink_enable                          0x08003e3d   Thumb Code     6  lcdutill.o(i.is_blink_enable)
-    main                                     0x08003e49   Thumb Code   192  main.o(i.main)
-    min                                      0x08003f1d   Thumb Code     8  utill.o(i.min)
-    move_all_zombies                         0x08003f25   Thumb Code    34  stm32f3xx_it.o(i.move_all_zombies)
-    move_zombie                              0x08003f51   Thumb Code   182  stm32f3xx_it.o(i.move_zombie)
-    noBlink                                  0x0800400d   Thumb Code    18  liquidcrystal.o(i.noBlink)
-    numPrint                                 0x08004025   Thumb Code     6  7segment.o(i.numPrint)
-    print                                    0x08004031   Thumb Code    40  liquidcrystal.o(i.print)
-    print_all_plant                          0x08004059   Thumb Code    42  object.o(i.print_all_plant)
-    print_all_zombies                        0x0800408d   Thumb Code    36  stm32f3xx_it.o(i.print_all_zombies)
-    print_plant                              0x080040b9   Thumb Code    16  object.o(i.print_plant)
-    print_zombie                             0x080040c9   Thumb Code    42  stm32f3xx_it.o(i.print_zombie)
-    pulseEnable                              0x080040f5   Thumb Code    56  liquidcrystal.o(i.pulseEnable)
-    refresh_7seg                             0x08004131   Thumb Code   122  7segment.o(i.refresh_7seg)
-    removeZombie                             0x080041b5   Thumb Code    64  stm32f3xx_it.o(i.removeZombie)
-    remove_plant                             0x080041fd   Thumb Code    56  object.o(i.remove_plant)
-    send                                     0x0800423d   Thumb Code    62  liquidcrystal.o(i.send)
-    setCursor                                0x08004281   Thumb Code    36  liquidcrystal.o(i.setCursor)
-    setRandomCount                           0x080042a9   Thumb Code    28  utill.o(i.setRandomCount)
-    setRowOffsets                            0x080042d1   Thumb Code    14  liquidcrystal.o(i.setRowOffsets)
-    set_blink_change                         0x080042e5   Thumb Code     6  lcdutill.o(i.set_blink_change)
-    set_blink_column                         0x080042f1   Thumb Code    14  lcdutill.o(i.set_blink_column)
-    set_blink_row                            0x08004305   Thumb Code    14  lcdutill.o(i.set_blink_row)
-    showDemo                                 0x08004319   Thumb Code   222  stm32f3xx_it.o(i.showDemo)
-    show_about                               0x080043fd   Thumb Code    42  stm32f3xx_it.o(i.show_about)
-    show_blink                               0x0800443d   Thumb Code   130  lcdutill.o(i.show_blink)
-    show_menu                                0x080044c9   Thumb Code    70  stm32f3xx_it.o(i.show_menu)
-    write                                    0x08004535   Thumb Code    12  liquidcrystal.o(i.write)
-    write4bits                               0x08004541   Thumb Code    44  liquidcrystal.o(i.write4bits)
-    write8bits                               0x08004575   Thumb Code    44  liquidcrystal.o(i.write8bits)
-    write_lcd                                0x080045a9   Thumb Code    52  lcdutill.o(i.write_lcd)
-    aPLLMULFactorTable                       0x080045e4   Data          16  stm32f3xx_hal_rcc.o(.constdata)
-    aPredivFactorTable                       0x080045f4   Data          16  stm32f3xx_hal_rcc.o(.constdata)
-    AHBPrescTable                            0x08004604   Data          16  system_stm32f3xx.o(.constdata)
-    APBPrescTable                            0x08004614   Data           8  system_stm32f3xx.o(.constdata)
-    Region$$Table$$Base                      0x0800461c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800463c   Number         0  anon$$obj.o(Region$$Table)
+    init                                     0x08003dd5   Thumb Code    72  liquidcrystal.o(i.init)
+    is_blick_change                          0x08003e25   Thumb Code     6  lcdutill.o(i.is_blick_change)
+    is_blink_enable                          0x08003e31   Thumb Code     6  lcdutill.o(i.is_blink_enable)
+    main                                     0x08003e3d   Thumb Code   192  main.o(i.main)
+    min                                      0x08003f11   Thumb Code     8  utill.o(i.min)
+    move_all_zombies                         0x08003f19   Thumb Code    34  object.o(i.move_all_zombies)
+    move_zombie                              0x08003f45   Thumb Code   184  object.o(i.move_zombie)
+    noBlink                                  0x08004001   Thumb Code    18  liquidcrystal.o(i.noBlink)
+    numPrint                                 0x08004019   Thumb Code     6  7segment.o(i.numPrint)
+    print                                    0x08004025   Thumb Code    40  liquidcrystal.o(i.print)
+    print_all_plant                          0x0800404d   Thumb Code    42  object.o(i.print_all_plant)
+    print_all_zombies                        0x08004081   Thumb Code    36  object.o(i.print_all_zombies)
+    print_plant                              0x080040ad   Thumb Code    16  object.o(i.print_plant)
+    print_zombie                             0x080040bd   Thumb Code    42  object.o(i.print_zombie)
+    pulseEnable                              0x080040e9   Thumb Code    56  liquidcrystal.o(i.pulseEnable)
+    refresh_7seg                             0x08004125   Thumb Code   122  7segment.o(i.refresh_7seg)
+    removeZombie                             0x080041a9   Thumb Code    64  object.o(i.removeZombie)
+    remove_plant                             0x080041f1   Thumb Code    56  object.o(i.remove_plant)
+    send                                     0x08004231   Thumb Code    62  liquidcrystal.o(i.send)
+    setCursor                                0x08004275   Thumb Code    36  liquidcrystal.o(i.setCursor)
+    setRandomCount                           0x0800429d   Thumb Code    28  utill.o(i.setRandomCount)
+    setRowOffsets                            0x080042c5   Thumb Code    14  liquidcrystal.o(i.setRowOffsets)
+    set_blink_change                         0x080042d9   Thumb Code     6  lcdutill.o(i.set_blink_change)
+    set_blink_column                         0x080042e5   Thumb Code    14  lcdutill.o(i.set_blink_column)
+    set_blink_row                            0x080042f9   Thumb Code    14  lcdutill.o(i.set_blink_row)
+    showDemo                                 0x0800430d   Thumb Code   222  stm32f3xx_it.o(i.showDemo)
+    show_about                               0x080043f1   Thumb Code    42  stm32f3xx_it.o(i.show_about)
+    show_blink                               0x08004431   Thumb Code   130  lcdutill.o(i.show_blink)
+    show_menu                                0x080044bd   Thumb Code    70  stm32f3xx_it.o(i.show_menu)
+    write                                    0x08004529   Thumb Code    12  liquidcrystal.o(i.write)
+    write4bits                               0x08004535   Thumb Code    44  liquidcrystal.o(i.write4bits)
+    write8bits                               0x08004569   Thumb Code    44  liquidcrystal.o(i.write8bits)
+    write_lcd                                0x0800459d   Thumb Code    52  lcdutill.o(i.write_lcd)
+    aPLLMULFactorTable                       0x080045d8   Data          16  stm32f3xx_hal_rcc.o(.constdata)
+    aPredivFactorTable                       0x080045e8   Data          16  stm32f3xx_hal_rcc.o(.constdata)
+    AHBPrescTable                            0x080045f8   Data          16  system_stm32f3xx.o(.constdata)
+    APBPrescTable                            0x08004608   Data           8  system_stm32f3xx.o(.constdata)
+    Region$$Table$$Base                      0x08004610   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004630   Number         0  anon$$obj.o(Region$$Table)
     zomby1                                   0x20000004   Data           8  main.o(.data)
     zomby2                                   0x2000000c   Data           8  main.o(.data)
     zomby0                                   0x20000014   Data           8  main.o(.data)
@@ -2288,55 +2285,55 @@ Image Symbol Table
     plant3                                   0x20000034   Data           8  main.o(.data)
     initFlag                                 0x2000003c   Data           1  stm32f3xx_it.o(.data)
     state                                    0x2000003d   Data           1  stm32f3xx_it.o(.data)
-    __zombies_size                           0x2000003e   Data           1  stm32f3xx_it.o(.data)
-    clear_showDemo                           0x2000003f   Data           1  stm32f3xx_it.o(.data)
-    __init_show_menu                         0x20000040   Data           1  stm32f3xx_it.o(.data)
-    __init_show_about                        0x20000041   Data           1  stm32f3xx_it.o(.data)
-    speed_time                               0x20000044   Data           4  stm32f3xx_it.o(.data)
-    _fourbit_mode                            0x20000048   Data           1  liquidcrystal.o(.data)
-    dotsize                                  0x20000049   Data           1  liquidcrystal.o(.data)
-    _displayfunction                         0x2000004a   Data           1  liquidcrystal.o(.data)
-    _displaycontrol                          0x2000004b   Data           1  liquidcrystal.o(.data)
-    _displaymode                             0x2000004c   Data           1  liquidcrystal.o(.data)
-    _numlines                                0x2000004d   Data           1  liquidcrystal.o(.data)
-    _rs_pin                                  0x2000004e   Data           2  liquidcrystal.o(.data)
-    _rw_pin                                  0x20000050   Data           2  liquidcrystal.o(.data)
-    _enable_pin                              0x20000052   Data           2  liquidcrystal.o(.data)
-    _port                                    0x20000054   Data           4  liquidcrystal.o(.data)
-    _row_offsets                             0x20000058   Data           4  liquidcrystal.o(.data)
-    __rand_count                             0x20000060   Data           4  utill.o(.data)
-    __time_m                                 0x20000064   Data           4  utill.o(.data)
-    __rand                                   0x20000068   Data           8  utill.o(.data)
-    __numOf_7seg                             0x20000070   Data           4  7segment.o(.data)
-    __plant_size                             0x20000074   Data           1  object.o(.data)
-    __input_row_blink                        0x20000078   Data           1  lcdutill.o(.data)
-    __input_column_blink                     0x20000079   Data           1  lcdutill.o(.data)
-    row_blink                                0x2000007a   Data           1  lcdutill.o(.data)
-    column_blink                             0x2000007b   Data           1  lcdutill.o(.data)
-    last_row_blink                           0x2000007c   Data           1  lcdutill.o(.data)
-    last_column_blink                        0x2000007d   Data           1  lcdutill.o(.data)
-    blinkEnable                              0x2000007e   Data           1  lcdutill.o(.data)
-    blinkChange                              0x2000007f   Data           1  lcdutill.o(.data)
-    __now_blink_enable                       0x20000080   Data           1  lcdutill.o(.data)
-    __last_change_blink                      0x20000084   Data           4  lcdutill.o(.data)
-    uwTickFreq                               0x20000088   Data           1  stm32f3xx_hal.o(.data)
-    uwTickPrio                               0x2000008c   Data           4  stm32f3xx_hal.o(.data)
-    uwTick                                   0x20000090   Data           4  stm32f3xx_hal.o(.data)
-    SystemCoreClock                          0x20000094   Data           4  system_stm32f3xx.o(.data)
-    hadc1                                    0x20000098   Data          84  main.o(.bss)
-    hadc3                                    0x200000ec   Data          84  main.o(.bss)
-    hadc4                                    0x20000140   Data          84  main.o(.bss)
-    hi2c1                                    0x20000194   Data          76  main.o(.bss)
-    hspi1                                    0x200001e0   Data         100  main.o(.bss)
-    htim2                                    0x20000244   Data          64  main.o(.bss)
-    htim3                                    0x20000284   Data          64  main.o(.bss)
-    htim4                                    0x200002c4   Data          64  main.o(.bss)
-    huart2                                   0x20000304   Data         112  main.o(.bss)
-    hpcd_USB_FS                              0x20000374   Data         936  main.o(.bss)
-    __zombies                                0x2000071c   Data         120  stm32f3xx_it.o(.bss)
-    _data_pins                               0x20000794   Data          16  liquidcrystal.o(.bss)
-    __plants                                 0x200007a4   Data          50  object.o(.bss)
-    lcd                                      0x200007d6   Data          80  lcdutill.o(.bss)
+    clear_showDemo                           0x2000003e   Data           1  stm32f3xx_it.o(.data)
+    __init_show_menu                         0x2000003f   Data           1  stm32f3xx_it.o(.data)
+    __init_show_about                        0x20000040   Data           1  stm32f3xx_it.o(.data)
+    _fourbit_mode                            0x20000044   Data           1  liquidcrystal.o(.data)
+    dotsize                                  0x20000045   Data           1  liquidcrystal.o(.data)
+    _displayfunction                         0x20000046   Data           1  liquidcrystal.o(.data)
+    _displaycontrol                          0x20000047   Data           1  liquidcrystal.o(.data)
+    _displaymode                             0x20000048   Data           1  liquidcrystal.o(.data)
+    _numlines                                0x20000049   Data           1  liquidcrystal.o(.data)
+    _rs_pin                                  0x2000004a   Data           2  liquidcrystal.o(.data)
+    _rw_pin                                  0x2000004c   Data           2  liquidcrystal.o(.data)
+    _enable_pin                              0x2000004e   Data           2  liquidcrystal.o(.data)
+    _port                                    0x20000050   Data           4  liquidcrystal.o(.data)
+    _row_offsets                             0x20000054   Data           4  liquidcrystal.o(.data)
+    __rand_count                             0x20000058   Data           4  utill.o(.data)
+    __time_m                                 0x2000005c   Data           4  utill.o(.data)
+    __rand                                   0x20000060   Data           8  utill.o(.data)
+    __numOf_7seg                             0x20000068   Data           4  7segment.o(.data)
+    __plant_size                             0x2000006c   Data           1  object.o(.data)
+    __zombies_size                           0x2000006d   Data           1  object.o(.data)
+    speed_time                               0x20000070   Data           4  object.o(.data)
+    __input_row_blink                        0x20000074   Data           1  lcdutill.o(.data)
+    __input_column_blink                     0x20000075   Data           1  lcdutill.o(.data)
+    row_blink                                0x20000076   Data           1  lcdutill.o(.data)
+    column_blink                             0x20000077   Data           1  lcdutill.o(.data)
+    last_row_blink                           0x20000078   Data           1  lcdutill.o(.data)
+    last_column_blink                        0x20000079   Data           1  lcdutill.o(.data)
+    blinkEnable                              0x2000007a   Data           1  lcdutill.o(.data)
+    blinkChange                              0x2000007b   Data           1  lcdutill.o(.data)
+    __now_blink_enable                       0x2000007c   Data           1  lcdutill.o(.data)
+    __last_change_blink                      0x20000080   Data           4  lcdutill.o(.data)
+    uwTickFreq                               0x20000084   Data           1  stm32f3xx_hal.o(.data)
+    uwTickPrio                               0x20000088   Data           4  stm32f3xx_hal.o(.data)
+    uwTick                                   0x2000008c   Data           4  stm32f3xx_hal.o(.data)
+    SystemCoreClock                          0x20000090   Data           4  system_stm32f3xx.o(.data)
+    hadc1                                    0x20000094   Data          84  main.o(.bss)
+    hadc3                                    0x200000e8   Data          84  main.o(.bss)
+    hadc4                                    0x2000013c   Data          84  main.o(.bss)
+    hi2c1                                    0x20000190   Data          76  main.o(.bss)
+    hspi1                                    0x200001dc   Data         100  main.o(.bss)
+    htim2                                    0x20000240   Data          64  main.o(.bss)
+    htim3                                    0x20000280   Data          64  main.o(.bss)
+    htim4                                    0x200002c0   Data          64  main.o(.bss)
+    huart2                                   0x20000300   Data         112  main.o(.bss)
+    hpcd_USB_FS                              0x20000370   Data         936  main.o(.bss)
+    _data_pins                               0x20000718   Data          16  liquidcrystal.o(.bss)
+    __plants                                 0x20000728   Data          50  object.o(.bss)
+    __zombies                                0x2000075c   Data         120  object.o(.bss)
+    lcd                                      0x200007d4   Data          80  lcdutill.o(.bss)
     __initial_sp                             0x20000c28   Data           0  startup_stm32f303xc.o(STACK)
 
 
@@ -2347,9 +2344,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000046d4, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000046c4, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000463c, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004630, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2465,7 +2462,7 @@ Memory Map of the image
     0x08002adc   0x08002adc   0x00000058   Code   RO           25    i.HAL_UART_MspInit  stm32f3xx_hal_msp.o
     0x08002b34   0x08002b34   0x00000002   Code   RO         4358    i.HAL_UART_RxCpltCallback  stm32f3xx_hal_uart.o
     0x08002b36   0x08002b36   0x00000002   Code   RO         4363    i.HAL_UART_TxCpltCallback  stm32f3xx_hal_uart.o
-    0x08002b38   0x08002b38   0x00000048   Code   RO          480    i.LiquidCrystal     liquidcrystal.o
+    0x08002b38   0x08002b38   0x00000048   Code   RO          445    i.LiquidCrystal     liquidcrystal.o
     0x08002b80   0x08002b80   0x0000006c   Code   RO          226    i.MX_ADC1_Init      main.o
     0x08002bec   0x08002bec   0x0000006c   Code   RO          227    i.MX_ADC3_Init      main.o
     0x08002c58   0x08002c58   0x0000005c   Code   RO          228    i.MX_ADC4_Init      main.o
@@ -2499,94 +2496,91 @@ Memory Map of the image
     0x08003768   0x08003768   0x00000064   Code   RO         4382    i.UART_Transmit_IT  stm32f3xx_hal_uart.o
     0x080037cc   0x080037cc   0x00000064   Code   RO         4383    i.UART_WaitOnFlagUntilTimeout  stm32f3xx_hal_uart.o
     0x08003830   0x08003830   0x0000000c   Code   RO          330    i.USART2_IRQHandler  stm32f3xx_it.o
-    0x0800383c   0x0800383c   0x00000124   Code   RO          707    i.__numPrint        7segment.o
+    0x0800383c   0x0800383c   0x00000124   Code   RO          672    i.__numPrint        7segment.o
     0x08003960   0x08003960   0x0000000e   Code   RO         4763    i.__scatterload_copy  mc_w.l(handlers.o)
     0x0800396e   0x0800396e   0x00000002   Code   RO         4764    i.__scatterload_null  mc_w.l(handlers.o)
     0x08003970   0x08003970   0x0000000e   Code   RO         4765    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x0800397e   0x0800397e   0x00000002   PAD
-    0x08003980   0x08003980   0x00000010   Code   RO          668    i.addTime           utill.o
+    0x08003980   0x08003980   0x00000010   Code   RO          633    i.addTime           utill.o
     0x08003990   0x08003990   0x00000024   Code   RO          793    i.add_blink_row     lcdutill.o
-    0x080039b4   0x080039b4   0x00000138   Code   RO          482    i.begin             liquidcrystal.o
-    0x08003aec   0x08003aec   0x00000018   Code   RO          483    i.blink             liquidcrystal.o
-    0x08003b04   0x08003b04   0x00000012   Code   RO          484    i.clear             liquidcrystal.o
+    0x080039b4   0x080039b4   0x00000138   Code   RO          447    i.begin             liquidcrystal.o
+    0x08003aec   0x08003aec   0x00000018   Code   RO          448    i.blink             liquidcrystal.o
+    0x08003b04   0x08003b04   0x00000012   Code   RO          449    i.clear             liquidcrystal.o
     0x08003b16   0x08003b16   0x00000002   PAD
     0x08003b18   0x08003b18   0x00000028   Code   RO          794    i.clear_lcd         lcdutill.o
-    0x08003b40   0x08003b40   0x00000006   Code   RO          648    i.command           liquidcrystal.o
-    0x08003b46   0x08003b46   0x00000024   Code   RO          485    i.createChar        liquidcrystal.o
+    0x08003b40   0x08003b40   0x00000006   Code   RO          613    i.command           liquidcrystal.o
+    0x08003b46   0x08003b46   0x00000024   Code   RO          450    i.createChar        liquidcrystal.o
     0x08003b6a   0x08003b6a   0x00000002   PAD
-    0x08003b6c   0x08003b6c   0x00000080   Code   RO          743    i.create_plant      object.o
-    0x08003bec   0x08003bec   0x00000018   Code   RO          487    i.display           liquidcrystal.o
-    0x08003c04   0x08003c04   0x000000ac   Code   RO          488    i.enableClock       liquidcrystal.o
-    0x08003cb0   0x08003cb0   0x0000000c   Code   RO          796    i.enable_blink      lcdutill.o
-    0x08003cbc   0x08003cbc   0x00000030   Code   RO          669    i.getRand           utill.o
-    0x08003cec   0x08003cec   0x0000000c   Code   RO          670    i.getTime           utill.o
-    0x08003cf8   0x08003cf8   0x000000b4   Code   RO          331    i.getZombie         stm32f3xx_it.o
+    0x08003b6c   0x08003b6c   0x00000080   Code   RO          708    i.create_plant      object.o
+    0x08003bec   0x08003bec   0x000000b4   Code   RO          709    i.create_zombie     object.o
+    0x08003ca0   0x08003ca0   0x00000018   Code   RO          452    i.display           liquidcrystal.o
+    0x08003cb8   0x08003cb8   0x000000ac   Code   RO          453    i.enableClock       liquidcrystal.o
+    0x08003d64   0x08003d64   0x0000000c   Code   RO          796    i.enable_blink      lcdutill.o
+    0x08003d70   0x08003d70   0x00000030   Code   RO          634    i.getRand           utill.o
+    0x08003da0   0x08003da0   0x0000000c   Code   RO          635    i.getTime           utill.o
     0x08003dac   0x08003dac   0x0000000c   Code   RO          797    i.get_blink_column  lcdutill.o
     0x08003db8   0x08003db8   0x0000000c   Code   RO          798    i.get_blink_row     lcdutill.o
-    0x08003dc4   0x08003dc4   0x00000010   Code   RO          744    i.get_plant         object.o
-    0x08003dd4   0x08003dd4   0x0000000c   Code   RO          745    i.get_plant_size    object.o
-    0x08003de0   0x08003de0   0x00000050   Code   RO          490    i.init              liquidcrystal.o
-    0x08003e30   0x08003e30   0x0000000c   Code   RO          799    i.is_blick_change   lcdutill.o
-    0x08003e3c   0x08003e3c   0x0000000c   Code   RO          800    i.is_blink_enable   lcdutill.o
-    0x08003e48   0x08003e48   0x000000d4   Code   RO          238    i.main              main.o
-    0x08003f1c   0x08003f1c   0x00000008   Code   RO          671    i.min               utill.o
-    0x08003f24   0x08003f24   0x0000002c   Code   RO          332    i.move_all_zombies  stm32f3xx_it.o
-    0x08003f50   0x08003f50   0x000000bc   Code   RO          333    i.move_zombie       stm32f3xx_it.o
-    0x0800400c   0x0800400c   0x00000018   Code   RO          493    i.noBlink           liquidcrystal.o
-    0x08004024   0x08004024   0x0000000c   Code   RO          708    i.numPrint          7segment.o
-    0x08004030   0x08004030   0x00000028   Code   RO          496    i.print             liquidcrystal.o
-    0x08004058   0x08004058   0x00000034   Code   RO          746    i.print_all_plant   object.o
-    0x0800408c   0x0800408c   0x0000002c   Code   RO          334    i.print_all_zombies  stm32f3xx_it.o
-    0x080040b8   0x080040b8   0x00000010   Code   RO          747    i.print_plant       object.o
-    0x080040c8   0x080040c8   0x0000002a   Code   RO          335    i.print_zombie      stm32f3xx_it.o
-    0x080040f2   0x080040f2   0x00000002   PAD
-    0x080040f4   0x080040f4   0x0000003c   Code   RO          497    i.pulseEnable       liquidcrystal.o
-    0x08004130   0x08004130   0x00000084   Code   RO          709    i.refresh_7seg      7segment.o
-    0x080041b4   0x080041b4   0x00000048   Code   RO          336    i.removeZombie      stm32f3xx_it.o
-    0x080041fc   0x080041fc   0x00000040   Code   RO          748    i.remove_plant      object.o
-    0x0800423c   0x0800423c   0x00000044   Code   RO          501    i.send              liquidcrystal.o
-    0x08004280   0x08004280   0x00000028   Code   RO          502    i.setCursor         liquidcrystal.o
-    0x080042a8   0x080042a8   0x00000028   Code   RO          672    i.setRandomCount    utill.o
-    0x080042d0   0x080042d0   0x00000014   Code   RO          503    i.setRowOffsets     liquidcrystal.o
-    0x080042e4   0x080042e4   0x0000000c   Code   RO          801    i.set_blink_change  lcdutill.o
-    0x080042f0   0x080042f0   0x00000014   Code   RO          802    i.set_blink_column  lcdutill.o
-    0x08004304   0x08004304   0x00000014   Code   RO          803    i.set_blink_row     lcdutill.o
-    0x08004318   0x08004318   0x000000e4   Code   RO          337    i.showDemo          stm32f3xx_it.o
-    0x080043fc   0x080043fc   0x00000040   Code   RO          338    i.show_about        stm32f3xx_it.o
-    0x0800443c   0x0800443c   0x0000008c   Code   RO          804    i.show_blink        lcdutill.o
-    0x080044c8   0x080044c8   0x0000006c   Code   RO          339    i.show_menu         stm32f3xx_it.o
-    0x08004534   0x08004534   0x0000000c   Code   RO          653    i.write             liquidcrystal.o
-    0x08004540   0x08004540   0x00000034   Code   RO          504    i.write4bits        liquidcrystal.o
-    0x08004574   0x08004574   0x00000034   Code   RO          505    i.write8bits        liquidcrystal.o
-    0x080045a8   0x080045a8   0x0000003c   Code   RO          805    i.write_lcd         lcdutill.o
-    0x080045e4   0x080045e4   0x00000020   Data   RO         2348    .constdata          stm32f3xx_hal_rcc.o
-    0x08004604   0x08004604   0x00000010   Data   RO         4688    .constdata          system_stm32f3xx.o
-    0x08004614   0x08004614   0x00000008   Data   RO         4689    .constdata          system_stm32f3xx.o
-    0x0800461c   0x0800461c   0x00000020   Data   RO         4761    Region$$Table       anon$$obj.o
+    0x08003dc4   0x08003dc4   0x00000010   Code   RO          710    i.get_plant         object.o
+    0x08003dd4   0x08003dd4   0x00000050   Code   RO          455    i.init              liquidcrystal.o
+    0x08003e24   0x08003e24   0x0000000c   Code   RO          799    i.is_blick_change   lcdutill.o
+    0x08003e30   0x08003e30   0x0000000c   Code   RO          800    i.is_blink_enable   lcdutill.o
+    0x08003e3c   0x08003e3c   0x000000d4   Code   RO          238    i.main              main.o
+    0x08003f10   0x08003f10   0x00000008   Code   RO          636    i.min               utill.o
+    0x08003f18   0x08003f18   0x0000002c   Code   RO          712    i.move_all_zombies  object.o
+    0x08003f44   0x08003f44   0x000000bc   Code   RO          713    i.move_zombie       object.o
+    0x08004000   0x08004000   0x00000018   Code   RO          458    i.noBlink           liquidcrystal.o
+    0x08004018   0x08004018   0x0000000c   Code   RO          673    i.numPrint          7segment.o
+    0x08004024   0x08004024   0x00000028   Code   RO          461    i.print             liquidcrystal.o
+    0x0800404c   0x0800404c   0x00000034   Code   RO          714    i.print_all_plant   object.o
+    0x08004080   0x08004080   0x0000002c   Code   RO          715    i.print_all_zombies  object.o
+    0x080040ac   0x080040ac   0x00000010   Code   RO          716    i.print_plant       object.o
+    0x080040bc   0x080040bc   0x0000002a   Code   RO          717    i.print_zombie      object.o
+    0x080040e6   0x080040e6   0x00000002   PAD
+    0x080040e8   0x080040e8   0x0000003c   Code   RO          462    i.pulseEnable       liquidcrystal.o
+    0x08004124   0x08004124   0x00000084   Code   RO          674    i.refresh_7seg      7segment.o
+    0x080041a8   0x080041a8   0x00000048   Code   RO          718    i.removeZombie      object.o
+    0x080041f0   0x080041f0   0x00000040   Code   RO          719    i.remove_plant      object.o
+    0x08004230   0x08004230   0x00000044   Code   RO          466    i.send              liquidcrystal.o
+    0x08004274   0x08004274   0x00000028   Code   RO          467    i.setCursor         liquidcrystal.o
+    0x0800429c   0x0800429c   0x00000028   Code   RO          637    i.setRandomCount    utill.o
+    0x080042c4   0x080042c4   0x00000014   Code   RO          468    i.setRowOffsets     liquidcrystal.o
+    0x080042d8   0x080042d8   0x0000000c   Code   RO          801    i.set_blink_change  lcdutill.o
+    0x080042e4   0x080042e4   0x00000014   Code   RO          802    i.set_blink_column  lcdutill.o
+    0x080042f8   0x080042f8   0x00000014   Code   RO          803    i.set_blink_row     lcdutill.o
+    0x0800430c   0x0800430c   0x000000e4   Code   RO          331    i.showDemo          stm32f3xx_it.o
+    0x080043f0   0x080043f0   0x00000040   Code   RO          332    i.show_about        stm32f3xx_it.o
+    0x08004430   0x08004430   0x0000008c   Code   RO          804    i.show_blink        lcdutill.o
+    0x080044bc   0x080044bc   0x0000006c   Code   RO          333    i.show_menu         stm32f3xx_it.o
+    0x08004528   0x08004528   0x0000000c   Code   RO          618    i.write             liquidcrystal.o
+    0x08004534   0x08004534   0x00000034   Code   RO          469    i.write4bits        liquidcrystal.o
+    0x08004568   0x08004568   0x00000034   Code   RO          470    i.write8bits        liquidcrystal.o
+    0x0800459c   0x0800459c   0x0000003c   Code   RO          805    i.write_lcd         lcdutill.o
+    0x080045d8   0x080045d8   0x00000020   Data   RO         2348    .constdata          stm32f3xx_hal_rcc.o
+    0x080045f8   0x080045f8   0x00000010   Data   RO         4688    .constdata          system_stm32f3xx.o
+    0x08004608   0x08004608   0x00000008   Data   RO         4689    .constdata          system_stm32f3xx.o
+    0x08004610   0x08004610   0x00000020   Data   RO         4761    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800463c, Size: 0x00000c28, Max: 0x0000a000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004630, Size: 0x00000c28, Max: 0x0000a000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0800463c   0x00000004   Data   RW           26    .data               stm32f3xx_hal_msp.o
-    0x20000004   0x08004640   0x00000038   Data   RW          240    .data               main.o
-    0x2000003c   0x08004678   0x0000000c   Data   RW          345    .data               stm32f3xx_it.o
-    0x20000048   0x08004684   0x00000014   Data   RW          507    .data               liquidcrystal.o
-    0x2000005c   0x08004698   0x00000004   PAD
-    0x20000060   0x0800469c   0x00000010   Data   RW          673    .data               utill.o
-    0x20000070   0x080046ac   0x00000004   Data   RW          710    .data               7segment.o
-    0x20000074   0x080046b0   0x00000001   Data   RW          750    .data               object.o
-    0x20000075   0x080046b1   0x00000003   PAD
-    0x20000078   0x080046b4   0x00000010   Data   RW          808    .data               lcdutill.o
-    0x20000088   0x080046c4   0x0000000c   Data   RW         1861    .data               stm32f3xx_hal.o
-    0x20000094   0x080046d0   0x00000004   Data   RW         4690    .data               system_stm32f3xx.o
-    0x20000098        -       0x00000684   Zero   RW          239    .bss                main.o
-    0x2000071c        -       0x00000078   Zero   RW          340    .bss                stm32f3xx_it.o
-    0x20000794        -       0x00000010   Zero   RW          506    .bss                liquidcrystal.o
-    0x200007a4        -       0x00000032   Zero   RW          749    .bss                object.o
-    0x200007d6        -       0x00000050   Zero   RW          806    .bss                lcdutill.o
-    0x20000826   0x080046d4   0x00000002   PAD
+    0x20000000   0x08004630   0x00000004   Data   RW           26    .data               stm32f3xx_hal_msp.o
+    0x20000004   0x08004634   0x00000038   Data   RW          240    .data               main.o
+    0x2000003c   0x0800466c   0x00000005   Data   RW          338    .data               stm32f3xx_it.o
+    0x20000041   0x08004671   0x00000003   PAD
+    0x20000044   0x08004674   0x00000014   Data   RW          472    .data               liquidcrystal.o
+    0x20000058   0x08004688   0x00000010   Data   RW          638    .data               utill.o
+    0x20000068   0x08004698   0x00000004   Data   RW          675    .data               7segment.o
+    0x2000006c   0x0800469c   0x00000008   Data   RW          721    .data               object.o
+    0x20000074   0x080046a4   0x00000010   Data   RW          808    .data               lcdutill.o
+    0x20000084   0x080046b4   0x0000000c   Data   RW         1861    .data               stm32f3xx_hal.o
+    0x20000090   0x080046c0   0x00000004   Data   RW         4690    .data               system_stm32f3xx.o
+    0x20000094        -       0x00000684   Zero   RW          239    .bss                main.o
+    0x20000718        -       0x00000010   Zero   RW          471    .bss                liquidcrystal.o
+    0x20000728        -       0x000000ac   Zero   RW          720    .bss                object.o
+    0x200007d4        -       0x00000050   Zero   RW          806    .bss                lcdutill.o
+    0x20000824   0x080046c4   0x00000004   PAD
     0x20000828        -       0x00000400   Zero   RW            1    STACK               startup_stm32f303xc.o
 
 
@@ -2601,7 +2595,7 @@ Image component sizes
        388         76          0         16         80       7853   lcdutill.o
       1112        106          0         20         16      13622   liquidcrystal.o
       1628        132          0         56       1668       9695   main.o
-       288         38          0          1         50       4359   object.o
+       846         72          0          8        172       8123   object.o
         36          8        392          0       1024        872   startup_stm32f303xc.o
        164         28          0         12          0       4237   stm32f3xx_hal.o
          6          0          0          0          0       2190   stm32f3xx_hal_adc.o
@@ -2620,14 +2614,14 @@ Image component sizes
         94         10          0          0          0       3273   stm32f3xx_hal_tim_ex.o
       1584         58          0          0          0      11643   stm32f3xx_hal_uart.o
          2          0          0          0          0       1008   stm32f3xx_hal_uart_ex.o
-      1614        184          0         12        120      15009   stm32f3xx_it.o
+      1044        142          0          5          0       9853   stm32f3xx_it.o
        104         22         24          4          0       1271   system_stm32f3xx.o
        124         28          0         16          0       2968   utill.o
 
     ----------------------------------------------------------------------
-     16600       1114        480        152       2960     811804   Object Totals
+     16588       1106        480        148       2964     810412   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        30          0          0          7          2          0   (incl. Padding)
+        30          0          0          3          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2674,15 +2668,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17500       1130        480        152       2960     796696   Grand Totals
-     17500       1130        480        152       2960     796696   ELF Image Totals
-     17500       1130        480        152          0          0   ROM Totals
+     17488       1122        480        148       2964     795404   Grand Totals
+     17488       1122        480        148       2964     795404   ELF Image Totals
+     17488       1122        480        148          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                17980 (  17.56kB)
+    Total RO  Size (Code + RO Data)                17968 (  17.55kB)
     Total RW  Size (RW Data + ZI Data)              3112 (   3.04kB)
-    Total ROM Size (Code + RO Data + RW Data)      18132 (  17.71kB)
+    Total ROM Size (Code + RO Data + RW Data)      18116 (  17.69kB)
 
 ==============================================================================
 
