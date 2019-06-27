@@ -37,17 +37,12 @@
 
 /* USER CODE BEGIN 0 */
 #include "LiquidCrystal.h"
+#include "utill.h"
+#include "7segment.h"
+#include "object.h"
+#include "LCDutill.h"
 #include <string.h>
-#define TIME_TO_SEC 1000
 
-int getRand(int);
-
-
-char min(char a, char b){
-	if (a < b)
-		return a;
-	return b;
-}
 
 //timer 2 variable
 const char SHOW_DEMO = 0;
@@ -59,69 +54,60 @@ char initFlag = 0;
 char state = SHOW_DEMO;
 
 //timer 3 variable
-unsigned long __time_m = 0;
-
-//timer 4 variable
-unsigned char __numOf_7seg [4];
-
-
-
-//ADC 4 variable
-double __rand = 0;
-int __rand_count = 0;
+//unsigned long __time_m = 0;
 
 //ADC 3 variable
-unsigned char lcd [20][4];
-unsigned char __input_row_blink = 0;
-unsigned char __input_column_blink = 0;
-unsigned char row_blink = 0;
-unsigned char column_blink = 0;
-unsigned char last_row_blink = 0;
-unsigned char last_column_blink = 0;
-char blinkEnable = 0;
-char blinkChange = 0;
-unsigned char __now_blink_enable = 0;
-long __last_change_blink = 0;
-const long timeToBlink = TIME_TO_SEC / 6;
+//unsigned char lcd [20][4];
+//unsigned char __input_row_blink = 0;
+//unsigned char __input_column_blink = 0;
+//unsigned char row_blink = 0;
+//unsigned char column_blink = 0;
+//unsigned char last_row_blink = 0;
+//unsigned char last_column_blink = 0;
+//char blinkEnable = 0;
+//char blinkChange = 0;
+//unsigned char __now_blink_enable = 0;
+//long __last_change_blink = 0;
+//const long timeToBlink = TIME_TO_SEC / 6;
 
 
-void write_lcd(char c, char column, char row){
-	lcd[column][row] = c;
-	if(blinkEnable || column != column_blink || row != row_blink){
-		setCursor(column, row);
-		write(c);
-	}
-}
+//void write_lcd(char c, char column, char row){
+//	lcd[column][row] = c;
+//	if(blinkEnable || column != column_blink || row != row_blink){
+//		setCursor(column, row);
+//		write(c);
+//	}
+//}
 
-void show_blink(){
-	if(blinkChange){
-		setCursor(last_column_blink, last_row_blink);
-		write(lcd[last_column_blink][last_row_blink]);
-		blinkChange = 0;
-	}
-	
-	if(blinkEnable){
-		column_blink = __input_column_blink;
-		row_blink = __input_row_blink;
-		if(__time_m - __last_change_blink > timeToBlink){
-			__now_blink_enable = ! __now_blink_enable;
-			if(__now_blink_enable){
-				setCursor(column_blink, row_blink);
-				write(95);
-				last_column_blink = column_blink;
-				last_row_blink = row_blink;
-			}else{
-				setCursor(column_blink, row_blink);
-				write(lcd[column_blink][row_blink]);
-			}
-			__last_change_blink = __time_m;
-		}
-	}else{
-		__now_blink_enable = 0;
-	}
-	
-	
-}
+//void show_blink(){
+//	if(blinkChange){
+//		setCursor(last_column_blink, last_row_blink);
+//		write(lcd[last_column_blink][last_row_blink]);
+//		blinkChange = 0;
+//	}
+//	
+//	if(blinkEnable){
+//		column_blink = __input_column_blink;
+//		row_blink = __input_row_blink;
+//		if(__time_m - __last_change_blink > timeToBlink){
+//			__now_blink_enable = ! __now_blink_enable;
+//			if(__now_blink_enable){
+//				setCursor(column_blink, row_blink);
+//				write(95);
+//				last_column_blink = column_blink;
+//				last_row_blink = row_blink;
+//			}else{
+//				setCursor(column_blink, row_blink);
+//				write(lcd[column_blink][row_blink]);
+//			}
+//			__last_change_blink = __time_m;
+//		}
+//	}else{
+//		__now_blink_enable = 0;
+//	}
+//	
+//	
+//}
 
 //palnt data
 struct Plant{
@@ -228,7 +214,7 @@ struct Zombie getZombie(char kind){
 			result.kind = 1;
 	}
 	
-	result.lastTimeMove = __time_m;
+	result.lastTimeMove = getTime();
 	
 	for(int i=0; i<__zombies_size; i++){
 		if(result.column == __zombies[i].column && result.row == __zombies[i].row)
@@ -269,9 +255,9 @@ void print_all_zombies(){
 }
 
 void move_zombie(struct Zombie *z){
-	if(__time_m - z->lastTimeMove > speed_time){
+	if(getTime() - z->lastTimeMove > speed_time){
 		z->row++;
-		z->lastTimeMove = __time_m;
+		z->lastTimeMove = getTime();
 		
 		for (char i=0; i<__plant_size; i++){
 			if(__plants[i].column == z->column && __plants[i].row == z->row){
@@ -300,92 +286,6 @@ void move_all_zombies(){
 	for (int i=0;i<__zombies_size;i++)
 		move_zombie(&__zombies[i]);
 }
-
-
-int getRand(int range){
-	return ((int)(__rand * range)) % range;
-}
-
-void __numPrint(char num, char digit, char dot){
-	switch(num){
-		case 0:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 1:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 2:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 3:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 4:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 5:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 6:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 7:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);
-			break;
-		case 8:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 1);
-			break;
-		case 9:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, 1);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 1);
-			break;
-	}
-	
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, dot!=1);
-	
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, digit==0);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, digit==1);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, digit==2);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, digit==3);
-}
-
-void numPrint(char num, char digit){
-	__numOf_7seg[digit] = num;
-}
-
-
-
-
-
 
 
 
@@ -496,8 +396,7 @@ void SysTick_Handler(void)
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-	__rand_count = (HAL_ADC_GetValue(&hadc4));
-	__rand = (double)__rand_count / 59;
+	setRandomCount(HAL_ADC_GetValue(&hadc4));
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -519,11 +418,11 @@ void EXTI0_IRQHandler(void)
 	*****/
 	
 	if(state == SHOW_MENU){
-		switch(row_blink){
+		switch(get_blink_row()){
 			case 0:
 				clear();
 				noBlink();
-				blinkEnable = 1;
+				enable_blink();
 				state = TEMP;
 				break;
 			case 2:
@@ -547,8 +446,7 @@ void EXTI0_IRQHandler(void)
 void EXTI1_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI1_IRQn 0 */
-	//if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1))
-		getPlant(2, row_blink, column_blink);
+	getPlant(2, get_blink_row(), get_blink_column());
   /* USER CODE END EXTI1_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
   /* USER CODE BEGIN EXTI1_IRQn 1 */
@@ -562,8 +460,7 @@ void EXTI1_IRQHandler(void)
 void EXTI2_TSC_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI2_TSC_IRQn 0 */
-	//if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2))
-	getPlant(3, row_blink, column_blink);
+	getPlant(3, get_blink_row(), get_blink_column());
   /* USER CODE END EXTI2_TSC_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
   /* USER CODE BEGIN EXTI2_TSC_IRQn 1 */
@@ -592,24 +489,21 @@ void EXTI9_5_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
 	if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_6)){
-		blinkChange=1;
-		if (blinkEnable){
-			__input_row_blink+=3;
-			__input_row_blink=__input_row_blink%4;
+		set_blink_change(1);
+		if (is_blink_enable()){
+			add_blink_row(3);
+			
 		}else{
-			row_blink += 2;
-			row_blink = row_blink % 3;
+			set_blink_row( (get_blink_row() +  2) % 3);
 		}
 	
 	}
 	else if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_7)){
-		blinkChange=1;
-		if (blinkEnable){
-			__input_row_blink++;
-			__input_row_blink=__input_row_blink%4;
+		set_blink_change(1);
+		if (is_blink_enable()){
+			add_blink_row(1);;
 		}else{
-			row_blink ++;
-			row_blink = row_blink % 3;
+			set_blink_row( (get_blink_row() +  1) % 3);
 		}
 		
 	}
@@ -635,20 +529,18 @@ void TIM2_IRQHandler(void)
 		HAL_TIM_Base_Start_IT(&htim4);
 		initFlag = 1;
 		
-		for (int i=0 ; i<20 ; i++)
-			for (int j=0 ; j<4 ; j++)
-				lcd[i][j] = 32;
+		clear_lcd();
 			
 	}
 	
 	
 	switch(state){
 		case SHOW_DEMO:
-			showDemo(__time_m);
+			showDemo(getTime());
 			break;
 		case SHOW_MENU:
 			show_menu();
-			setCursor(0,row_blink);
+			setCursor(0,get_blink_row());
 			break;
 		case SHOW_ABOUT:
 			show_about();
@@ -674,7 +566,7 @@ void TIM2_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-	__time_m++;
+	addTime();
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
@@ -688,21 +580,7 @@ void TIM3_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
-	__numPrint(__numOf_7seg[0], 0, 0);
-	HAL_Delay(1);
-	__numPrint(__numOf_7seg[1], 1, 1);
-	HAL_Delay(1);
-	__numPrint(__numOf_7seg[2], 2, 0);
-	HAL_Delay(1);
-	__numPrint(__numOf_7seg[3], 3, 0);
-	HAL_Delay(1);
-	
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, 0);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);
-	
-	
+	refresh_7seg();
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
@@ -730,10 +608,10 @@ void USART2_IRQHandler(void)
 void ADC3_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC3_IRQn 0 */
-	if(blinkEnable){
+	if(is_blink_enable()){
 		char t = HAL_ADC_GetValue(&hadc3) * 19 / 63;
-		blinkChange = (t!=column_blink)||blinkChange;
-		__input_column_blink = t;
+		set_blink_change((t!=get_blink_column())||is_blick_change());
+		set_blink_column(t);
 	}
   /* USER CODE END ADC3_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc3);
@@ -748,8 +626,7 @@ void ADC3_IRQHandler(void)
 void ADC4_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC4_IRQn 0 */
-	__rand_count = (HAL_ADC_GetValue(&hadc4));
-	__rand = (double)__rand_count / 59;
+	setRandomCount(HAL_ADC_GetValue(&hadc4));
   /* USER CODE END ADC4_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc4);
   /* USER CODE BEGIN ADC4_IRQn 1 */

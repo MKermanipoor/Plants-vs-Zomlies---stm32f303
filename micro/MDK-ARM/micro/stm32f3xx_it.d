@@ -39,4 +39,8 @@ micro\stm32f3xx_it.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h
 micro\stm32f3xx_it.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h
 micro\stm32f3xx_it.o: ../Inc/stm32f3xx_it.h
 micro\stm32f3xx_it.o: ../Inc/LiquidCrystal.h
+micro\stm32f3xx_it.o: ../Inc/utill.h
+micro\stm32f3xx_it.o: ../Inc/7segment.h
+micro\stm32f3xx_it.o: ../Inc/object.h
+micro\stm32f3xx_it.o: ../Inc/LCDutill.h
 micro\stm32f3xx_it.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
