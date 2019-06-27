@@ -160,10 +160,9 @@ void SysTick_Handler(void)
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-	setRandomCount(HAL_ADC_GetValue(&hadc4));
+
   /* USER CODE END SysTick_IRQn 1 */
 }
-
 
 /******************************************************************************/
 /* STM32F3xx Peripheral Interrupt Handlers                                    */

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [micro\micro.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image micro\micro.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jun 27 12:13:42 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jun 27 16:50:15 2019
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -113,7 +113,7 @@ Global Symbols
 <P><STRONG><a name="[4e]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(.text)
 </UL>
-<P><STRONG><a name="[f0]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[f1]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[50]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -123,15 +123,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[f1]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[f2]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[f2]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[f3]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[f3]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[f4]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[f4]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[f5]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[f5]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[f6]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f303xc.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
@@ -366,7 +366,7 @@ Global Symbols
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[f6]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[f7]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[e8]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
@@ -405,7 +405,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 </UL>
 
-<P><STRONG><a name="[f7]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[ee]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cdcmple.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRandomCount
+</UL>
+
+<P><STRONG><a name="[f8]"></a>__aeabi_cdcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdcmple.o(.text), UNUSED)
+
+<P><STRONG><a name="[f9]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[55]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _double_round
@@ -417,9 +423,9 @@ Global Symbols
 <P><STRONG><a name="[53]"></a>_double_epilogue</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -431,13 +437,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[f8]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[fa]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[59]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[f9]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[fb]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[1c]"></a>ADC1_2_IRQHandler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.ADC1_2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = ADC1_2_IRQHandler &rArr; HAL_ADC_Start_IT &rArr; ADC_Enable
@@ -462,7 +468,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
 </UL>
 <P><STRONG><a name="[44]"></a>ADC4_IRQHandler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.ADC4_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ADC4_IRQHandler &rArr; setRandomCount &rArr; __aeabi_i2d &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = ADC4_IRQHandler &rArr; setRandomCount &rArr; __aeabi_i2d &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRandomCount
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_IT
@@ -555,8 +561,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5e]"></a>HAL_ADC_GetValue</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f3xx_hal_adc_ex.o(i.HAL_ADC_GetValue))
-<BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC4_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC4_IRQHandler
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC3_IRQHandler
 </UL>
 
@@ -1024,13 +1029,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.SysTick_Handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = SysTick_Handler &rArr; setRandomCount &rArr; __aeabi_i2d &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.SysTick_Handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SysTick_Handler &rArr; HAL_SYSTICK_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRandomCount
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SYSTICK_IRQHandler
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SYSTICK_IRQHandler
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IncTick
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_GetValue
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
 </UL>
@@ -1052,7 +1055,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(.text)
 </UL>
 <P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, stm32f3xx_it.o(i.TIM2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = TIM2_IRQHandler &rArr; move_all_zombies &rArr; move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = TIM2_IRQHandler &rArr; create_zombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
@@ -1169,11 +1172,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 </UL>
 
-<P><STRONG><a name="[fa]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[fc]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[fb]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[fd]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[fc]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[fe]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[d1]"></a>addTime</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, utill.o(i.addTime))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
@@ -1257,7 +1260,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[cc]"></a>create_zombie</STRONG> (Thumb, 170 bytes, Stack size 32 bytes, object.o(i.create_zombie))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = create_zombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = create_zombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
@@ -1283,8 +1286,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[cb]"></a>getRand</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, utill.o(i.getRand))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[cb]"></a>getRand</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, utill.o(i.getRand))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -1392,7 +1395,7 @@ Global Symbols
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ee]"></a>numPrint</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 7segment.o(i.numPrint))
+<P><STRONG><a name="[ef]"></a>numPrint</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 7segment.o(i.numPrint))
 <BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 </UL>
 
@@ -1482,7 +1485,7 @@ Global Symbols
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
 </UL>
@@ -1500,14 +1503,14 @@ Global Symbols
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 
-<P><STRONG><a name="[63]"></a>setRandomCount</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, utill.o(i.setRandomCount))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = setRandomCount &rArr; __aeabi_i2d &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[63]"></a>setRandomCount</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, utill.o(i.setRandomCount))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = setRandomCount &rArr; __aeabi_i2d &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC4_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[da]"></a>setRowOffsets</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, liquidcrystal.o(i.setRowOffsets))
@@ -1532,9 +1535,9 @@ Global Symbols
 <P><STRONG><a name="[c7]"></a>showDemo</STRONG> (Thumb, 222 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.showDemo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = showDemo &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1553,7 +1556,7 @@ Global Symbols
 <P><STRONG><a name="[d0]"></a>show_blink</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, lcdutill.o(i.show_blink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_blink &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 </UL>
@@ -1571,7 +1574,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ef]"></a>write</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, liquidcrystal.o(i.write))
+<P><STRONG><a name="[f0]"></a>write</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, liquidcrystal.o(i.write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
@@ -1603,7 +1606,7 @@ Global Symbols
 <P><STRONG><a name="[eb]"></a>write_lcd</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcdutill.o(i.write_lcd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant

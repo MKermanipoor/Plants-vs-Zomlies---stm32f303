@@ -1,13 +1,20 @@
-double __rand = 0;
-int __rand_count = 0;
+double __rand[40];
+char __end_rand = 40;
+double __rand_now;
 
 int getRand(int range){
-	return ((int)(__rand * range)) % range;
+	int result = ((int)(__rand[__end_rand] * range)) % range;
+	__end_rand = (__end_rand + 39) % 40;
+	return result;
 }
 
 void setRandomCount(int randomCount){
-	__rand_count = randomCount;
-	__rand = (double)__rand_count / 59;
+	double t = (double)randomCount / 59;
+	if (__rand[__end_rand] != t){
+		__end_rand = (__end_rand + 1) % 40;
+		__rand[__end_rand] = t;
+		__rand_now = __rand[__end_rand];
+	}
 }
 
 char min(char a, char b){
