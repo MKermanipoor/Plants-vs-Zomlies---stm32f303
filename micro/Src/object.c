@@ -4,7 +4,7 @@
 
 // plant struct
 unsigned char __plant_size = 0;
-struct Plant __plants [10];
+struct Plant __plants [20];
 
 struct Plant create_plant(char kind, char row, char column){
 	struct Plant result;
@@ -23,7 +23,7 @@ struct Plant create_plant(char kind, char row, char column){
 			break;
 	}
 	
-	if(__plant_size < 10){
+	if(__plant_size < 20){
 		for (char i=0 ; i<__plant_size ; i++){
 			if (__plants[i].column == column && __plants[i].row == row){
 				return result;
@@ -172,4 +172,8 @@ void move_zombie(struct Zombie *z){
 void move_all_zombies(){
 	for (int i=0;i<__zombies_size;i++)
 		move_zombie(&__zombies[i]);
+}
+
+char get_zombie_size(){
+	return __zombies_size;
 }

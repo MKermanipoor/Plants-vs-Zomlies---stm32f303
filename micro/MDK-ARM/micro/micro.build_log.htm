@@ -22,18 +22,122 @@ Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
 F:\University\micro prossesor\Projects\Plants vs Zomlies - stm32f303\micro\MDK-ARM\micro.uvprojx
-Project File Date:  06/27/2019
+Project File Date:  06/28/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'F:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'micro'
-compiling utill.c...
-..\Src\utill.c(32): warning:  #1-D: last line of file ends without a newline
-  }
-..\Src\utill.c: 1 warning, 0 errors
+compiling stm32f3xx_it.c...
+../Inc/utill.h(3): warning:  #1295-D: Deprecated declaration getTime - give arg types
+  long getTime();
+../Inc/utill.h(4): warning:  #1295-D: Deprecated declaration addTime - give arg types
+  void addTime();
+../Inc/utill.h(10): warning:  #1-D: last line of file ends without a newline
+  char min(char, char);
+../Inc/7segment.h(2): warning:  #1-D: last line of file ends without a newline
+  void refresh_7seg();
+../Inc/7segment.h(2): warning:  #1295-D: Deprecated declaration refresh_7seg - give arg types
+  void refresh_7seg();
+../Inc/object.h(10): warning:  #1295-D: Deprecated declaration get_plant_size - give arg types
+  char get_plant_size();
+../Inc/object.h(13): warning:  #1295-D: Deprecated declaration print_all_plant - give arg types
+  void print_all_plant();
+../Inc/object.h(27): warning:  #1295-D: Deprecated declaration move_all_zombies - give arg types
+  void move_all_zombies();
+../Inc/object.h(28): warning:  #1295-D: Deprecated declaration print_all_zombies - give arg types
+  void print_all_zombies();
+../Inc/object.h(29): warning:  #1-D: last line of file ends without a newline
+  char get_zombie_size();
+../Inc/object.h(29): warning:  #1295-D: Deprecated declaration get_zombie_size - give arg types
+  char get_zombie_size();
+../Inc/LCDutill.h(3): warning:  #1295-D: Deprecated declaration show_blink - give arg types
+  void show_blink();
+../Inc/LCDutill.h(5): warning:  #1295-D: Deprecated declaration get_blink_row - give arg types
+  char get_blink_row();
+../Inc/LCDutill.h(6): warning:  #1295-D: Deprecated declaration get_blink_column - give arg types
+  char get_blink_column();
+../Inc/LCDutill.h(12): warning:  #1295-D: Deprecated declaration is_blink_enable - give arg types
+  char is_blink_enable();
+../Inc/LCDutill.h(13): warning:  #1295-D: Deprecated declaration enable_blink - give arg types
+  void enable_blink();
+../Inc/LCDutill.h(14): warning:  #1295-D: Deprecated declaration disable_blink - give arg types
+  void disable_blink();
+../Inc/LCDutill.h(17): warning:  #1295-D: Deprecated declaration is_blick_change - give arg types
+  char is_blick_change();
+../Inc/LCDutill.h(19): warning:  #1-D: last line of file ends without a newline
+  void clear_lcd();
+../Inc/LCDutill.h(19): warning:  #1295-D: Deprecated declaration clear_lcd - give arg types
+  void clear_lcd();
+../Src/stm32f3xx_it.c(52): warning:  #68-D: integer conversion resulted in a change of sign
+  const char TEMP = -1;
+../Src/stm32f3xx_it.c(222): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+../Src/stm32f3xx_it.c(223): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+../Src/stm32f3xx_it.c(224): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+../Src/stm32f3xx_it.c(225): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+../Src/stm32f3xx_it.c(242): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+../Src/stm32f3xx_it.c(243): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+../Src/stm32f3xx_it.c(244): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+../Src/stm32f3xx_it.c(245): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+../Src/stm32f3xx_it.c(260): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+../Src/stm32f3xx_it.c(261): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+../Src/stm32f3xx_it.c(262): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+../Src/stm32f3xx_it.c(263): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+../Src/stm32f3xx_it.c(279): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+../Src/stm32f3xx_it.c(280): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+../Src/stm32f3xx_it.c(281): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+../Src/stm32f3xx_it.c(282): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+../Src/stm32f3xx_it.c(312): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+../Src/stm32f3xx_it.c(313): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+../Src/stm32f3xx_it.c(314): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+../Src/stm32f3xx_it.c(315): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+../Src/stm32f3xx_it.c(346): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+../Src/stm32f3xx_it.c(347): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+../Src/stm32f3xx_it.c(348): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+../Src/stm32f3xx_it.c(349): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+../Src/stm32f3xx_it.c(468): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, level >= 1);
+../Src/stm32f3xx_it.c(469): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, level >= 2);
+../Src/stm32f3xx_it.c(470): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_10, level >= 3);
+../Src/stm32f3xx_it.c(471): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, level >= 4);
+../Src/stm32f3xx_it.c(472): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, level >= 5);
+../Src/stm32f3xx_it.c(473): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, level >= 6);
+../Src/stm32f3xx_it.c(474): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, level >= 7);
+../Src/stm32f3xx_it.c(475): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, level >= 8);
+../Src/stm32f3xx_it.c: 53 warnings, 0 errors
 linking...
-Program Size: Code=17616 RO-data=480 RW-data=148 ZI-data=3284  
-"micro\micro.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=18452 RO-data=480 RW-data=164 ZI-data=3332  
+"micro\micro.axf" - 0 Error(s), 53 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -56,7 +160,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.1
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

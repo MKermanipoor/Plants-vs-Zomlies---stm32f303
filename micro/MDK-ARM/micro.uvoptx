@@ -152,9 +152,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>247</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134219536</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Src/stm32f3xx_it.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\micro\../Src/stm32f3xx_it.c\247</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>244</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134233140</Address>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134219566</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -164,38 +180,6 @@
           <Filename>../Src/stm32f3xx_it.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\micro\../Src/stm32f3xx_it.c\244</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>231</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134233108</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>../Src/stm32f3xx_it.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\micro\../Src/stm32f3xx_it.c\231</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>226</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134233092</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>../Src/stm32f3xx_it.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\micro\../Src/stm32f3xx_it.c\226</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>

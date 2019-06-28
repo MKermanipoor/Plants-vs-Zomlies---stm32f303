@@ -79,9 +79,6 @@
 #define LD8_GPIO_Port GPIOE
 #define LD6_Pin GPIO_PIN_15
 #define LD6_GPIO_Port GPIOE
-#define downKey_Pin GPIO_PIN_6
-#define downKey_GPIO_Port GPIOC
-#define downKey_EXTI_IRQn EXTI9_5_IRQn
 #define upKey_Pin GPIO_PIN_7
 #define upKey_GPIO_Port GPIOC
 #define upKey_EXTI_IRQn EXTI9_5_IRQn

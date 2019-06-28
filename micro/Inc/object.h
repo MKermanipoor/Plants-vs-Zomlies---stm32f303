@@ -26,3 +26,4 @@ struct Zombie{
 struct Zombie create_zombie(char);
 void move_all_zombies();
 void print_all_zombies();
+char get_zombie_size();

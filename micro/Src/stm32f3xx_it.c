@@ -48,16 +48,24 @@
 const char SHOW_DEMO = 0;
 const char SHOW_MENU = 1;	
 const char SHOW_ABOUT = 2;
+const char NEW_GAME = 3;
 const char TEMP = -1;
+const char GAME = 4;
 
 char initFlag = 0;
 char state = SHOW_DEMO;
 
+char level = 1;
+char remainig_zombie = 4;
+
+long __last_time_zombie_created = 0;
+long __start_level_time;
+long __start_game_time;
 
 char clear_showDemo = 0;
 void showDemo(unsigned long time){
 	
-	int devide = (time)/TIME_TO_SEC;
+	int devide = (time)*10/TIME_TO_SEC;
 	
 	if(devide <= 10){
 		numPrint(10 - devide,0);
@@ -187,7 +195,7 @@ void EXTI0_IRQHandler(void)
 				clear();
 				noBlink();
 				enable_blink();
-				state = TEMP;
+				state = NEW_GAME;
 				break;
 			case 2:
 				state = SHOW_ABOUT;
@@ -205,31 +213,78 @@ void EXTI0_IRQHandler(void)
 }
 
 /**
-* @brief This function handles EXTI line1 interrupt.
+* @brief This function handles EXTI line3 interrupt.
 */
-void EXTI1_IRQHandler(void)
+void EXTI3_IRQHandler(void)
 {
-  /* USER CODE BEGIN EXTI1_IRQn 0 */
-	create_plant(2, get_blink_row(), get_blink_column());
-  /* USER CODE END EXTI1_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
-  /* USER CODE BEGIN EXTI1_IRQn 1 */
-
-  /* USER CODE END EXTI1_IRQn 1 */
+  /* USER CODE BEGIN EXTI3_IRQn 0 */
+	for (char i=0; i<4; i++){
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+		
+		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_3)){
+			switch(i){
+				case 1:
+					if (state == SHOW_MENU){
+						set_blink_row((get_blink_row() + 2) % 3);
+					}else if (state == GAME || state == NEW_GAME){
+						add_blink_row(3);
+					}
+	
+					break;
+			}
+			
+			break;
+		}
+	}
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+  /* USER CODE END EXTI3_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
+  /* USER CODE BEGIN EXTI3_IRQn 1 */
+	
+  /* USER CODE END EXTI3_IRQn 1 */
 }
 
 /**
-* @brief This function handles EXTI line2 and Touch Sense controller.
+* @brief This function handles EXTI line4 interrupt.
 */
-void EXTI2_TSC_IRQHandler(void)
+void EXTI4_IRQHandler(void)
 {
-  /* USER CODE BEGIN EXTI2_TSC_IRQn 0 */
-	create_plant(3, get_blink_row(), get_blink_column());
-  /* USER CODE END EXTI2_TSC_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
-  /* USER CODE BEGIN EXTI2_TSC_IRQn 1 */
+  /* USER CODE BEGIN EXTI4_IRQn 0 */
+	for (char i=0; i<4; i++){
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+		
+		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_4)){
+			switch(i){
+				case 1:
+					if (state == SHOW_MENU){
+						set_blink_row((get_blink_row() + 1) % 3);
+					}else if (state == GAME || state == NEW_GAME){
+						add_blink_row(1);
+					}
+	
+					break;
+			}
+			break;
+		}
+	}
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+  /* USER CODE END EXTI4_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
+  /* USER CODE BEGIN EXTI4_IRQn 1 */
 
-  /* USER CODE END EXTI2_TSC_IRQn 1 */
+  /* USER CODE END EXTI4_IRQn 1 */
 }
 
 /**
@@ -252,30 +307,52 @@ void ADC1_2_IRQHandler(void)
 void EXTI9_5_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-	if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_6)){
-		set_blink_change(1);
-		if (is_blink_enable()){
-			add_blink_row(3);
-			
-		}else{
-			set_blink_row( (get_blink_row() +  2) % 3);
-		}
 	
-	}
-	else if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_7)){
-		set_blink_change(1);
-		if (is_blink_enable()){
-			add_blink_row(1);;
-		}else{
-			set_blink_row( (get_blink_row() +  1) % 3);
-		}
+	for (char i=0; i<4; i++){
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
 		
+		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_5)){
+			switch(i){
+				case 0:
+					break;
+			}
+			
+			break;
+		}else if (HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_6)){
+			switch(i){
+				case 1:
+					if (state == GAME || state == NEW_GAME){
+						create_plant(1, get_blink_row(), get_blink_column()); 
+					}
+					break;
+				case 2:
+					if (state == GAME || state == NEW_GAME){
+						create_plant(2, get_blink_row(), get_blink_column()); 
+					}
+					break;
+				case 3:
+					if (state == GAME || state == NEW_GAME){
+						create_plant(3, get_blink_row(), get_blink_column()); 
+					}
+					break;
+			}
+			
+			break;
+		}
 	}
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
   /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
+	
   /* USER CODE END EXTI9_5_IRQn 1 */
 }
 
@@ -307,6 +384,41 @@ void TIM2_IRQHandler(void)
 			break;
 		case SHOW_ABOUT:
 			show_about();
+			break;
+		case NEW_GAME:
+			if (get_plant_size() >= 1){
+				state = GAME;
+				__start_level_time = getTime();
+				__start_game_time= getTime();
+			}
+			print_all_plant();
+			break;
+		case GAME:
+			if (level >= 3){
+				disable_blink();
+				__init_show_about = 0;
+				__init_show_menu = 0;
+				clear_lcd();
+				state = SHOW_MENU;
+				break;
+			}
+		
+			if (getTime() - __start_level_time > TIME_TO_SEC * 20){
+				level++;
+				remainig_zombie = 2 * level * 2;
+				__start_level_time = getTime();
+			}
+			
+			
+			if (remainig_zombie > 0 && getTime() - __last_time_zombie_created > TIME_TO_SEC * 12/5 && get_zombie_size() < 5){
+				create_zombie(getRand(4));
+				remainig_zombie --;
+				__last_time_zombie_created = getTime();
+			}
+			
+			move_all_zombies();
+			print_all_zombies();
+			print_all_plant();
 			break;
 		case TEMP:
 			create_zombie(getRand(4)+1);
@@ -343,7 +455,25 @@ void TIM3_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
+	if (state == GAME){
+		long t = (getTime() - __start_game_time)/TIME_TO_SEC;
+	
+		numPrint(t%10,1);
+		t/=10;
+		numPrint(t%10,2);
+		t/=10;
+		numPrint(t%10,3);
+	}
 	refresh_7seg();
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, level >= 1);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, level >= 2);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_10, level >= 3);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, level >= 4);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, level >= 5);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, level >= 6);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, level >= 7);
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, level >= 8);
+	
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */

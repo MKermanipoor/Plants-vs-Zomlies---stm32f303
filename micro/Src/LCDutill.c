@@ -14,7 +14,7 @@ char blinkEnable = 0;
 char blinkChange = 0;
 unsigned char __now_blink_enable = 0;
 long __last_change_blink = 0;
-const long timeToBlink = TIME_TO_SEC/ 6;
+const long timeToBlink = TIME_TO_SEC/2;
 
 void write_lcd(char c, char column, char row){
 	lcd[column][row] = c;
@@ -36,7 +36,10 @@ void show_blink(){
 		row_blink = __input_row_blink;
 		if(getTime() - __last_change_blink > timeToBlink){
 			__now_blink_enable = ! __now_blink_enable;
-			if(__now_blink_enable){
+			
+			__last_change_blink = getTime();
+		}
+		if(__now_blink_enable){
 				setCursor(column_blink, row_blink);
 				write(95);
 				last_column_blink = column_blink;
@@ -45,8 +48,7 @@ void show_blink(){
 				setCursor(column_blink, row_blink);
 				write(lcd[column_blink][row_blink]);
 			}
-			__last_change_blink = getTime();
-		}
+		
 	}else{
 		__now_blink_enable = 0;
 	}
@@ -61,16 +63,18 @@ char get_blink_column(){
 }
 
 void set_blink_row(char row){
-	if (blinkEnable)
+	if (blinkEnable){
 		__input_row_blink = row;
-	else
+		blinkChange = 1;
+	}else
 		row_blink = row;
 }
 
 void set_blink_column(char column){
-	if (blinkEnable)
+	if (blinkEnable){
 		__input_column_blink = column;
-	else
+		blinkChange = 1;
+	}else
 		column_blink = column;
 }
 
@@ -78,6 +82,7 @@ void add_blink_row(char add){
 	if (blinkEnable){
 		__input_row_blink += add;
 		__input_row_blink = __input_row_blink % 4;
+		blinkChange = 1;
 	}else{
 		row_blink += add;
 		row_blink = row_blink % 4;
@@ -88,6 +93,7 @@ void add_blink_column(char add){
 	if (blinkEnable){
 		__input_column_blink += add;
 		__input_column_blink = __input_column_blink % 4;
+		blinkChange = 1;
 	}else{
 		column_blink += add;
 		column_blink = column_blink % 4;
