@@ -41,8 +41,14 @@
 #include "7segment.h"
 #include "object.h"
 #include "LCDutill.h"
+#include "LED.h"
+#include "player.h"
+#include "keypadUtil.h"
+#include "uartUtil.h"
 #include <string.h>
 
+extern TIM_HandleTypeDef htim8;
+extern TIM_HandleTypeDef htim1;
 
 //timer 2 variable
 const char SHOW_DEMO = 0;
@@ -51,6 +57,8 @@ const char SHOW_ABOUT = 2;
 const char NEW_GAME = 3;
 const char TEMP = -1;
 const char GAME = 4;
+const char GAME_OVER = 5;
+const char SAVE_GAME = 6;
 
 char initFlag = 0;
 char state = SHOW_DEMO;
@@ -61,6 +69,10 @@ char remainig_zombie = 4;
 long __last_time_zombie_created = 0;
 long __start_level_time;
 long __start_game_time;
+long __start_save_game_time;
+
+char name[20] = "\0";
+char temp_name[20] ="\0";
 
 char clear_showDemo = 0;
 void showDemo(unsigned long time){
@@ -142,6 +154,17 @@ void show_about(){
 	}
 }
 
+
+char __game_over_init = 0;
+void show_game_over(){
+	if (!__game_over_init){
+		setCursor(3,1);
+		print("GAME OVER");
+		setCursor(3,2);
+		print("MOTHER FUCKER");
+		__game_over_init = 1;
+	}
+}
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -185,14 +208,12 @@ void SysTick_Handler(void)
 void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
-	/**** plant event plant 1
-	getPlant(1, row_blink, column_blink);
-	*****/
 	
 	if(state == SHOW_MENU){
 		switch(get_blink_row()){
 			case 0:
 				clear();
+				HAL_Delay(CLEAR_DALAY);
 				noBlink();
 				enable_blink();
 				state = NEW_GAME;
@@ -225,7 +246,7 @@ void EXTI3_IRQHandler(void)
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
 		
 		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_3)){
-			switch(i){
+			switch(i){			
 				case 1:
 					if (state == SHOW_MENU){
 						set_blink_row((get_blink_row() + 2) % 3);
@@ -234,8 +255,24 @@ void EXTI3_IRQHandler(void)
 					}
 	
 					break;
+				case 3:
+					if (state == GAME || state == NEW_GAME){
+						__start_save_game_time = getTime();
+						disable_blink();
+						clear();
+						HAL_Delay(CLEAR_DALAY);
+						setCursor(0,1);
+						print("Enter your name:");
+						setCursor(0,2);
+						blink();
+						reset_keypad();
+						state = SAVE_GAME;
+					}
+					break;
 			}
-			
+			if (state == SAVE_GAME){
+				press_keypad(0,i);
+			}
 			break;
 		}
 	}
@@ -273,6 +310,10 @@ void EXTI4_IRQHandler(void)
 	
 					break;
 			}
+			
+			if (state == SAVE_GAME){
+				press_keypad(1,i);
+			}
 			break;
 		}
 	}
@@ -293,7 +334,8 @@ void EXTI4_IRQHandler(void)
 void ADC1_2_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC1_2_IRQn 0 */
-	
+	set_area_ligth(HAL_ADC_GetValue(&hadc1)*100/63);
+	refresh_led();
   /* USER CODE END ADC1_2_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
   /* USER CODE BEGIN ADC1_2_IRQn 1 */
@@ -319,7 +361,9 @@ void EXTI9_5_IRQHandler(void)
 				case 0:
 					break;
 			}
-			
+			if (state == SAVE_GAME){
+				press_keypad(2,i);
+			}
 			break;
 		}else if (HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_6)){
 			switch(i){
@@ -336,6 +380,16 @@ void EXTI9_5_IRQHandler(void)
 				case 3:
 					if (state == GAME || state == NEW_GAME){
 						create_plant(3, get_blink_row(), get_blink_column()); 
+					}else if (state == SAVE_GAME){
+						noBlink();
+						clear();
+						HAL_Delay(CLEAR_DALAY);
+						state = GAME;
+						
+						__start_level_time += getTime() - __start_save_game_time;
+						__start_game_time += getTime() - __start_save_game_time;
+						U_save_game(__start_game_time, __start_level_time, level);
+						enable_blink();
 					}
 					break;
 			}
@@ -350,7 +404,6 @@ void EXTI9_5_IRQHandler(void)
   /* USER CODE END EXTI9_5_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
 	
   /* USER CODE END EXTI9_5_IRQn 1 */
@@ -368,6 +421,22 @@ void TIM2_IRQHandler(void)
 		HAL_ADC_Start_IT(&hadc4);
 		HAL_TIM_Base_Start_IT(&htim3);
 		HAL_TIM_Base_Start_IT(&htim4);
+		
+		HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_2);
+		HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
+		HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
+		
+		HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+		HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+		HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+		HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+		
+		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+		
+		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+		
 		initFlag = 1;
 		
 		clear_lcd();
@@ -386,14 +455,17 @@ void TIM2_IRQHandler(void)
 			show_about();
 			break;
 		case NEW_GAME:
-			if (get_plant_size() >= 1){
+			if (get_plant_size() >= 3){
 				state = GAME;
+				start_plant_timer();
 				__start_level_time = getTime();
 				__start_game_time= getTime();
 			}
+			numPrint(get_hp(), 0);
 			print_all_plant();
 			break;
 		case GAME:
+			// end of game
 			if (level >= 3){
 				disable_blink();
 				__init_show_about = 0;
@@ -402,23 +474,54 @@ void TIM2_IRQHandler(void)
 				state = SHOW_MENU;
 				break;
 			}
-		
+			// level up and reset remainig zombie count
 			if (getTime() - __start_level_time > TIME_TO_SEC * 20){
 				level++;
 				remainig_zombie = 2 * level * 2;
 				__start_level_time = getTime();
 			}
 			
-			
+			// create zombie
 			if (remainig_zombie > 0 && getTime() - __last_time_zombie_created > TIME_TO_SEC * 12/5 && get_zombie_size() < 5){
 				create_zombie(getRand(4));
 				remainig_zombie --;
 				__last_time_zombie_created = getTime();
 			}
 			
+			// create bonus
+			if (get_boolean(1)){
+				create_bonus();
+			}
+			
+			
+			
 			move_all_zombies();
+			check_bonus();
+			
+			//print hp
+			numPrint(get_hp(), 0);
+			
 			print_all_zombies();
 			print_all_plant();
+			print_bonus();
+			if (get_hp() < 1){
+				disable_blink();
+				clear();
+				__game_over_init = 0;
+				state = GAME_OVER;
+				show_game_over();
+			}
+			break;
+			
+		case SAVE_GAME:
+				get_name(temp_name);
+				if (strcmp(name , temp_name) != 0){
+					noBlink();
+					setCursor(0,2);
+					get_name(name);
+					print(name);
+					blink();
+				}
 			break;
 		case TEMP:
 			create_zombie(getRand(4)+1);
@@ -465,15 +568,21 @@ void TIM4_IRQHandler(void)
 		numPrint(t%10,3);
 	}
 	refresh_7seg();
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, level >= 1);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, level >= 2);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_10, level >= 3);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, level >= 4);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, level >= 5);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, level >= 6);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, level >= 7);
-	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, level >= 8);
 	
+	if(state == GAME || state == NEW_GAME){
+		set_enable(0, level >= 1);
+		set_enable(1, level >= 2);
+		set_enable(2, level >= 3);
+		set_enable(3, level >= 4);
+		set_enable(4, level >= 5);
+		set_enable(5, level >= 6);
+		set_enable(6, level >= 7);
+		set_enable(7, level >= 8);
+		
+		set_enable(8, get_plant_enable(1));
+		set_enable(9, get_plant_enable(2));
+		set_enable(10, get_plant_enable(3));
+	}
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
@@ -503,7 +612,7 @@ void ADC3_IRQHandler(void)
   /* USER CODE BEGIN ADC3_IRQn 0 */
 	if(is_blink_enable()){
 		char t = HAL_ADC_GetValue(&hadc3) * 19 / 63;
-		set_blink_change((t!=get_blink_column())||is_blick_change());
+		
 		set_blink_column(t);
 	}
   /* USER CODE END ADC3_IRQn 0 */

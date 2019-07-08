@@ -43,4 +43,8 @@ micro\stm32f3xx_it.o: ../Inc/utill.h
 micro\stm32f3xx_it.o: ../Inc/7segment.h
 micro\stm32f3xx_it.o: ../Inc/object.h
 micro\stm32f3xx_it.o: ../Inc/LCDutill.h
+micro\stm32f3xx_it.o: ../Inc/LED.h
+micro\stm32f3xx_it.o: ../Inc/player.h
+micro\stm32f3xx_it.o: ../Inc/keypadUtil.h
+micro\stm32f3xx_it.o: ../Inc/uartUtil.h
 micro\stm32f3xx_it.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -18,14 +18,14 @@ const long timeToBlink = TIME_TO_SEC/2;
 
 void write_lcd(char c, char column, char row){
 	lcd[column][row] = c;
-	if(blinkEnable || column != column_blink || row != row_blink){
+	if(!blinkEnable || column != column_blink || row != row_blink){
 		setCursor(column, row);
 		write(c);
 	}
 }
 
 void show_blink(){
-	if(blinkChange){
+	if(blinkChange && (last_column_blink != __input_column_blink || last_row_blink != __input_row_blink)){
 		setCursor(last_column_blink, last_row_blink);
 		write(lcd[last_column_blink][last_row_blink]);
 		blinkChange = 0;
@@ -36,10 +36,7 @@ void show_blink(){
 		row_blink = __input_row_blink;
 		if(getTime() - __last_change_blink > timeToBlink){
 			__now_blink_enable = ! __now_blink_enable;
-			
-			__last_change_blink = getTime();
-		}
-		if(__now_blink_enable){
+			if(__now_blink_enable){
 				setCursor(column_blink, row_blink);
 				write(95);
 				last_column_blink = column_blink;
@@ -48,6 +45,9 @@ void show_blink(){
 				setCursor(column_blink, row_blink);
 				write(lcd[column_blink][row_blink]);
 			}
+			__last_change_blink = getTime();
+		}
+		
 		
 	}else{
 		__now_blink_enable = 0;
@@ -110,14 +110,6 @@ void enable_blink(){
 	
 void disable_blink(){
 	blinkEnable = 0;
-}
-
-void set_blink_change(char state){
-	blinkChange = state;
-}
-
-char is_blick_change(){
-	return blinkChange;
 }
 
 void clear_lcd(){

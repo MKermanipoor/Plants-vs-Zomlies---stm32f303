@@ -1,10 +1,22 @@
 #include "object.h"
 #include "LCDutill.h"
 #include "utill.h"
+#include "player.h"
+#include "uartUtil.h"
 
 // plant struct
 unsigned char __plant_size = 0;
 struct Plant __plants [20];
+
+char __start_timer = 0;
+
+long __last_create_plant[3];
+
+const long PLANT1_TIME_LIMIT = TIME_TO_SEC * 4;
+const long PLANT2_TIME_LIMIT = TIME_TO_SEC * 8;
+const long PLANT3_TIME_LIMIT = TIME_TO_SEC * 10;
+
+char get_plant_enable(char);
 
 struct Plant create_plant(char kind, char row, char column){
 	struct Plant result;
@@ -29,9 +41,16 @@ struct Plant create_plant(char kind, char row, char column){
 				return result;
 			}
 		}
-		result.id = __plant_size;
-		__plants[__plant_size] = result;
-		__plant_size++;
+		
+		if (get_plant_enable(result.kind)){
+			result.id = __plant_size;
+			__plants[__plant_size] = result;
+			__plant_size++;
+			U_create_plant(result);
+			if (__start_timer){
+				__last_create_plant[result.kind-1] = getTime();
+			}
+		}
 	}
 	
 	
@@ -46,13 +65,14 @@ void remove_plant(struct Plant plant){
 		return;
 	
 	__plant_size --;
+	U_remove_plant(__plants[__plant_size]);
 	__plants[plant.id] = __plants[__plant_size];
 	__plants[plant.id].id = plant.id;
 	write_lcd(32, plant.column, plant.row);
 }
 
 void print_plant(struct Plant plant){
-	write_lcd(plant.kind + 3, plant.column,plant.row);
+		write_lcd(plant.kind + 3, plant.column,plant.row);
 }
 
 void print_all_plant(){
@@ -69,9 +89,26 @@ char get_plant_size(){
 	return __plant_size;
 }
 
+void start_plant_timer(){
+	__start_timer = 1;
+}
+char get_plant_enable(char p){
+	if (__start_timer){
+		switch(p){
+			case 1:
+				return getTime() - __last_create_plant[0] > PLANT1_TIME_LIMIT;
+			case 2:
+				return getTime() - __last_create_plant[1] > PLANT2_TIME_LIMIT;
+			case 3:
+				return getTime() - __last_create_plant[2] > PLANT3_TIME_LIMIT;
+		}
+	}else
+		return 1;
+}
 
-
-
+long get_last_use_plant_time(char index){
+	return __last_create_plant[index];
+}
 
 
 //zombies data
@@ -112,6 +149,7 @@ struct Zombie create_zombie(char kind){
 		result.id = __zombies_size;
 		__zombies[__zombies_size] = result;
 		__zombies_size++;
+		U_create_zombie(result);
 	}
 	return result;
 }
@@ -124,6 +162,7 @@ void removeZombie(struct Zombie z){
 		return;
 	
 	__zombies_size --;
+	U_remove_zombie(__zombies[z.id]);
 	__zombies[z.id] = __zombies[__zombies_size];
 	__zombies[z.id].id = z.id;
 	write_lcd(32, z.before_column, z.before_row);
@@ -162,6 +201,11 @@ void move_zombie(struct Zombie *z){
 		
 		if(z->row >= 4){
 			removeZombie(*z);
+			lost_hp();
+		}
+		
+		if (z->row <4 && z->hp > 0){
+			U_move_zombie(*z);
 		}
 	}else{
 		z->before_column = z->column;
@@ -176,4 +220,98 @@ void move_all_zombies(){
 
 char get_zombie_size(){
 	return __zombies_size;
+}
+
+struct Zombie get_zombie(char index){
+	if (index >= __zombies_size)
+		return __zombies[0];
+	
+	return __zombies[index];
+}
+
+//bouns
+const long BONUS_TIME = 4 * TIME_TO_SEC;
+struct Bonus __bonus;
+long __bonus_created_time = 0;
+
+void create_bonus(){
+	if (!__bonus.kind){
+		
+		__bonus.row = getRand(4);
+		__bonus.column = getRand(20);
+//		__bonus.row = 0;
+//		__bonus.column = 0;
+		for (char i=0; i<__zombies_size;i++){
+			if (__bonus.row == get_blink_row() && __bonus.column == get_blink_column()){
+				return;
+			}
+		}
+		__bonus_created_time = getTime();
+		__bonus.kind = getRand(3)+1;
+		__bonus.kind = 3;
+	}
+}
+
+void get_bonus_point(){
+	char max_zombie_id = -1;
+	switch(__bonus.kind){
+		case 1:
+			for (char i=0; i<3; i++){
+				if(!get_plant_enable(i)){
+					__last_create_plant[i] = 0;
+				}
+			}
+			break;
+			
+		case 2:
+			add_score(100);
+			break;
+		
+		case 3:
+			
+			for (char i=0; i<__zombies_size; i++){
+				if(max_zombie_id == -1){
+					max_zombie_id = i;
+					continue;
+				}
+				
+				if(__zombies[max_zombie_id].row < __zombies[i].row){
+					max_zombie_id = i;
+					continue;
+				}
+				
+				if(__zombies[max_zombie_id].row == __zombies[i].row &&
+					__zombies[max_zombie_id].hp < __zombies[i].hp){
+					max_zombie_id = i;
+					continue;
+				}
+			}
+			
+			if (max_zombie_id > -1){
+				removeZombie(__zombies[max_zombie_id]);
+			}
+			break;
+	}
+}
+
+void remove_bonus(){
+	__bonus.kind = 0;
+		write_lcd(32, __bonus.column, __bonus.row);
+}
+
+void check_bonus(){
+	if (__bonus.kind && __bonus.column == get_blink_column() && __bonus.row == get_blink_row()){
+		get_bonus_point();
+		remove_bonus();
+	}
+}
+
+void print_bonus(){
+	if (getTime() - __bonus_created_time > BONUS_TIME){
+		remove_bonus();
+	}
+	
+	if(__bonus.kind){
+		write_lcd(7, __bonus.column, __bonus.row);
+	}
 }

@@ -32,5 +32,5 @@ void addTime(){
 }
 
 char get_boolean(char p){
-	return getRand(100) <= p;
+	return getRand(1000) < p;
 }
