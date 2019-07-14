@@ -41,7 +41,9 @@
 
 /* USER CODE BEGIN Includes */
 #include "LiquidCrystal.h"
+#include "uartUtil.h"
 typedef unsigned char byte;
+unsigned char data;
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -177,7 +179,12 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+	if(huart->Instance == USART2){
+		fill_buffer(data);
+		HAL_UART_Receive_IT(&huart2, &data, sizeof(data));
+	}
+}
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -245,6 +252,7 @@ int main(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
 	
+	HAL_UART_Receive_IT(&huart2, &data, sizeof(data));
 	HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 

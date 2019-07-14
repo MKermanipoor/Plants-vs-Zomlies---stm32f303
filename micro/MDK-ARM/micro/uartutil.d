@@ -41,3 +41,7 @@ micro\uartutil.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h
 micro\uartutil.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim_ex.h
 micro\uartutil.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h
 micro\uartutil.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h
+micro\uartutil.o: ../Inc/state.h
+micro\uartutil.o: ../Inc/time.h
+micro\uartutil.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+micro\uartutil.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

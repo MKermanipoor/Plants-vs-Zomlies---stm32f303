@@ -3,6 +3,10 @@
 #include "player.h"
 #include "utill.h"
 #include "stm32f3xx_hal.h"
+#include "state.h"
+#include "time.h"
+#include <string.h>
+#include <stdlib.h>
 
 extern UART_HandleTypeDef huart2;
 
@@ -21,25 +25,69 @@ PUTCHAR_PROTOTYPE
 
 //zombie
 void U_create_zombie(struct Zombie z){
-	printf("zc: %d,%d,%d\n", z.column, z.row, z.kind);
+	printf("zc:%d,%d,%d\n", z.kind, z.row, z.column);
 }
 
 void U_remove_zombie(struct Zombie z){
-	printf("zr: %d,%d,%d\n", z.column, z.row, z.kind);
+	printf("zr:%d,%d\n", z.row-1, z.column);
 }
 
 void U_move_zombie(struct Zombie z){
-	printf("zm: %d,%d,%d,%d,%d\n", z.column, z.row, z.before_column, z.before_row, z.kind);
+	printf("zm:%d,%d,%d,%d\n",  z.before_row, z.before_column,z.row,z.column);
 }
 
 //plant
 void U_create_plant(struct Plant p){
-	printf("pc: %d,%d,%d\n", p.row, p.column, p.kind);
+	printf("pc:%d,%d,%d\n", p.kind , p.row, p.column);
 }
 void U_remove_plant(struct Plant p){
-	printf("pr: %d,%d,%d\n", p.row, p.column, p.kind);
+	printf("pr:%d,%d\n",p.row, p.column);
+}
+void U_enable_plant(char kind, char enable){
+	printf("pe:%d,%d", kind, enable);
 }
 
+//bouns
+void U_bouns_create(struct Bonus b){
+	//printf("bc:%d,%d,%d\n", b.kind, b.row, b.column);
+}
+
+void U_bouns_remove(struct Bonus b){
+	//printf("br:%d,%d\n", b.row, b.column);
+}
+
+//ligth
+long last_time_send_ligth = 0;
+void U_ligth(char light){
+//	if (getTime() - last_time_send_ligth > 10 * TIME_TO_SEC){
+//		printf("l:%d\n", light);
+//		last_time_send_ligth = getTime();
+//	}
+}
+
+//score
+void U_score(int score){
+	printf("s:%d\n", score);
+}
+
+//round
+void U_round(char round){
+	printf("r:%d\n", round);
+}
+
+//time
+long last_time_send_time = 0;
+void U_time(long time){
+	if (getTime() - last_time_send_time > 1 * TIME_TO_SEC){
+		printf("t:%ld\n", time);
+		last_time_send_time = getTime();
+	}
+}
+
+//life
+void U_set_life(char life){
+	printf("ls:%d\n", life);
+}
 
 //save game
 void U_save_game(long game_time, long level_time, char level){
@@ -94,3 +142,46 @@ void U_save_game(long game_time, long level_time, char level){
 	
 	printf("}\n");
 }
+
+
+
+
+
+
+
+// give part
+char buffer[100];
+unsigned char buffer_size = 0;
+
+void fill_buffer(char charecter){
+	//printf("%c\n", charecter);
+	
+	if (charecter != '\n'){
+		buffer[buffer_size] = charecter;
+		buffer_size++;
+		buffer[buffer_size] = '\0';
+	}else{
+		char temp[10];
+		
+		if (startWith(buffer, "pc:")){
+			substr(buffer, temp, 3, 1);
+			char kind = atoi(temp);
+			substr(buffer, temp, 5,1);
+			char row = atoi(temp);
+			substr(buffer, temp, 7,2);
+			char column = atoi(temp);
+			if (get_state() == GAME || get_state() == NEW_GAME){
+				create_plant(kind, row, column);
+			}
+			
+		}
+		
+		
+		buffer_size = 0;
+		buffer[0] = '\0';
+	}
+}
+	
+
+
+

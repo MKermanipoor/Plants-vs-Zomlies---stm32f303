@@ -1,6 +1,7 @@
 #include "object.h"
 #include "LCDutill.h"
 #include "utill.h"
+#include "time.h"
 #include "player.h"
 #include "uartUtil.h"
 
@@ -65,7 +66,8 @@ void remove_plant(struct Plant plant){
 		return;
 	
 	__plant_size --;
-	U_remove_plant(__plants[__plant_size]);
+	U_remove_plant(__plants[plant.id]);
+	remove_wink(__plants[plant.id].row, __plants[plant.id].column);
 	__plants[plant.id] = __plants[__plant_size];
 	__plants[plant.id].id = plant.id;
 	write_lcd(32, plant.column, plant.row);
@@ -162,6 +164,7 @@ void removeZombie(struct Zombie z){
 		return;
 	
 	__zombies_size --;
+	remove_wink(__zombies[z.id].row-1, __zombies[z.id].column);
 	U_remove_zombie(__zombies[z.id]);
 	__zombies[z.id] = __zombies[__zombies_size];
 	__zombies[z.id].id = z.id;
@@ -188,14 +191,23 @@ void move_zombie(struct Zombie *z){
 		for (char i=0; i<get_plant_size(); i++){
 			if(get_plant(i)->column == z->column && get_plant(i)->row == z->row){
 				char temp = min(get_plant(i)->hp, z->hp);
+				
 				get_plant(i)->hp -= temp;
-				if(get_plant(i)->hp <= 0)
+				if(get_plant(i)->hp <= 0){
 					remove_plant(*get_plant(i));
+					remove_wink(get_plant(i)->row-1, get_plant(i)->column);
+				}
 				
 				z->hp -= temp;
-				if(z->hp <= 0)
-						removeZombie(*z);
-				
+				if(z->hp <= 0){
+					removeZombie(*z);
+					remove_wink(z->row, z->column);
+				}
+				break;
+			}else if(get_plant(i)->column == z->column && get_plant(i)->row == z->row+1){
+				add_wink(z->row, z->column);
+				add_wink(z->row+1, z->column);
+				break;
 			}
 		}
 		
@@ -249,6 +261,7 @@ void create_bonus(){
 		__bonus_created_time = getTime();
 		__bonus.kind = getRand(3)+1;
 		__bonus.kind = 3;
+		U_bouns_create(__bonus);
 	}
 }
 
@@ -297,6 +310,7 @@ void get_bonus_point(){
 void remove_bonus(){
 	__bonus.kind = 0;
 		write_lcd(32, __bonus.column, __bonus.row);
+	U_bouns_remove(__bonus);
 }
 
 void check_bonus(){

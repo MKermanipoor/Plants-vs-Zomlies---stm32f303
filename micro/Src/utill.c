@@ -1,3 +1,6 @@
+#include "uartUtil.h"
+#include <string.h>
+
 double __rand[40];
 char __end_rand = 40;
 double __rand_now;
@@ -23,12 +26,21 @@ char min(char a, char b){
 	return b;
 }
 
-unsigned long __time_m =0 ;
-long getTime(){
-	return __time_m;
+char startWith(char str[], char pre[]){
+	int index = 0;
+	while (str[index] != '\0' && pre[index] != '\0' && pre[index] == str[index]){
+		index ++;
+	}
+	
+	return pre[index] == '\0';
 }
-void addTime(){
-	__time_m ++;
+
+void substr(char str[], char save[],int start, int lenght){
+	int index;
+	for (index=0 ; str[index + start] != '\0' && index<lenght ; index++){
+		save[index] = str[index + start];
+	}
+	save[index] = '\0';
 }
 
 char get_boolean(char p){

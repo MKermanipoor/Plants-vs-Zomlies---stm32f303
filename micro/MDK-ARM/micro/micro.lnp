@@ -12,6 +12,8 @@
 "micro\player.o"
 "micro\uartutil.o"
 "micro\keypadutil.o"
+"micro\state.o"
+"micro\time.o"
 "micro\stm32f3xx_hal_rcc_ex.o"
 "micro\stm32f3xx_hal_pwr_ex.o"
 "micro\stm32f3xx_hal_dma.o"

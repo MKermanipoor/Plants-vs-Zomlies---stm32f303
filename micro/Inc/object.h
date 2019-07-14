@@ -6,7 +6,7 @@ struct Plant{
 	unsigned char id;
 };
 
-struct Plant create_plant(char , char , char );
+struct Plant create_plant(char , char , char);
 char get_plant_size();
 struct Plant * get_plant(char);
 void remove_plant(struct Plant plant);

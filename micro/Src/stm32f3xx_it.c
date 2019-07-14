@@ -46,29 +46,20 @@
 #include "keypadUtil.h"
 #include "uartUtil.h"
 #include <string.h>
+#include "state.h"
+#include "time.h"
 
 extern TIM_HandleTypeDef htim8;
 extern TIM_HandleTypeDef htim1;
 
 //timer 2 variable
-const char SHOW_DEMO = 0;
-const char SHOW_MENU = 1;	
-const char SHOW_ABOUT = 2;
-const char NEW_GAME = 3;
-const char TEMP = -1;
-const char GAME = 4;
-const char GAME_OVER = 5;
-const char SAVE_GAME = 6;
 
 char initFlag = 0;
-char state = SHOW_DEMO;
 
 char level = 1;
 char remainig_zombie = 4;
 
 long __last_time_zombie_created = 0;
-long __start_level_time;
-long __start_game_time;
 long __start_save_game_time;
 
 char name[20] = "\0";
@@ -97,7 +88,7 @@ void showDemo(unsigned long time){
 			setCursor(19,i);
 			write(32);
 		}
-		state = SHOW_MENU;
+		set_state(SHOW_MENU);
 		clear_showDemo = 1;
 		return;
 	}else if(devide == 0){
@@ -209,21 +200,21 @@ void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
 	
-	if(state == SHOW_MENU){
+	if(get_state() == SHOW_MENU){
 		switch(get_blink_row()){
 			case 0:
 				clear();
 				HAL_Delay(CLEAR_DALAY);
 				noBlink();
 				enable_blink();
-				state = NEW_GAME;
+				set_state(NEW_GAME);
 				break;
 			case 2:
-				state = SHOW_ABOUT;
+				set_state(SHOW_ABOUT);
 				break;
 		}
-	}else if(state == SHOW_ABOUT){
-		state = SHOW_MENU;
+	}else if(get_state() == SHOW_ABOUT){
+		set_state(SHOW_MENU);
 	}
 	
   /* USER CODE END EXTI0_IRQn 0 */
@@ -248,15 +239,15 @@ void EXTI3_IRQHandler(void)
 		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_3)){
 			switch(i){			
 				case 1:
-					if (state == SHOW_MENU){
+					if (get_state() == SHOW_MENU){
 						set_blink_row((get_blink_row() + 2) % 3);
-					}else if (state == GAME || state == NEW_GAME){
+					}else if (get_state() == GAME || get_state() == NEW_GAME){
 						add_blink_row(3);
 					}
 	
 					break;
 				case 3:
-					if (state == GAME || state == NEW_GAME){
+					if (get_state() == GAME){
 						__start_save_game_time = getTime();
 						disable_blink();
 						clear();
@@ -266,11 +257,11 @@ void EXTI3_IRQHandler(void)
 						setCursor(0,2);
 						blink();
 						reset_keypad();
-						state = SAVE_GAME;
+						set_state(SAVE_GAME);
 					}
 					break;
 			}
-			if (state == SAVE_GAME){
+			if (get_state() == SAVE_GAME){
 				press_keypad(0,i);
 			}
 			break;
@@ -302,16 +293,16 @@ void EXTI4_IRQHandler(void)
 		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_4)){
 			switch(i){
 				case 1:
-					if (state == SHOW_MENU){
+					if (get_state() == SHOW_MENU){
 						set_blink_row((get_blink_row() + 1) % 3);
-					}else if (state == GAME || state == NEW_GAME){
+					}else if (get_state() == GAME || get_state() == NEW_GAME){
 						add_blink_row(1);
 					}
 	
 					break;
 			}
 			
-			if (state == SAVE_GAME){
+			if (get_state() == SAVE_GAME){
 				press_keypad(1,i);
 			}
 			break;
@@ -361,34 +352,33 @@ void EXTI9_5_IRQHandler(void)
 				case 0:
 					break;
 			}
-			if (state == SAVE_GAME){
+			if (get_state() == SAVE_GAME){
 				press_keypad(2,i);
 			}
 			break;
 		}else if (HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_6)){
 			switch(i){
 				case 1:
-					if (state == GAME || state == NEW_GAME){
+					if (get_state() == GAME || get_state() == NEW_GAME){
 						create_plant(1, get_blink_row(), get_blink_column()); 
 					}
 					break;
 				case 2:
-					if (state == GAME || state == NEW_GAME){
+					if (get_state() == GAME || get_state() == NEW_GAME){
 						create_plant(2, get_blink_row(), get_blink_column()); 
 					}
 					break;
 				case 3:
-					if (state == GAME || state == NEW_GAME){
+					if (get_state() == GAME || get_state() == NEW_GAME){
 						create_plant(3, get_blink_row(), get_blink_column()); 
-					}else if (state == SAVE_GAME){
+					}else if (get_state() == SAVE_GAME){
 						noBlink();
 						clear();
 						HAL_Delay(CLEAR_DALAY);
-						state = GAME;
+						get_state(GAME);
 						
-						__start_level_time += getTime() - __start_save_game_time;
-						__start_game_time += getTime() - __start_save_game_time;
-						U_save_game(__start_game_time, __start_level_time, level);
+						set_game_time(get_game_time() + getTime() - __start_save_game_time);
+						U_save_game(get_game_time(), get_level_time(), level);
 						enable_blink();
 					}
 					break;
@@ -443,7 +433,7 @@ void TIM2_IRQHandler(void)
 	}
 	
 	
-	switch(state){
+	switch(get_state()){
 		case SHOW_DEMO:
 			showDemo(getTime());
 			break;
@@ -456,10 +446,10 @@ void TIM2_IRQHandler(void)
 			break;
 		case NEW_GAME:
 			if (get_plant_size() >= 3){
-				state = GAME;
+				set_state(GAME);
+				enable_wink();
 				start_plant_timer();
-				__start_level_time = getTime();
-				__start_game_time= getTime();
+				set_game_time(getTime());
 			}
 			numPrint(get_hp(), 0);
 			print_all_plant();
@@ -471,14 +461,14 @@ void TIM2_IRQHandler(void)
 				__init_show_about = 0;
 				__init_show_menu = 0;
 				clear_lcd();
-				state = SHOW_MENU;
+				set_state(SHOW_MENU);
 				break;
 			}
 			// level up and reset remainig zombie count
-			if (getTime() - __start_level_time > TIME_TO_SEC * 20){
+			if (getTime() - get_level_time() > LEVEL_TIME){
 				level++;
+				U_round(level);
 				remainig_zombie = 2 * level * 2;
-				__start_level_time = getTime();
 			}
 			
 			// create zombie
@@ -508,7 +498,7 @@ void TIM2_IRQHandler(void)
 				disable_blink();
 				clear();
 				__game_over_init = 0;
-				state = GAME_OVER;
+				set_state(GAME_OVER);
 				show_game_over();
 			}
 			break;
@@ -531,6 +521,7 @@ void TIM2_IRQHandler(void)
 			break;
 	}
 	show_blink();
+	refresh_wink();
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
@@ -558,8 +549,8 @@ void TIM3_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
-	if (state == GAME){
-		long t = (getTime() - __start_game_time)/TIME_TO_SEC;
+	if (get_state() == GAME){
+		long t = (getTime() - get_game_time())/TIME_TO_SEC;
 	
 		numPrint(t%10,1);
 		t/=10;
@@ -569,7 +560,7 @@ void TIM4_IRQHandler(void)
 	}
 	refresh_7seg();
 	
-	if(state == GAME || state == NEW_GAME){
+	if(get_state() == GAME || get_state() == NEW_GAME){
 		set_enable(0, level >= 1);
 		set_enable(1, level >= 2);
 		set_enable(2, level >= 3);

@@ -38,3 +38,4 @@ micro\main.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim_ex.h
 micro\main.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h
 micro\main.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h
 micro\main.o: ../Inc/LiquidCrystal.h
+micro\main.o: ../Inc/uartUtil.h

@@ -1,4 +1,5 @@
 #include "stm32f3xx_hal.h"
+#include "uartUtil.h"
 
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
@@ -10,6 +11,8 @@ unsigned char led[11];
 unsigned char light = 0;
 
 void set_area_ligth(unsigned char l){
+	if (l != light)
+		U_ligth(l);
 	light = l;
 }
 

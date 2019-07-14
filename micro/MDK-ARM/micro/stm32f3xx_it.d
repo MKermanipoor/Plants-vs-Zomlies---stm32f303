@@ -48,3 +48,5 @@ micro\stm32f3xx_it.o: ../Inc/player.h
 micro\stm32f3xx_it.o: ../Inc/keypadUtil.h
 micro\stm32f3xx_it.o: ../Inc/uartUtil.h
 micro\stm32f3xx_it.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+micro\stm32f3xx_it.o: ../Inc/state.h
+micro\stm32f3xx_it.o: ../Inc/time.h

@@ -1,3 +1,5 @@
+#include "uartUtil.h"
+
 
 int __score = 0;
 
@@ -8,9 +10,11 @@ int get_score(){
 }
 void add_score(char s){
 	__score += s;
+	U_score(__score);
 }
 void reset_score(){
 	__score = 0;
+	U_score(0);
 }
 
 void reset_hp(){
@@ -21,6 +25,8 @@ char get_hp(){
 }
 
 void lost_hp(){
-	if (__hp > 0 )
+	if (__hp > 0 ){
 		__hp --;
+		U_set_life(__hp);
+	}
 }

@@ -39,3 +39,4 @@ micro\lcdutill.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h
 micro\lcdutill.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h
 micro\lcdutill.o: ../Inc/LiquidCrystal.h
 micro\lcdutill.o: ../Inc/utill.h
+micro\lcdutill.o: ../Inc/time.h
