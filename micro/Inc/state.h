@@ -9,4 +9,5 @@
 
 
 void set_state(char);
+void set_state_without_uart(char);
 char get_state();

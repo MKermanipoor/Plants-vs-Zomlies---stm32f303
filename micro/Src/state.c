@@ -7,11 +7,19 @@
 #define GAME_OVER 5
 #define SAVE_GAME 6
 
+#include "uartUtil.h"
+
 char state = SHOW_DEMO;
 
 void set_state(char s){
 	state = s;
+	U_send_state(state);
 }
+
+void set_state_without_uart(char s){
+	state = s;
+}
+
 char get_state(){
 	return state;
 }

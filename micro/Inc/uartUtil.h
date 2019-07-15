@@ -6,6 +6,7 @@ void U_move_zombie(struct Zombie);
 //plant
 void U_create_plant(struct Plant);
 void U_remove_plant(struct Plant);
+void U_enable_plant(char, char);
 
 //bouns
 void U_bouns_create(struct Bonus);
@@ -29,7 +30,8 @@ void U_set_life(char);
 //save
 void U_save_game(long , long , char);
 
-
+//state
+void U_send_state(char);
 
 
 

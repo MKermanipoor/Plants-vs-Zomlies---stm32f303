@@ -1,5 +1,4 @@
 #include "uartUtil.h"
-#include "time.h"
 
 unsigned long __time_m =0 ;
 
@@ -22,6 +21,11 @@ long get_game_time(){
 	return __game_time;
 }
 
+long __level_time = 0;
 long get_level_time(){
-	return __game_time % LEVEL_TIME;
+	return __level_time;
+}
+
+void set_level_time(long level_time){
+	__level_time = level_time;
 }

@@ -58,6 +58,34 @@ struct Plant create_plant(char kind, char row, char column){
 	return result;
 }
 
+struct Plant create_plant_with_hp(char kind, char row, char column, char hp){
+	struct Plant result;
+	result.column = column;
+	result.row = row;
+	result.kind = kind;
+	result.hp = hp;
+	
+	if(__plant_size < 20){
+		for (char i=0 ; i<__plant_size ; i++){
+			if (__plants[i].column == column && __plants[i].row == row){
+				return result;
+			}
+		}
+		
+		if (get_plant_enable(result.kind)){
+			result.id = __plant_size;
+			__plants[__plant_size] = result;
+			__plant_size++;
+			U_create_plant(result);
+			if (__start_timer){
+				__last_create_plant[result.kind-1] = getTime();
+			}
+		}
+	}
+	
+	return result;
+}
+
 void remove_plant(struct Plant plant){
 	if (plant.id < 0)
 		return;
@@ -112,7 +140,11 @@ long get_last_use_plant_time(char index){
 	return __last_create_plant[index];
 }
 
-
+void set_last_use_plants_time(long p_0, long p_1, long p_2){
+	__last_create_plant[0] = p_0;
+	__last_create_plant[1] = p_1;
+	__last_create_plant[2] = p_2;
+}
 //zombies data
 struct Zombie __zombies [10];
 unsigned char __zombies_size = 0;

@@ -7,6 +7,7 @@ struct Plant{
 };
 
 struct Plant create_plant(char , char , char);
+struct Plant create_plant_with_hp(char , char , char, char);
 char get_plant_size();
 struct Plant * get_plant(char);
 void remove_plant(struct Plant plant);
@@ -14,6 +15,7 @@ void print_all_plant();
 void start_plant_timer();
 char get_plant_enable(char);
 long get_last_use_plant_time(char);
+void set_last_use_plants_time(long, long, long);
 
 struct Zombie{
 	long lastTimeMove;

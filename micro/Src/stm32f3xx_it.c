@@ -375,9 +375,10 @@ void EXTI9_5_IRQHandler(void)
 						noBlink();
 						clear();
 						HAL_Delay(CLEAR_DALAY);
-						get_state(GAME);
+						set_state(GAME);
 						
 						set_game_time(get_game_time() + getTime() - __start_save_game_time);
+						set_level_time(get_level_time() + getTime() - __start_save_game_time);
 						U_save_game(get_game_time(), get_level_time(), level);
 						enable_blink();
 					}
@@ -450,6 +451,7 @@ void TIM2_IRQHandler(void)
 				enable_wink();
 				start_plant_timer();
 				set_game_time(getTime());
+				set_level_time(getTime());
 			}
 			numPrint(get_hp(), 0);
 			print_all_plant();
@@ -468,7 +470,8 @@ void TIM2_IRQHandler(void)
 			if (getTime() - get_level_time() > LEVEL_TIME){
 				level++;
 				U_round(level);
-				remainig_zombie = 2 * level * 2;
+				set_level_time(getTime());
+				remainig_zombie = 2 + level * 2;
 			}
 			
 			// create zombie
