@@ -56,9 +56,6 @@ extern TIM_HandleTypeDef htim1;
 
 char initFlag = 0;
 
-char level = 1;
-char remainig_zombie = 4;
-
 long __last_time_zombie_created = 0;
 long __start_save_game_time;
 
@@ -154,6 +151,18 @@ void show_game_over(){
 		setCursor(3,2);
 		print("MOTHER FUCKER");
 		__game_over_init = 1;
+	}
+}
+
+char __you_win_init = 0;
+void show_you_win(){
+	if (!__you_win_init){
+		clear();
+		clear_lcd();
+		disable_blink();
+		setCursor(0,0);
+		print("YOU WIN");
+		__you_win_init = 1;
 	}
 }
 /* USER CODE END 0 */
@@ -377,9 +386,8 @@ void EXTI9_5_IRQHandler(void)
 						HAL_Delay(CLEAR_DALAY);
 						set_state(GAME);
 						
-						set_game_time(get_game_time() + getTime() - __start_save_game_time);
-						set_level_time(get_level_time() + getTime() - __start_save_game_time);
-						U_save_game(get_game_time(), get_level_time(), level);
+						setTime(__start_save_game_time);
+						U_save_game(get_game_time(), get_level_time(), get_level());
 						enable_blink();
 					}
 					break;
@@ -458,27 +466,29 @@ void TIM2_IRQHandler(void)
 			break;
 		case GAME:
 			// end of game
-			if (level >= 3){
+			if (get_level() > 8){
 				disable_blink();
 				__init_show_about = 0;
 				__init_show_menu = 0;
 				clear_lcd();
-				set_state(SHOW_MENU);
+				set_state(WIN);
 				break;
 			}
 			// level up and reset remainig zombie count
 			if (getTime() - get_level_time() > LEVEL_TIME){
-				level++;
-				U_round(level);
+				set_level(get_level() + 1);
+				U_round(get_level());
 				set_level_time(getTime());
-				remainig_zombie = 2 + level * 2;
+				set_remainig_zombie(get_remainig_zombie() + 2 + get_level() * 2);
 			}
 			
 			// create zombie
-			if (remainig_zombie > 0 && getTime() - __last_time_zombie_created > TIME_TO_SEC * 12/5 && get_zombie_size() < 5){
-				create_zombie(getRand(4));
-				remainig_zombie --;
-				__last_time_zombie_created = getTime();
+			if (get_remainig_zombie() > 0 && getTime() - __last_time_zombie_created > TIME_TO_SEC * 12/5 && get_zombie_size() < 5){
+				struct Zombie z_t = create_zombie(getRand(4));
+				if (z_t.id != -1){
+					set_remainig_zombie(get_remainig_zombie() -1);
+					__last_time_zombie_created = getTime();
+				}
 			}
 			
 			// create bonus
@@ -516,12 +526,8 @@ void TIM2_IRQHandler(void)
 					blink();
 				}
 			break;
-		case TEMP:
-			create_zombie(getRand(4)+1);
-			move_all_zombies();
-			print_all_zombies();
-			print_all_plant();
-			break;
+		case WIN:
+			show_you_win();
 	}
 	show_blink();
 	refresh_wink();
@@ -564,14 +570,14 @@ void TIM4_IRQHandler(void)
 	refresh_7seg();
 	
 	if(get_state() == GAME || get_state() == NEW_GAME){
-		set_enable(0, level >= 1);
-		set_enable(1, level >= 2);
-		set_enable(2, level >= 3);
-		set_enable(3, level >= 4);
-		set_enable(4, level >= 5);
-		set_enable(5, level >= 6);
-		set_enable(6, level >= 7);
-		set_enable(7, level >= 8);
+		set_enable(0, get_level() >= 1);
+		set_enable(1, get_level() >= 2);
+		set_enable(2, get_level() >= 3);
+		set_enable(3, get_level() >= 4);
+		set_enable(4, get_level() >= 5);
+		set_enable(5, get_level() >= 6);
+		set_enable(6, get_level() >= 7);
+		set_enable(7, get_level() >= 8);
 		
 		set_enable(8, get_plant_enable(1));
 		set_enable(9, get_plant_enable(2));

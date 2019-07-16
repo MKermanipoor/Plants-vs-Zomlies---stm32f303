@@ -3,11 +3,11 @@
 <title>Static Call Graph - [micro\micro.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image micro\micro.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Jul 15 10:51:18 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Jul 16 16:43:30 2019
 <BR><P>
-<H3>Maximum Stack Usage =        360 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        448 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-USART2_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; atoi &rArr; strtol &rArr; _strtoul
+USART2_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 <P>
 <H3>
 Mutually Recursive functions
@@ -20,7 +20,6 @@ Mutually Recursive functions
  <LI><a href="#[7]">DebugMon_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7]">DebugMon_Handler</a><BR>
  <LI><a href="#[8]">PendSV_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[8]">PendSV_Handler</a><BR>
  <LI><a href="#[1f]">CAN_RX1_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1f]">CAN_RX1_IRQHandler</a><BR>
- <LI><a href="#[12f]">load</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[12f]">load</a><BR>
 </UL>
 <P>
 <H3>
@@ -115,7 +114,7 @@ Global Symbols
 <P><STRONG><a name="[4e]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(.text)
 </UL>
-<P><STRONG><a name="[141]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[14e]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[51]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -125,15 +124,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[142]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[14f]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[143]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[150]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[144]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[151]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[145]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[152]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[146]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[153]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f303xc.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
@@ -369,20 +368,20 @@ Global Symbols
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[147]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[154]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
-<P><STRONG><a name="[137]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
+<P><STRONG><a name="[145]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
 </UL>
 
-<P><STRONG><a name="[104]"></a>strcmp</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, strcmp.o(.text))
+<P><STRONG><a name="[109]"></a>strcmp</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, strcmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[11a]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_send_state
+<P><STRONG><a name="[123]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_send_state
 </UL>
 
 <P><STRONG><a name="[53]"></a>atoi</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, atoi.o(.text))
@@ -400,7 +399,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRandomCount
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 </UL>
 
 <P><STRONG><a name="[58]"></a>__aeabi_i2d</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, dflti.o(.text))
@@ -409,7 +408,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRandomCount
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 </UL>
 
 <P><STRONG><a name="[59]"></a>__aeabi_d2iz</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, dfixi.o(.text))
@@ -417,20 +416,20 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 </UL>
 
-<P><STRONG><a name="[13f]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cdcmple.o(.text))
+<P><STRONG><a name="[14c]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cdcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRandomCount
 </UL>
 
-<P><STRONG><a name="[148]"></a>__aeabi_cdcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdcmple.o(.text), UNUSED)
+<P><STRONG><a name="[155]"></a>__aeabi_cdcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdcmple.o(.text), UNUSED)
 
 <P><STRONG><a name="[5b]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[55]"></a>strtol</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, strtol.o(.text))
@@ -443,7 +442,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoi
 </UL>
 
-<P><STRONG><a name="[149]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[156]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[5f]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _double_round
@@ -468,14 +467,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[14a]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[157]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[5c]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[14b]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[158]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[5d]"></a>__rt_ctype_table</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ctype_o.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strtol
@@ -577,20 +576,19 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
 </UL>
-<P><STRONG><a name="[21]"></a>EXTI9_5_IRQHandler</STRONG> (Thumb, 404 bytes, Stack size 24 bytes, stm32f3xx_it.o(i.EXTI9_5_IRQHandler))
+<P><STRONG><a name="[21]"></a>EXTI9_5_IRQHandler</STRONG> (Thumb, 376 bytes, Stack size 24 bytes, stm32f3xx_it.o(i.EXTI9_5_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = EXTI9_5_IRQHandler &rArr; U_save_game &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_level_time
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_game_time
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTime
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keypad
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;noBlink
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_state
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_level_time
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_game_time
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_level
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_game_time
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_row
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_column
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_blink
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
@@ -710,14 +708,14 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
+<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
 </UL>
 
 <P><STRONG><a name="[93]"></a>HAL_GPIO_EXTI_Callback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_hal_gpio.o(i.HAL_GPIO_EXTI_Callback))
@@ -738,7 +736,7 @@ Global Symbols
 <P><STRONG><a name="[90]"></a>HAL_GPIO_Init</STRONG> (Thumb, 364 bytes, Stack size 40 bytes, stm32f3xx_hal_gpio.o(i.HAL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_MspPostInit
@@ -755,18 +753,18 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[75]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f3xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
+<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI4_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__numPrint
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__numPrint
+<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
 </UL>
 
 <P><STRONG><a name="[6b]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f3xx_hal.o(i.HAL_GetTick))
@@ -902,11 +900,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
-<P><STRONG><a name="[10c]"></a>HAL_RCC_GetPCLK1Freq</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f3xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq))
+<P><STRONG><a name="[112]"></a>HAL_RCC_GetPCLK1Freq</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f3xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq))
 <BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
-<P><STRONG><a name="[10d]"></a>HAL_RCC_GetPCLK2Freq</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f3xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq))
+<P><STRONG><a name="[113]"></a>HAL_RCC_GetPCLK2Freq</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f3xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq))
 <BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
@@ -1137,7 +1135,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c3]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 316 bytes, Stack size 16 bytes, stm32f3xx_hal_uart.o(i.HAL_UART_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; atoi &rArr; strtol &rArr; _strtoul
+<BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
@@ -1177,7 +1175,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[d0]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.HAL_UART_RxCpltCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; atoi &rArr; strtol &rArr; _strtoul
+<BR><BR>[Stack]<UL><LI>Max Depth = 424<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
@@ -1194,7 +1192,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
-<P><STRONG><a name="[10b]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
+<P><STRONG><a name="[111]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
 <BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
 </UL>
 
@@ -1231,72 +1229,78 @@ Global Symbols
 <P><STRONG><a name="[4d]"></a>SystemInit</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, system_stm32f3xx.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(.text)
 </UL>
-<P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 550 bytes, Stack size 32 bytes, stm32f3xx_it.o(i.TIM2_IRQHandler))
+<P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 556 bytes, Stack size 32 bytes, stm32f3xx_it.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = TIM2_IRQHandler &rArr; move_all_zombies &rArr; move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_plant_timer
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_level_time
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_game_time
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_remainig_zombie
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_level_time
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_level
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_game_time
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_plant
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_plant
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;noBlink
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_zombie_size
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_zombie_size
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_state
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_remainig_zombie
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_size
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_name
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_name
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_level_time
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_hp
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_boolean
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_level
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_hp
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_boolean
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_row
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_wink
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_blink
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lcd
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;blink
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_round
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_round
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_IT
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_you_win
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_game_over
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_game_over
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
 </UL>
 <P><STRONG><a name="[27]"></a>TIM3_IRQHandler</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.TIM3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = TIM3_IRQHandler &rArr; addTime &rArr; U_time &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTime
+<BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTime
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
 </UL>
-<P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 310 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.TIM4_IRQHandler))
+<P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 324 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.TIM4_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM4_IRQHandler &rArr; refresh_7seg &rArr; __numPrint
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_enable
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
+<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_enable
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_state
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_game_time
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_level
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_game_time
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
@@ -1362,13 +1366,13 @@ Global Symbols
 <P><STRONG><a name="[ca]"></a>UART_EndTransmit_IT</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stm32f3xx_hal_uart.o(i.UART_EndTransmit_IT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = UART_EndTransmit_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
+<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
 <P><STRONG><a name="[c4]"></a>UART_Receive_IT</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, stm32f3xx_hal_uart.o(i.UART_Receive_IT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; atoi &rArr; strtol &rArr; _strtoul
+<BR><BR>[Stack]<UL><LI>Max Depth = 432<LI>Call Chain = UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
@@ -1379,8 +1383,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
@@ -1399,144 +1403,168 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.USART2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = USART2_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; atoi &rArr; strtol &rArr; _strtoul
+<BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = USART2_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; fill_buffer &rArr; click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f303xc.o(RESET)
 </UL>
-<P><STRONG><a name="[12b]"></a>U_bouns_create</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uartutil.o(i.U_bouns_create))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
+<P><STRONG><a name="[114]"></a>U_bouns_create</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uartutil.o(i.U_bouns_create))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_bouns_create &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
 </UL>
 
-<P><STRONG><a name="[13d]"></a>U_bouns_remove</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uartutil.o(i.U_bouns_remove))
-<BR><BR>[Called By]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
+<P><STRONG><a name="[116]"></a>U_bouns_remove</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, uartutil.o(i.U_bouns_remove))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_bouns_remove &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
 </UL>
 
-<P><STRONG><a name="[10e]"></a>U_create_plant</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uartutil.o(i.U_create_plant))
+<P><STRONG><a name="[117]"></a>U_create_plant</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uartutil.o(i.U_create_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_create_plant &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant_with_hp
 </UL>
 
-<P><STRONG><a name="[110]"></a>U_create_zombie</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uartutil.o(i.U_create_zombie))
+<P><STRONG><a name="[118]"></a>U_create_zombie</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uartutil.o(i.U_create_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_create_zombie &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
+<BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie_custome
 </UL>
 
-<P><STRONG><a name="[140]"></a>U_ligth</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uartutil.o(i.U_ligth))
+<P><STRONG><a name="[119]"></a>U_enable_plant</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, uartutil.o(i.U_enable_plant))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_enable_plant &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_time
+</UL>
+
+<P><STRONG><a name="[14d]"></a>U_ligth</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uartutil.o(i.U_ligth))
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_area_ligth
 </UL>
 
-<P><STRONG><a name="[111]"></a>U_move_zombie</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, uartutil.o(i.U_move_zombie))
+<P><STRONG><a name="[11a]"></a>U_move_zombie</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, uartutil.o(i.U_move_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = U_move_zombie &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
-<P><STRONG><a name="[112]"></a>U_remove_plant</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, uartutil.o(i.U_remove_plant))
+<P><STRONG><a name="[11b]"></a>U_remove_plant</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, uartutil.o(i.U_remove_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_remove_plant &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
+<BR>[Called By]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
 </UL>
 
-<P><STRONG><a name="[113]"></a>U_remove_zombie</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, uartutil.o(i.U_remove_zombie))
+<P><STRONG><a name="[11c]"></a>U_remove_zombie</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, uartutil.o(i.U_remove_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_remove_zombie &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
+<BR>[Called By]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
 </UL>
 
-<P><STRONG><a name="[f8]"></a>U_round</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uartutil.o(i.U_round))
+<P><STRONG><a name="[fb]"></a>U_round</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uartutil.o(i.U_round))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_round &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[86]"></a>U_save_game</STRONG> (Thumb, 226 bytes, Stack size 56 bytes, uartutil.o(i.U_save_game))
+<P><STRONG><a name="[86]"></a>U_save_game</STRONG> (Thumb, 256 bytes, Stack size 56 bytes, uartutil.o(i.U_save_game))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = U_save_game &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_zombie_size
+<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_zombie_size
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_remainig_zombie
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_size
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_name
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_hp
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_game_time
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_name
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_level
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_hp
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_game_time
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_score
-<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_zombie
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_last_use_plant_time
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_score
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_zombie
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_last_use_plant_time
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[118]"></a>U_score</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uartutil.o(i.U_score))
+<P><STRONG><a name="[121]"></a>U_score</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uartutil.o(i.U_score))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_score &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_score
+<BR>[Called By]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_score
 </UL>
 
-<P><STRONG><a name="[119]"></a>U_send_state</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, uartutil.o(i.U_send_state))
+<P><STRONG><a name="[122]"></a>U_send_state</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, uartutil.o(i.U_send_state))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = U_send_state &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state
 </UL>
 
-<P><STRONG><a name="[11b]"></a>U_set_life</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uartutil.o(i.U_set_life))
+<P><STRONG><a name="[124]"></a>U_set_life</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uartutil.o(i.U_set_life))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = U_set_life &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lost_hp
+<BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_hp
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lost_hp
 </UL>
 
-<P><STRONG><a name="[11c]"></a>U_time</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, uartutil.o(i.U_time))
+<P><STRONG><a name="[125]"></a>U_time</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, uartutil.o(i.U_time))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = U_time &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTime
-</UL>
-
-<P><STRONG><a name="[11d]"></a>__0printf$4</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf4.o(i.__0printf$4), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTime
 </UL>
 
-<P><STRONG><a name="[14c]"></a>__1printf$4</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf4.o(i.__0printf$4), UNUSED)
+<P><STRONG><a name="[126]"></a>__0printf$4</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf4.o(i.__0printf$4), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+</UL>
 
-<P><STRONG><a name="[10f]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf4.o(i.__0printf$4))
+<P><STRONG><a name="[159]"></a>__1printf$4</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf4.o(i.__0printf$4), UNUSED)
+
+<P><STRONG><a name="[115]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf4.o(i.__0printf$4))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_round
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_time
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_send_state
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_set_life
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_score
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_zombie
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_plant
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_move_zombie
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_zombie
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_plant
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_round
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_time
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_send_state
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_set_life
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_score
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_zombie
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_plant
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_move_zombie
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_enable_plant
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_zombie
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_plant
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_bouns_remove
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_bouns_create
 </UL>
 
 <P><STRONG><a name="[54]"></a>__aeabi_errno_addr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, errno.o(i.__aeabi_errno_addr))
@@ -1545,26 +1573,26 @@ Global Symbols
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoi
 </UL>
 
-<P><STRONG><a name="[14d]"></a>__rt_errno_addr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, errno.o(i.__aeabi_errno_addr), UNUSED)
+<P><STRONG><a name="[15a]"></a>__rt_errno_addr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, errno.o(i.__aeabi_errno_addr), UNUSED)
 
-<P><STRONG><a name="[11f]"></a>__numPrint</STRONG> (Thumb, 284 bytes, Stack size 32 bytes, 7segment.o(i.__numPrint))
+<P><STRONG><a name="[128]"></a>__numPrint</STRONG> (Thumb, 284 bytes, Stack size 32 bytes, 7segment.o(i.__numPrint))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __numPrint
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
+<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_7seg
 </UL>
 
-<P><STRONG><a name="[14e]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[15b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[14f]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[15c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[150]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[15d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[107]"></a>addTime</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, time.o(i.addTime))
+<P><STRONG><a name="[10d]"></a>addTime</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, time.o(i.addTime))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = addTime &rArr; U_time &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_time
+<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_time
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 </UL>
@@ -1574,30 +1602,30 @@ Global Symbols
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[120]"></a>add_score</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, player.o(i.add_score))
+<P><STRONG><a name="[129]"></a>add_score</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, player.o(i.add_score))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = add_score &rArr; U_score &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_score
+<BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_score
 </UL>
-<BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
-</UL>
-
-<P><STRONG><a name="[136]"></a>add_wink</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, lcdutill.o(i.add_wink))
-<BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
 </UL>
 
-<P><STRONG><a name="[121]"></a>begin</STRONG> (Thumb, 304 bytes, Stack size 32 bytes, liquidcrystal.o(i.begin))
+<P><STRONG><a name="[144]"></a>add_wink</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, lcdutill.o(i.add_wink))
+<BR><BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+</UL>
+
+<P><STRONG><a name="[12a]"></a>begin</STRONG> (Thumb, 304 bytes, Stack size 32 bytes, liquidcrystal.o(i.begin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = begin &rArr; clear &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRowOffsets
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enableClock
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRowOffsets
+<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enableClock
+<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
@@ -1606,20 +1634,20 @@ Global Symbols
 <P><STRONG><a name="[7d]"></a>blink</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, liquidcrystal.o(i.blink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = blink &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ff]"></a>check_bonus</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, object.o(i.check_bonus))
+<P><STRONG><a name="[104]"></a>check_bonus</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, object.o(i.check_bonus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = check_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_row
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_column
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1628,55 +1656,66 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = clear &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
+<BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_you_win
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 
 <P><STRONG><a name="[ee]"></a>clear_lcd</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, lcdutill.o(i.clear_lcd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = clear_lcd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_you_win
+<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[125]"></a>command</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, liquidcrystal.o(i.command))
+<P><STRONG><a name="[132]"></a>click_bonus</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, object.o(i.click_bonus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
+</UL>
+<BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[12e]"></a>command</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, liquidcrystal.o(i.command))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;noBlink
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;blink
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 </UL>
 
-<P><STRONG><a name="[12a]"></a>createChar</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, liquidcrystal.o(i.createChar))
+<P><STRONG><a name="[134]"></a>createChar</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, liquidcrystal.o(i.createChar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = createChar &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[fd]"></a>create_bonus</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, object.o(i.create_bonus))
+<P><STRONG><a name="[102]"></a>create_bonus</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, object.o(i.create_bonus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = create_bonus &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_row
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_blink_column
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_bouns_create
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_bouns_create
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1684,41 +1723,62 @@ Global Symbols
 <P><STRONG><a name="[81]"></a>create_plant</STRONG> (Thumb, 174 bytes, Stack size 32 bytes, object.o(i.create_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = create_plant &rArr; U_create_plant &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
+<BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_plant
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_plant
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_time
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
-<P><STRONG><a name="[fb]"></a>create_zombie</STRONG> (Thumb, 174 bytes, Stack size 40 bytes, object.o(i.create_zombie))
+<P><STRONG><a name="[136]"></a>create_plant_with_hp</STRONG> (Thumb, 152 bytes, Stack size 40 bytes, object.o(i.create_plant_with_hp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = create_plant_with_hp &rArr; U_create_plant &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_plant
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_time
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[100]"></a>create_zombie</STRONG> (Thumb, 174 bytes, Stack size 40 bytes, object.o(i.create_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = create_zombie &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_zombie
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_zombie
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
+<P><STRONG><a name="[137]"></a>create_zombie_custome</STRONG> (Thumb, 166 bytes, Stack size 32 bytes, object.o(i.create_zombie_custome))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = create_zombie_custome &rArr; U_create_zombie &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_create_zombie
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
 <P><STRONG><a name="[7a]"></a>disable_blink</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, lcdutill.o(i.disable_blink))
-<BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_you_win
+<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[126]"></a>display</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, liquidcrystal.o(i.display))
+<P><STRONG><a name="[12f]"></a>display</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, liquidcrystal.o(i.display))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = display &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
-<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 
-<P><STRONG><a name="[123]"></a>enableClock</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, liquidcrystal.o(i.enableClock))
+<P><STRONG><a name="[12c]"></a>enableClock</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, liquidcrystal.o(i.enableClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = enableClock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 
 <P><STRONG><a name="[72]"></a>enable_blink</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, lcdutill.o(i.enable_blink))
@@ -1731,19 +1791,30 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d1]"></a>fill_buffer</STRONG> (Thumb, 252 bytes, Stack size 240 bytes, uartutil.o(i.fill_buffer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = fill_buffer &rArr; atoi &rArr; strtol &rArr; _strtoul
+<P><STRONG><a name="[d1]"></a>fill_buffer</STRONG> (Thumb, 1290 bytes, Stack size 280 bytes, uartutil.o(i.fill_buffer))
+<BR><BR>[Stack]<UL><LI>Max Depth = 416<LI>Call Chain = fill_buffer &rArr; click_bonus &rArr; get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;noBlink
+<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_remainig_zombie
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_level_time
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_level
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_game_time
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTime
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;noBlink
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_state
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_blink
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state_without_uart
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;substr
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startWith
+<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state_without_uart
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_score
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_hp
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_use_plants_time
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie_custome
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant_with_hp
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;click_bonus
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;substr
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startWith
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoi
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
@@ -1756,46 +1827,46 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf4.o(i.__0printf$4)
 </UL>
-<P><STRONG><a name="[fa]"></a>getRand</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, utill.o(i.getRand))
+<P><STRONG><a name="[ff]"></a>getRand</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, utill.o(i.getRand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_boolean
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_boolean
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
 <P><STRONG><a name="[79]"></a>getTime</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.getTime))
-<BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
+<BR><BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keypad
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_zombie
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
-<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_time
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_time
+<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant_with_hp
 </UL>
 
 <P><STRONG><a name="[80]"></a>get_blink_column</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lcdutill.o(i.get_blink_column))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<BR><BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
 <P><STRONG><a name="[6e]"></a>get_blink_row</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lcdutill.o(i.get_blink_row))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<BR><BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_bonus
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI4_IRQHandler
@@ -1803,37 +1874,46 @@ Global Symbols
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[127]"></a>get_bonus_point</STRONG> (Thumb, 138 bytes, Stack size 24 bytes, object.o(i.get_bonus_point))
+<P><STRONG><a name="[130]"></a>get_bonus_point</STRONG> (Thumb, 156 bytes, Stack size 24 bytes, object.o(i.get_bonus_point))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = get_bonus_point &rArr; removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_score
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
+<BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant_enable
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_score
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_time
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;click_bonus
 </UL>
 
-<P><STRONG><a name="[fc]"></a>get_boolean</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, utill.o(i.get_boolean))
+<P><STRONG><a name="[101]"></a>get_boolean</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, utill.o(i.get_boolean))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = get_boolean &rArr; getRand &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[82]"></a>get_game_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.get_game_time))
+<P><STRONG><a name="[85]"></a>get_game_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.get_game_time))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[f5]"></a>get_hp</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.get_hp))
+<P><STRONG><a name="[f7]"></a>get_hp</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.get_hp))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[115]"></a>get_last_use_plant_time</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, object.o(i.get_last_use_plant_time))
+<P><STRONG><a name="[11e]"></a>get_last_use_plant_time</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, object.o(i.get_last_use_plant_time))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
+</UL>
+
+<P><STRONG><a name="[83]"></a>get_level</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.get_level))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
+<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
+<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
 <P><STRONG><a name="[84]"></a>get_level_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.get_level_time))
@@ -1841,26 +1921,27 @@ Global Symbols
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[103]"></a>get_name</STRONG> (Thumb, 32 bytes, Stack size 12 bytes, keypadutil.o(i.get_name))
+<P><STRONG><a name="[108]"></a>get_name</STRONG> (Thumb, 32 bytes, Stack size 12 bytes, keypadutil.o(i.get_name))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = get_name
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[114]"></a>get_plant</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, object.o(i.get_plant))
+<P><STRONG><a name="[11d]"></a>get_plant</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, object.o(i.get_plant))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
-<P><STRONG><a name="[10a]"></a>get_plant_enable</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, object.o(i.get_plant_enable))
+<P><STRONG><a name="[110]"></a>get_plant_enable</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, object.o(i.get_plant_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = get_plant_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant_with_hp
 </UL>
 
 <P><STRONG><a name="[f2]"></a>get_plant_size</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, object.o(i.get_plant_size))
@@ -1868,7 +1949,12 @@ Global Symbols
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[117]"></a>get_score</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.get_score))
+<P><STRONG><a name="[fc]"></a>get_remainig_zombie</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.get_remainig_zombie))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
+<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+</UL>
+
+<P><STRONG><a name="[120]"></a>get_score</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.get_score))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 </UL>
 
@@ -1882,11 +1968,11 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
-<P><STRONG><a name="[116]"></a>get_zombie</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, object.o(i.get_zombie))
+<P><STRONG><a name="[11f]"></a>get_zombie</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, object.o(i.get_zombie))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 </UL>
 
-<P><STRONG><a name="[f9]"></a>get_zombie_size</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, object.o(i.get_zombie_size))
+<P><STRONG><a name="[fe]"></a>get_zombie_size</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, object.o(i.get_zombie_size))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_save_game
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1894,7 +1980,7 @@ Global Symbols
 <P><STRONG><a name="[d6]"></a>init</STRONG> (Thumb, 72 bytes, Stack size 40 bytes, liquidcrystal.o(i.init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = init &rArr; begin &rArr; clear &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LiquidCrystal
 </UL>
@@ -1903,26 +1989,19 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[12f]"></a>load</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uartutil.o(i.load))
-<BR><BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load
-</UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load
-</UL>
-
-<P><STRONG><a name="[131]"></a>lost_hp</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, player.o(i.lost_hp))
+<P><STRONG><a name="[13f]"></a>lost_hp</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, player.o(i.lost_hp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = lost_hp &rArr; U_set_life &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_set_life
+<BR>[Calls]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_set_life
 </UL>
-<BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
 <P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 266 bytes, Stack size 24 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = main &rArr; MX_ADC3_Init &rArr; HAL_ADC_Init &rArr; HAL_ADC_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LiquidCrystal
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
@@ -1945,38 +2024,38 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[133]"></a>min</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, utill.o(i.min))
-<BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<P><STRONG><a name="[141]"></a>min</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, utill.o(i.min))
+<BR><BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
-<P><STRONG><a name="[fe]"></a>move_all_zombies</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, object.o(i.move_all_zombies))
+<P><STRONG><a name="[103]"></a>move_all_zombies</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, object.o(i.move_all_zombies))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = move_all_zombies &rArr; move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<BR>[Calls]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[132]"></a>move_zombie</STRONG> (Thumb, 296 bytes, Stack size 16 bytes, object.o(i.move_zombie))
+<P><STRONG><a name="[140]"></a>move_zombie</STRONG> (Thumb, 296 bytes, Stack size 16 bytes, object.o(i.move_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = move_zombie &rArr; remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_wink
-<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lost_hp
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_wink
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_move_zombie
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant
-<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;min
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_wink
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lost_hp
+<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_wink
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_move_zombie
+<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_plant
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;min
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
+<BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_all_zombies
 </UL>
 
 <P><STRONG><a name="[71]"></a>noBlink</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, liquidcrystal.o(i.noBlink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = noBlink &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
@@ -1985,7 +2064,7 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
-<P><STRONG><a name="[f6]"></a>numPrint</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 7segment.o(i.numPrint))
+<P><STRONG><a name="[f8]"></a>numPrint</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 7segment.o(i.numPrint))
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
@@ -2004,74 +2083,75 @@ Global Symbols
 <P><STRONG><a name="[7c]"></a>print</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, liquidcrystal.o(i.print))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = print &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_game_over
+<BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_you_win
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_game_over
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[f7]"></a>print_all_plant</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, object.o(i.print_all_plant))
+<P><STRONG><a name="[f9]"></a>print_all_plant</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, object.o(i.print_all_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = print_all_plant &rArr; print_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
+<BR>[Calls]<UL><LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[100]"></a>print_all_zombies</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, object.o(i.print_all_zombies))
+<P><STRONG><a name="[105]"></a>print_all_zombies</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, object.o(i.print_all_zombies))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = print_all_zombies &rArr; print_zombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
+<BR>[Calls]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[101]"></a>print_bonus</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, object.o(i.print_bonus))
+<P><STRONG><a name="[106]"></a>print_bonus</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, object.o(i.print_bonus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = print_bonus &rArr; remove_bonus &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[138]"></a>print_plant</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, object.o(i.print_plant))
+<P><STRONG><a name="[146]"></a>print_plant</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, object.o(i.print_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = print_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_plant
+<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_plant
 </UL>
 
-<P><STRONG><a name="[139]"></a>print_zombie</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, object.o(i.print_zombie))
+<P><STRONG><a name="[147]"></a>print_zombie</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, object.o(i.print_zombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = print_zombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
+<BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_all_zombies
 </UL>
 
-<P><STRONG><a name="[13b]"></a>pulseEnable</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, liquidcrystal.o(i.pulseEnable))
+<P><STRONG><a name="[149]"></a>pulseEnable</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, liquidcrystal.o(i.pulseEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
 </UL>
 
-<P><STRONG><a name="[108]"></a>refresh_7seg</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, 7segment.o(i.refresh_7seg))
+<P><STRONG><a name="[10e]"></a>refresh_7seg</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, 7segment.o(i.refresh_7seg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = refresh_7seg &rArr; __numPrint
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__numPrint
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__numPrint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
@@ -2082,84 +2162,86 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[106]"></a>refresh_wink</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, lcdutill.o(i.refresh_wink))
+<P><STRONG><a name="[10c]"></a>refresh_wink</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, lcdutill.o(i.refresh_wink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = refresh_wink &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[130]"></a>removeZombie</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, object.o(i.removeZombie))
+<P><STRONG><a name="[13e]"></a>removeZombie</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, object.o(i.removeZombie))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = removeZombie &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_wink
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_zombie
+<BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_wink
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_zombie
 </UL>
-<BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
+<BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
 </UL>
 
-<P><STRONG><a name="[128]"></a>remove_bonus</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, object.o(i.remove_bonus))
+<P><STRONG><a name="[131]"></a>remove_bonus</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, object.o(i.remove_bonus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = remove_bonus &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_bouns_remove
+<BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_bouns_remove
 </UL>
-<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_bonus
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;click_bonus
 </UL>
 
-<P><STRONG><a name="[134]"></a>remove_plant</STRONG> (Thumb, 90 bytes, Stack size 32 bytes, object.o(i.remove_plant))
+<P><STRONG><a name="[142]"></a>remove_plant</STRONG> (Thumb, 90 bytes, Stack size 32 bytes, object.o(i.remove_plant))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = remove_plant &rArr; write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_wink
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_plant
+<BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_wink
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_remove_plant
 </UL>
-<BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
-<P><STRONG><a name="[135]"></a>remove_wink</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, lcdutill.o(i.remove_wink))
-<BR><BR>[Called By]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
+<P><STRONG><a name="[143]"></a>remove_wink</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, lcdutill.o(i.remove_wink))
+<BR><BR>[Called By]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
+<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_zombie
 </UL>
 
 <P><STRONG><a name="[7e]"></a>reset_keypad</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, keypadutil.o(i.reset_keypad))
 <BR><BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[129]"></a>send</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, liquidcrystal.o(i.send))
+<P><STRONG><a name="[133]"></a>send</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, liquidcrystal.o(i.send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
+<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write8bits
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write4bits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;createChar
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
 
 <P><STRONG><a name="[7b]"></a>setCursor</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, liquidcrystal.o(i.setCursor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = setCursor &rArr; command &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command
 </UL>
-<BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_you_win
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_menu
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_game_over
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_game_over
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_about
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 
 <P><STRONG><a name="[69]"></a>setRandomCount</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, utill.o(i.setRandomCount))
@@ -2167,21 +2249,26 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
+<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[122]"></a>setRowOffsets</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, liquidcrystal.o(i.setRowOffsets))
+<P><STRONG><a name="[12b]"></a>setRowOffsets</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, liquidcrystal.o(i.setRowOffsets))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = setRowOffsets
 </UL>
-<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+</UL>
+
+<P><STRONG><a name="[82]"></a>setTime</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.setTime))
+<BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
 <P><STRONG><a name="[63]"></a>set_area_ligth</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, led.o(i.set_area_ligth))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = set_area_ligth
 </UL>
-<BR>[Calls]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_ligth
+<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_ligth
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_2_IRQHandler
 </UL>
@@ -2195,43 +2282,85 @@ Global Symbols
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[109]"></a>set_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, led.o(i.set_enable))
+<P><STRONG><a name="[10f]"></a>set_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, led.o(i.set_enable))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[83]"></a>set_game_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.set_game_time))
+<P><STRONG><a name="[f5]"></a>set_game_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.set_game_time))
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
-<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
-<P><STRONG><a name="[85]"></a>set_level_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.set_level_time))
+<P><STRONG><a name="[13c]"></a>set_hp</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, player.o(i.set_hp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = set_hp &rArr; U_set_life &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_set_life
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[135]"></a>set_last_time</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, object.o(i.set_last_time))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = set_last_time &rArr; U_enable_plant &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_enable_plant
+</UL>
+<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_use_plants_time
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_bonus_point
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_plant_with_hp
+</UL>
+
+<P><STRONG><a name="[13b]"></a>set_last_use_plants_time</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, object.o(i.set_last_use_plants_time))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = set_last_use_plants_time &rArr; set_last_time &rArr; U_enable_plant &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_last_time
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[fa]"></a>set_level</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.set_level))
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
-<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[f6]"></a>set_level_time</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, time.o(i.set_level_time))
+<BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[fd]"></a>set_remainig_zombie</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.set_remainig_zombie))
+<BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
+</UL>
+
+<P><STRONG><a name="[13d]"></a>set_score</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, player.o(i.set_score))
+<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
 <P><STRONG><a name="[73]"></a>set_state</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, state.o(i.set_state))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = set_state &rArr; U_send_state &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_send_state
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U_send_state
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
-<P><STRONG><a name="[12e]"></a>set_state_without_uart</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, state.o(i.set_state_without_uart))
+<P><STRONG><a name="[13a]"></a>set_state_without_uart</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, state.o(i.set_state_without_uart))
 <BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
 <P><STRONG><a name="[ef]"></a>showDemo</STRONG> (Thumb, 232 bytes, Stack size 16 bytes, stm32f3xx_it.o(i.showDemo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = showDemo &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_state
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;numPrint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -2247,17 +2376,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[105]"></a>show_blink</STRONG> (Thumb, 146 bytes, Stack size 16 bytes, lcdutill.o(i.show_blink))
+<P><STRONG><a name="[10b]"></a>show_blink</STRONG> (Thumb, 146 bytes, Stack size 16 bytes, lcdutill.o(i.show_blink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_blink &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getTime
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[102]"></a>show_game_over</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.show_game_over))
+<P><STRONG><a name="[107]"></a>show_game_over</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.show_game_over))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_game_over &rArr; print &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
@@ -2277,7 +2406,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[12c]"></a>startWith</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, utill.o(i.startWith))
+<P><STRONG><a name="[10a]"></a>show_you_win</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.show_you_win))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = show_you_win &rArr; print &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_blink
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lcd
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+</UL>
+<BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+</UL>
+
+<P><STRONG><a name="[138]"></a>startWith</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, utill.o(i.startWith))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = startWith
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
@@ -2287,54 +2428,54 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[12d]"></a>substr</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, utill.o(i.substr))
+<P><STRONG><a name="[139]"></a>substr</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, utill.o(i.substr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = substr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_buffer
 </UL>
 
-<P><STRONG><a name="[13c]"></a>write</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, liquidcrystal.o(i.write))
+<P><STRONG><a name="[14a]"></a>write</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, liquidcrystal.o(i.write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_blink
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_wink
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showDemo
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_lcd
 </UL>
 
-<P><STRONG><a name="[124]"></a>write4bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write4bits))
+<P><STRONG><a name="[12d]"></a>write4bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write4bits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = write4bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
 
-<P><STRONG><a name="[13e]"></a>write8bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write8bits))
+<P><STRONG><a name="[14b]"></a>write8bits</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, liquidcrystal.o(i.write8bits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
+<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulseEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
+<BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
 
-<P><STRONG><a name="[13a]"></a>write_lcd</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, lcdutill.o(i.write_lcd))
+<P><STRONG><a name="[148]"></a>write_lcd</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, lcdutill.o(i.write_lcd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = write_lcd &rArr; write &rArr; send &rArr; write8bits &rArr; pulseEnable &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
+<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCursor
 </UL>
-<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
+<BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_bonus
+<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_plant
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_bonus
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeZombie
+<LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_zombie
+<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_plant
 </UL>
 <P>
 <H3>
@@ -2530,10 +2671,10 @@ Local Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
-<P><STRONG><a name="[11e]"></a>_printf_core</STRONG> (Thumb, 552 bytes, Stack size 96 bytes, printf4.o(i._printf_core), UNUSED)
+<P><STRONG><a name="[127]"></a>_printf_core</STRONG> (Thumb, 552 bytes, Stack size 96 bytes, printf4.o(i._printf_core), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$4
+<BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$4
 </UL>
 <P>
 <H3>

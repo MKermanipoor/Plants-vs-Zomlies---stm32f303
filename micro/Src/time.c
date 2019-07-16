@@ -11,6 +11,10 @@ void addTime(){
 	U_time(__time_m);
 }
 
+void setTime(long time){
+	__time_m = time;
+}
+
 unsigned long __game_time = 0;
 
 void set_game_time(long time){

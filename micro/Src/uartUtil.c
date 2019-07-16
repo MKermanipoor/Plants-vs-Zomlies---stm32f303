@@ -45,17 +45,17 @@ void U_create_plant(struct Plant p){
 void U_remove_plant(struct Plant p){
 	printf("pr:%d,%d\n",p.row, p.column);
 }
-void U_enable_plant(char kind, char enable){
-	printf("pe:%d,%d", kind, enable);
+void U_enable_plant(char kind, long time){
+	printf("pe:%d,%ld\n", kind, time);
 }
 
 //bouns
 void U_bouns_create(struct Bonus b){
-	//printf("bc:%d,%d,%d\n", b.kind, b.row, b.column);
+	printf("bc:%d,%d,%d\n", b.kind, b.row, b.column);
 }
 
 void U_bouns_remove(struct Bonus b){
-	//printf("br:%d,%d\n", b.row, b.column);
+	printf("br:%d,%d\n", b.row, b.column);
 }
 
 //ligth
@@ -95,7 +95,6 @@ void U_set_life(char life){
 void U_save_game(long game_time, long level_time, char level){
 	printf("save:");
 	
-	
 	char name[20];
 	get_name(name);
 	printf("%s,", name); 
@@ -115,7 +114,7 @@ void U_save_game(long game_time, long level_time, char level){
 	printf("z:%d,", get_zombie_size());
 	for (char i=0 ; i<get_zombie_size() ; i++){
 		struct Zombie z = get_zombie(i);
-		printf("%d,%d,%d,%d,%ld", z.kind, z.row, z.column, z.hp, z.lastTimeMove);
+		printf("%d,%d,%d,%d,%ld,", z.kind, z.row, z.column, z.hp, z.lastTimeMove);
 	}
 	/// todo ramainig zombie in this level
 	
@@ -126,7 +125,15 @@ void U_save_game(long game_time, long level_time, char level){
 	printf("g_t:%ld,t:%ld,", get_game_time(), getTime());
 	
 	//score
-	printf("s:%d", get_score());
+	printf("s:%d,", get_score());
+	
+	//level
+	printf("le:%d,", get_level());
+	
+	//remaing zombie
+	printf("rz:%d,", get_remainig_zombie());
+	
+	printf("\n");
 }
 
 void U_send_state(char s){
@@ -150,77 +157,16 @@ void U_send_state(char s){
 		case SAVE_GAME:
 			strcpy(state, "save_game");
 			break;
+		case WIN:
+			strcpy(state, "win");
+			break;
 	}
 	
 	printf("state:%s,\n", state);
 }
 
-void load(char data[]){
-	char temp[10];
-	
-	int start_index = 2;
-	int text_size = 0;
-	
-	//plant
-	for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-	substr(data, temp, start_index, text_size);
-	char plant_size = atoi(temp);
-	start_index += text_size + 1;
-	for (char i=0; i<plant_size; i++){
-		for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-		substr(data, temp, start_index, text_size);
-		char plant_kind = atoi(temp);
-		start_index += text_size + 1;
-		
-		for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-		substr(data, temp, start_index, text_size);
-		char plant_row = atoi(temp);
-		start_index += text_size + 1;
-		
-		for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-		substr(data, temp, start_index, text_size);
-		char plant_column = atoi(temp);
-		start_index += text_size + 1;
-		
-		for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-		substr(data, temp, start_index, text_size);
-		char plant_hp = atoi(temp);
-		start_index += text_size + 1;
-		
-		create_plant_with_hp(plant_kind, plant_row, plant_column, plant_hp);
-	}
-	
-	
-	//plant time
-	start_index += 4;
-	
-	for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-	substr(data, temp, start_index, text_size);
-	long plant_0_time = atoi(temp);
-	start_index += text_size + 1;
-	
-	for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-	substr(data, temp, start_index, text_size);
-	long plant_1_time = atoi(temp);
-	start_index += text_size + 1;
-	
-	for (text_size = 0; data[start_index + text_size] != ',' || data[start_index + text_size] != '\0';text_size++);
-	substr(data, temp, start_index, text_size);
-	long plant_2_time = atoi(temp);
-	start_index += text_size + 1;
-	
-	set_last_use_plants_time(plant_0_time, plant_1_time, plant_2_time);
-	
-	//zombie
-	start_index += 2;
-	
-	
-}
-
-
-
 // give part
-char buffer[100];
+char buffer[200];
 unsigned char buffer_size = 0;
 
 void fill_buffer(char charecter){
@@ -261,11 +207,167 @@ void fill_buffer(char charecter){
 					enable_blink();
 					break;
 			}
+		}else if(startWith(buffer, "br:")){
+			click_bonus();
 		}else if(startWith(buffer, "l:")){
-			substr(buffer, temp, 2,1);
+			substr(buffer, temp, 2,1000);
 			/// todo check if in load state
-			load(temp);
+			char t[10];
+	
+			int start_index = 2;
+			int text_size = 0;
+	
+			//plant
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			char plant_size = atoi(t);
+			start_index += text_size + 1;
+			for (char i=0; i<plant_size; i++){
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char plant_kind = atoi(t);
+				start_index += text_size + 1;
+		
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char plant_row = atoi(t);
+				start_index += text_size + 1;
+		
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char plant_column = atoi(t);
+				start_index += text_size + 1;
+		
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char plant_hp = atoi(t);
+				start_index += text_size + 1;
+		
+				create_plant_with_hp(plant_kind, plant_row, plant_column, plant_hp);
+			}
+			
+			start_index += 4;
+	
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			long plant_0_time = atoi(t);
+			start_index += text_size + 1;
+	
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			long plant_1_time = atoi(t);
+			start_index += text_size + 1;
+	
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			long plant_2_time = atoi(t);
+			start_index += text_size + 1;
+	
+			set_last_use_plants_time(plant_0_time, plant_1_time, plant_2_time);
+			
+			
+			//zobmie
+			start_index += 2;
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			char zombie_size = atoi(t);
+			start_index += text_size + 1;
+			
+			for (char i=0 ; i<zombie_size ; i++){
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char zombie_kind = atoi(t);
+				start_index += text_size + 1;
+				
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char zombie_row = atoi(t);
+				start_index += text_size + 1;
+				
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char zombie_column = atoi(t);
+				start_index += text_size + 1;
+				
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				char zombie_hp = atoi(t);
+				start_index += text_size + 1;
+				
+				for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+				substr(temp, t, start_index, text_size);
+				long zombie_time = atoi(t);
+				start_index += text_size + 1;
+				
+				create_zombie_custome(zombie_kind, zombie_row, zombie_column, zombie_hp, zombie_time);
+			}
+			
+			//hp
+			start_index += 3;
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			char hp = atoi(t);
+			start_index += text_size + 1;
+			
+			set_hp(hp);
+			
+			//game_time and time
+			start_index += 4;
+			
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			long game_time = atoi(t);
+			start_index += text_size + 1;
+			
+			
+			start_index += 2;
+			
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			long time = atoi(t);
+			start_index += text_size + 1;
+			
+			set_game_time(game_time);
+			setTime(time);
+			set_level_time((time-game_time) % LEVEL_TIME);
+			
+			//scoure
+			start_index += 2;
+			
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			char score = atoi(t);
+			start_index += text_size + 1;
+			
+			set_score(score);
+			
+			//level
+			start_index += 3;
+			
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			char level = atoi(t);
+			start_index += text_size + 1;
+			
+			set_level(level);
+			
+			
+			
+			//remaing zombie
+			start_index += 3;
+			
+			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
+			substr(temp, t, start_index, text_size);
+			char remaing_z = atoi(t);
+			start_index += text_size + 1;
+			
+			set_remainig_zombie(remaing_z);
+			
+			set_state(GAME);
+			
+			
 		}
+	
 		
 		
 		buffer_size = 0;

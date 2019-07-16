@@ -6,6 +6,7 @@
 #define GAME 4
 #define GAME_OVER 5
 #define SAVE_GAME 6
+#define WIN 7
 
 
 void set_state(char);

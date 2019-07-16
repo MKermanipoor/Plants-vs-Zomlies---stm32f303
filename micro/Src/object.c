@@ -19,6 +19,24 @@ const long PLANT3_TIME_LIMIT = TIME_TO_SEC * 10;
 
 char get_plant_enable(char);
 
+void set_last_time(char kind, long time){
+	__last_create_plant[kind] = time;
+	long t = time;
+	switch(kind){
+		case 0:
+			t += PLANT1_TIME_LIMIT;
+			break;
+		case 1:
+			t += PLANT2_TIME_LIMIT;
+			break;
+		case 2:
+			t += PLANT3_TIME_LIMIT;
+			break;
+	}
+	
+	U_enable_plant(kind+1, t);
+}
+
 struct Plant create_plant(char kind, char row, char column){
 	struct Plant result;
 	result.column = column;
@@ -27,14 +45,18 @@ struct Plant create_plant(char kind, char row, char column){
 	switch(kind){
 		case 1:
 		case 2:
-		case 3:
 			result.hp = kind;
+		case 3:
+			result.hp = 4;
 			break;
 		default:
 			result.kind = 1;
 			result.hp = 1;
 			break;
 	}
+	
+	if (!row)
+		return result;
 	
 	if(__plant_size < 20){
 		for (char i=0 ; i<__plant_size ; i++){
@@ -49,7 +71,7 @@ struct Plant create_plant(char kind, char row, char column){
 			__plant_size++;
 			U_create_plant(result);
 			if (__start_timer){
-				__last_create_plant[result.kind-1] = getTime();
+				set_last_time(result.kind-1, getTime());
 			}
 		}
 	}
@@ -78,7 +100,7 @@ struct Plant create_plant_with_hp(char kind, char row, char column, char hp){
 			__plant_size++;
 			U_create_plant(result);
 			if (__start_timer){
-				__last_create_plant[result.kind-1] = getTime();
+				set_last_time(result.kind-1, getTime());
 			}
 		}
 	}
@@ -141,9 +163,9 @@ long get_last_use_plant_time(char index){
 }
 
 void set_last_use_plants_time(long p_0, long p_1, long p_2){
-	__last_create_plant[0] = p_0;
-	__last_create_plant[1] = p_1;
-	__last_create_plant[2] = p_2;
+	set_last_time(0, p_0);
+	set_last_time(1, p_1);
+	set_last_time(2, p_2);
 }
 //zombies data
 struct Zombie __zombies [10];
@@ -173,6 +195,43 @@ struct Zombie create_zombie(char kind){
 	}
 	
 	result.lastTimeMove = getTime();
+	
+	for(int i=0; i<__zombies_size; i++){
+		if(result.column == __zombies[i].column && result.row == __zombies[i].row)
+			return result;
+	}
+	
+	if(__zombies_size < 10){
+		result.id = __zombies_size;
+		__zombies[__zombies_size] = result;
+		__zombies_size++;
+		U_create_zombie(result);
+	}
+	return result;
+}
+
+struct Zombie create_zombie_custome(char kind, char row, char column, char hp, long time){
+	struct Zombie result;
+	result.column = column;
+	result.row = row;
+	result.before_column = 0;
+	result.before_row = 0;
+	result.kind = kind;
+	result.lastTimeMove = time;
+	result.id = -1;
+	
+	switch(kind){
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			result.hp = kind;
+			break;
+		default:
+			result.hp = 1;
+			result.kind = 1;
+	}
+	
 	
 	for(int i=0; i<__zombies_size; i++){
 		if(result.column == __zombies[i].column && result.row == __zombies[i].row)
@@ -283,8 +342,6 @@ void create_bonus(){
 		
 		__bonus.row = getRand(4);
 		__bonus.column = getRand(20);
-//		__bonus.row = 0;
-//		__bonus.column = 0;
 		for (char i=0; i<__zombies_size;i++){
 			if (__bonus.row == get_blink_row() && __bonus.column == get_blink_column()){
 				return;
@@ -298,12 +355,13 @@ void create_bonus(){
 }
 
 void get_bonus_point(){
-	char max_zombie_id = -1;
+	unsigned char max_zombie_id = 250;
 	switch(__bonus.kind){
 		case 1:
-			for (char i=0; i<3; i++){
+			for (char i=3; i>0; i--){
 				if(!get_plant_enable(i)){
-					__last_create_plant[i] = 0;
+					set_last_time(i-1, 0);
+					break;
 				}
 			}
 			break;
@@ -315,7 +373,7 @@ void get_bonus_point(){
 		case 3:
 			
 			for (char i=0; i<__zombies_size; i++){
-				if(max_zombie_id == -1){
+				if(max_zombie_id == 250){
 					max_zombie_id = i;
 					continue;
 				}
@@ -332,7 +390,8 @@ void get_bonus_point(){
 				}
 			}
 			
-			if (max_zombie_id > -1){
+			if (max_zombie_id != 250){
+				__zombies[max_zombie_id].row++;
 				removeZombie(__zombies[max_zombie_id]);
 			}
 			break;
@@ -360,4 +419,9 @@ void print_bonus(){
 	if(__bonus.kind){
 		write_lcd(7, __bonus.column, __bonus.row);
 	}
+}
+
+void click_bonus(){
+	get_bonus_point();
+	remove_bonus();
 }

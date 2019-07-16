@@ -154,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>244</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134219840</Address>
+          <Address>134219752</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -170,7 +170,7 @@
           <Type>0</Type>
           <LineNumber>297</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134220184</Address>
+          <Address>134220066</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -180,22 +180,6 @@
           <Filename>../Src/stm32f3xx_it.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\micro\../Src/stm32f3xx_it.c\297</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>289</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134220084</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>../Src/stm32f3xx_it.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\micro\../Src/stm32f3xx_it.c\289</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -242,7 +226,7 @@
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>kind</ItemText>
+          <ItemText>data</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -269,47 +253,22 @@
         <Ww>
           <count>4</count>
           <WinNumber>2</WinNumber>
-          <ItemText>result</ItemText>
+          <ItemText>i</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>column</ItemText>
+          <ItemText>max_zombie_id,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>2</WinNumber>
-          <ItemText>i</ItemText>
+          <ItemText>__bonus</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>2</WinNumber>
-          <ItemText>light</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>data</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>buffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>10</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>charecter</ItemText>
-        </Ww>
-        <Ww>
-          <count>11</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>kind</ItemText>
-        </Ww>
-        <Ww>
-          <count>12</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>temp</ItemText>
+          <ItemText>__zombies_size</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

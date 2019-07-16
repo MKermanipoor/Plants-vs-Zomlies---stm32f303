@@ -25,10 +25,11 @@ struct Zombie{
 	unsigned char before_column;
 	unsigned char kind;
 	unsigned char hp;
-	unsigned char id;
+	char id;
 };
 
 struct Zombie create_zombie(char);
+struct Zombie create_zombie_custome(char , char, char, char, long);
 void move_all_zombies();
 void print_all_zombies();
 char get_zombie_size();
@@ -43,3 +44,4 @@ struct Bonus{
 void create_bonus();
 void check_bonus();
 void print_bonus();
+void click_bonus();

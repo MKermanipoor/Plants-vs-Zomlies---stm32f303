@@ -2,6 +2,7 @@
 #define LEVEL_TIME 20 * TIME_TO_SEC
 
 long getTime();
+void setTime(long);
 void addTime();
 
 void set_game_time(long);
