@@ -136,6 +136,8 @@ void U_save_game(long game_time, long level_time, char level){
 	printf("\n");
 }
 
+
+//state
 void U_send_state(char s){
 	char state[10];
 	
@@ -163,6 +165,10 @@ void U_send_state(char s){
 	}
 	
 	printf("state:%s,\n", state);
+}
+
+void U_load_game(){
+	printf("state:load_game,\n");
 }
 
 // give part

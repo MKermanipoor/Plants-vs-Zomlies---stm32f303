@@ -46,6 +46,7 @@ struct Plant create_plant(char kind, char row, char column){
 		case 1:
 		case 2:
 			result.hp = kind;
+			break;
 		case 3:
 			result.hp = 4;
 			break;
@@ -171,14 +172,14 @@ void set_last_use_plants_time(long p_0, long p_1, long p_2){
 struct Zombie __zombies [10];
 unsigned char __zombies_size = 0;
 
-unsigned int speed_time = 1.5 * TIME_TO_SEC;
+unsigned int speed_time = 2 * TIME_TO_SEC;
 
 struct Zombie create_zombie(char kind){
 	struct Zombie result;
 	result.column = getRand(20);
 	result.row = 0;
-	result.before_column = 0;
-	result.before_row = 0;
+	result.before_column = result.column;
+	result.before_row = result.row;
 	result.kind = kind;
 	result.id = -1;
 	
@@ -349,7 +350,6 @@ void create_bonus(){
 		}
 		__bonus_created_time = getTime();
 		__bonus.kind = getRand(3)+1;
-		__bonus.kind = 3;
 		U_bouns_create(__bonus);
 	}
 }

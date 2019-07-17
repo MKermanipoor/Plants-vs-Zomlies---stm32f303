@@ -218,6 +218,9 @@ void EXTI0_IRQHandler(void)
 				enable_blink();
 				set_state(NEW_GAME);
 				break;
+			case 1:
+				U_load_game();
+				break;
 			case 2:
 				set_state(SHOW_ABOUT);
 				break;

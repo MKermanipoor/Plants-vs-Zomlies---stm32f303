@@ -32,6 +32,7 @@ void U_save_game(long , long , char);
 
 //state
 void U_send_state(char);
+void U_load_game();
 
 
 void fill_buffer(char);
