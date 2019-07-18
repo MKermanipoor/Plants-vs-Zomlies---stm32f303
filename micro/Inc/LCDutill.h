@@ -15,12 +15,12 @@ char is_blink_enable();
 void enable_blink();
 void disable_blink();
 
-void add_wink (char , char);
-void remove_wink (char, char);
-void remove_all_wink();
-void enable_wink();
-void disable_wink();
+// void add_wink (char , char);
+// void remove_wink (char, char);
+// void remove_all_wink();
+// void enable_wink();
+// void disable_wink();
 
-void refresh_wink();
+// void refresh_wink();
 
 void clear_lcd();

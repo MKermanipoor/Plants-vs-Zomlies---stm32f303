@@ -7,7 +7,7 @@
 
 // plant struct
 unsigned char __plant_size = 0;
-struct Plant __plants [20];
+struct Plant __plants [60];
 
 char __start_timer = 0;
 
@@ -59,7 +59,7 @@ struct Plant create_plant(char kind, char row, char column){
 	if (!row)
 		return result;
 	
-	if(__plant_size < 20){
+	if(__plant_size < 60){
 		for (char i=0 ; i<__plant_size ; i++){
 			if (__plants[i].column == column && __plants[i].row == row){
 				return result;
@@ -88,7 +88,7 @@ struct Plant create_plant_with_hp(char kind, char row, char column, char hp){
 	result.kind = kind;
 	result.hp = hp;
 	
-	if(__plant_size < 20){
+	if(__plant_size < 60){
 		for (char i=0 ; i<__plant_size ; i++){
 			if (__plants[i].column == column && __plants[i].row == row){
 				return result;
@@ -118,7 +118,7 @@ void remove_plant(struct Plant plant){
 	
 	__plant_size --;
 	U_remove_plant(__plants[plant.id]);
-	remove_wink(__plants[plant.id].row, __plants[plant.id].column);
+	//remove_wink(__plants[plant.id].row, __plants[plant.id].column);
 	__plants[plant.id] = __plants[__plant_size];
 	__plants[plant.id].id = plant.id;
 	write_lcd(32, plant.column, plant.row);
@@ -172,7 +172,8 @@ void set_last_use_plants_time(long p_0, long p_1, long p_2){
 struct Zombie __zombies [10];
 unsigned char __zombies_size = 0;
 
-unsigned int speed_time = 2 * TIME_TO_SEC;
+const unsigned int init_speed_time = 2 * TIME_TO_SEC;
+unsigned int speed_time = init_speed_time;
 
 struct Zombie create_zombie(char kind){
 	struct Zombie result;
@@ -256,7 +257,7 @@ void removeZombie(struct Zombie z){
 		return;
 	
 	__zombies_size --;
-	remove_wink(__zombies[z.id].row-1, __zombies[z.id].column);
+	//remove_wink(__zombies[z.id].row-1, __zombies[z.id].column);
 	U_remove_zombie(__zombies[z.id]);
 	__zombies[z.id] = __zombies[__zombies_size];
 	__zombies[z.id].id = z.id;
@@ -287,19 +288,18 @@ void move_zombie(struct Zombie *z){
 				get_plant(i)->hp -= temp;
 				if(get_plant(i)->hp <= 0){
 					remove_plant(*get_plant(i));
-					remove_wink(get_plant(i)->row-1, get_plant(i)->column);
+					//remove_wink(get_plant(i)->row-1, get_plant(i)->column);
 				}
 				
 				z->hp -= temp;
 				if(z->hp <= 0){
 					removeZombie(*z);
-					remove_wink(z->row, z->column);
+					//remove_wink(z->row, z->column);
 				}
 				break;
 			}else if(get_plant(i)->column == z->column && get_plant(i)->row == z->row+1){
-				add_wink(z->row, z->column);
-				add_wink(z->row+1, z->column);
-				break;
+//				add_wink(z->row, z->column);
+//				add_wink(z->row+1, z->column);
 			}
 		}
 		
@@ -333,6 +333,11 @@ struct Zombie get_zombie(char index){
 	return __zombies[index];
 }
 
+void set_zombie_move_time_by_level(char level){
+	speed_time = init_speed_time;
+	for (char i=1 ; i<level ; i++)
+		speed_time *= 0.9;
+}
 //bouns
 const long BONUS_TIME = 4 * TIME_TO_SEC;
 struct Bonus __bonus;

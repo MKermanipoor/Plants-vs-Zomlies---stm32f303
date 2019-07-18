@@ -62,6 +62,8 @@ long __start_save_game_time;
 char name[20] = "\0";
 char temp_name[20] ="\0";
 
+const unsigned char max_zombie_level_per_level[8] = {1,1,2,2,3,3,4,4};
+
 char clear_showDemo = 0;
 void showDemo(unsigned long time){
 	
@@ -136,7 +138,11 @@ void show_about(){
 		noBlink();
 		clear();
 		setCursor(0,0);
-		print("Fuck sedaghat!!");
+		print("Plant VS Zombies");
+		setCursor(0,1);
+		print("Prduse by :");
+		setCursor(0,2);
+		print("Saeid & Masoud");
 		__init_show_about = 1;
 		__init_show_menu = 0;
 	}
@@ -144,25 +150,85 @@ void show_about(){
 
 
 char __game_over_init = 0;
+long loss_last_time_wink = 0;
+char loss_now_wink = 0;
 void show_game_over(){
 	if (!__game_over_init){
-		setCursor(3,1);
-		print("GAME OVER");
-		setCursor(3,2);
-		print("MOTHER FUCKER");
+		clear();
+		clear_lcd();
+		disable_blink();
+		noBlink();
+		calculate_score();
 		__game_over_init = 1;
+	}
+	
+	if (getTime() - loss_last_time_wink > 0.3 * TIME_TO_SEC){
+		loss_last_time_wink = getTime();
+		loss_now_wink = !loss_now_wink;
+		
+		set_enable(0, loss_now_wink);
+		set_enable(1, loss_now_wink);
+		set_enable(2, loss_now_wink);
+		set_enable(3, loss_now_wink);
+		set_enable(4, loss_now_wink);
+		set_enable(5, loss_now_wink);
+		set_enable(6, loss_now_wink);
+		set_enable(7, loss_now_wink);
+		set_enable(8, loss_now_wink);
+		set_enable(9, loss_now_wink);
+		set_enable(10, loss_now_wink);
+		
+		if (loss_now_wink){
+			setCursor(3,1);
+			print("GAME OVER");
+			char t_s[20];
+			sprintf(t_s, "score: %d", get_score());
+			setCursor(3,2);
+			print(t_s);
+		}else{
+			clear();
+		}
 	}
 }
 
 char __you_win_init = 0;
+long win_last_time_wink = 0;
+char win_now_wink = 0;
 void show_you_win(){
 	if (!__you_win_init){
 		clear();
 		clear_lcd();
 		disable_blink();
-		setCursor(0,0);
-		print("YOU WIN");
+		noBlink();
 		__you_win_init = 1;
+	}
+	
+	if (getTime() - win_last_time_wink > 0.3 * TIME_TO_SEC){
+		win_last_time_wink = getTime();
+		win_now_wink = !win_now_wink;
+		
+		set_enable(0, win_now_wink);
+		set_enable(1, win_now_wink);
+		set_enable(2, win_now_wink);
+		set_enable(3, win_now_wink);
+		set_enable(4, win_now_wink);
+		set_enable(5, win_now_wink);
+		set_enable(6, win_now_wink);
+		set_enable(7, win_now_wink);
+		set_enable(8, win_now_wink);
+		set_enable(9, win_now_wink);
+		set_enable(10, win_now_wink);
+		
+		if (win_now_wink){
+			setCursor(6,1);
+			print("YOU WIN");
+			char t_s[20];
+			sprintf(t_s, "score: %d", get_score());
+			setCursor(3,2);
+			print(t_s);
+		}else{
+			clear();
+		}
 	}
 }
 /* USER CODE END 0 */
@@ -457,9 +523,9 @@ void TIM2_IRQHandler(void)
 			show_about();
 			break;
 		case NEW_GAME:
-			if (get_plant_size() >= 3){
+			if (get_plant_size() >= 7){
 				set_state(GAME);
-				enable_wink();
+				//enable_wink();
 				start_plant_timer();
 				set_game_time(getTime());
 				set_level_time(getTime());
@@ -473,6 +539,7 @@ void TIM2_IRQHandler(void)
 				disable_blink();
 				__init_show_about = 0;
 				__init_show_menu = 0;
+				__you_win_init = 0;
 				clear_lcd();
 				set_state(WIN);
 				break;
@@ -487,7 +554,7 @@ void TIM2_IRQHandler(void)
 			
 			// create zombie
 			if (get_remainig_zombie() > 0 && getTime() - __last_time_zombie_created > TIME_TO_SEC * 12/5 && get_zombie_size() < 5){
-				struct Zombie z_t = create_zombie(getRand(4));
+				struct Zombie z_t = create_zombie(getRand(max_zombie_level_per_level[get_level()-1])+1);
 				if (z_t.id != -1){
 					set_remainig_zombie(get_remainig_zombie() -1);
 					__last_time_zombie_created = getTime();
@@ -495,7 +562,7 @@ void TIM2_IRQHandler(void)
 			}
 			
 			// create bonus
-			if (get_boolean(1)){
+			if (getRand(1000)<max_zombie_level_per_level[get_level()]){
 				create_bonus();
 			}
 			
@@ -511,11 +578,8 @@ void TIM2_IRQHandler(void)
 			print_all_plant();
 			print_bonus();
 			if (get_hp() < 1){
-				disable_blink();
-				clear();
 				__game_over_init = 0;
 				set_state(GAME_OVER);
-				show_game_over();
 			}
 			break;
 			
@@ -531,9 +595,13 @@ void TIM2_IRQHandler(void)
 			break;
 		case WIN:
 			show_you_win();
+			break;
+		case GAME_OVER:
+			show_game_over();
+			break;
 	}
 	show_blink();
-	refresh_wink();
+	//refresh_wink();
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */

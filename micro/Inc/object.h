@@ -34,6 +34,7 @@ void move_all_zombies();
 void print_all_zombies();
 char get_zombie_size();
 struct Zombie get_zombie(char);
+void set_zombie_move_time_by_level(char);
 
 struct Bonus{
 	unsigned char row;

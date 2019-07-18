@@ -19,6 +19,7 @@ unsigned long __game_time = 0;
 
 void set_game_time(long time){
 	__game_time = time;
+	U_game_time(time);
 }
 
 long get_game_time(){

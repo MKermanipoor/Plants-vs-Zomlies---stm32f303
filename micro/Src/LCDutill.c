@@ -18,16 +18,16 @@ long __last_change_blink = 0;
 const long timeToBlink = TIME_TO_SEC/2;
 
 //wink data
-unsigned char wink_cells[4][20];
-unsigned long last_time_wink = 0;
-unsigned char __wink_enable = 0;
-unsigned char __now_wink = 0;
-const long timeToWink = TIME_TO_SEC/5;
+//unsigned char wink_cells[4][20];
+//unsigned long last_time_wink = 0;
+//unsigned char __wink_enable = 0;
+//unsigned char __now_wink = 0;
+//const long timeToWink = TIME_TO_SEC/5;
 
 
 void write_lcd(char c, char column, char row){
 	lcd[column][row] = c;
-	if((!blinkEnable || column != column_blink || row != row_blink) && !__wink_enable){
+	if((!blinkEnable || column != column_blink || row != row_blink)){
 		setCursor(column, row);
 		write(c);
 	}
@@ -125,55 +125,55 @@ void disable_blink(){
 
 
 
-void add_wink (char row, char column){
-	if (row < 4 && column < 20){
-		wink_cells[row][column] = 1;
-	}
-}
+//void add_wink (char row, char column){
+//	if (row < 4 && column < 20){
+//		wink_cells[row][column] = 1;
+//	}
+//}
 
-void remove_wink (char row, char column){
-	if (row < 4 && column < 20){
-		wink_cells[row][column] = 0;		
-	}
-}
+//void remove_wink (char row, char column){
+//	if (row < 4 && column < 20){
+//		wink_cells[row][column] = 0;		
+//	}
+//}
 
-void remove_all_wink(){
-	for (char i=0 ; i<4; i++){
-		for (char j=0 ; j<20 ; j++){
-			wink_cells[i][j] = 0;
-		}
-	}
+//void remove_all_wink(){
+//	for (char i=0 ; i<4; i++){
+//		for (char j=0 ; j<20 ; j++){
+//			wink_cells[i][j] = 0;
+//		}
+//	}
 
-}
+//}
 
-void refresh_wink(){
-	if (!__wink_enable)
-		return;
-	
-	if (getTime() - last_time_wink > timeToWink){
-		__now_wink = !__now_wink;
-		last_time_wink = getTime();
-		for (char i=0 ; i<4; i++){
-			for (char j=0; j<20; j++){
-				setCursor(i,j);
-				if (__now_wink){
-					write(32);
-				}else{
-					write(lcd[i][j]);
-				}
-			}
-		}
-	}
-}
+//void refresh_wink(){
+//	if (!__wink_enable)
+//		return;
+//	
+//	if (getTime() - last_time_wink > timeToWink){
+//		__now_wink = !__now_wink;
+//		last_time_wink = getTime();
+//		for (char i=0 ; i<4; i++){
+//			for (char j=0; j<20; j++){
+//				setCursor(i,j);
+//				if (__now_wink){
+//					write(32);
+//				}else{
+//					write(lcd[i][j]);
+//				}
+//			}
+//		}
+//	}
+//}
 
-void enable_wink(){
-	__wink_enable = 0;
-}
+//void enable_wink(){
+//	__wink_enable = 0;
+//}
 
-void disable_wink(){
-	__wink_enable = 0;
-	__now_wink = 0;
-}
+//void disable_wink(){
+//	__wink_enable = 0;
+//	__now_wink = 0;
+//}
 
 
 void clear_lcd(){

@@ -86,6 +86,10 @@ void U_time(long time){
 	}
 }
 
+void U_game_time(long game_time){
+	printf("start_time_game:%ld,\n", game_time);
+}
+
 //life
 void U_set_life(char life){
 	printf("ls:%d\n", life);
@@ -342,7 +346,7 @@ void fill_buffer(char charecter){
 			
 			for (text_size = 0; temp[start_index + text_size] != ',' && temp[start_index + text_size] != '\0';text_size++);
 			substr(temp, t, start_index, text_size);
-			char score = atoi(t);
+			int score = atoi(t);
 			start_index += text_size + 1;
 			
 			set_score(score);

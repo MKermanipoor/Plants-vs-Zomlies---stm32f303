@@ -27,7 +27,149 @@ Project File Date:  07/16/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'F:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'micro'
-"micro\micro.axf" - 0 Error(s), 0 Warning(s).
+compiling stm32f3xx_it.c...
+../Inc/utill.h(9): warning:  #1-D: last line of file ends without a newline
+  void substr(char [], char [],int , int);
+../Inc/7segment.h(2): warning:  #1-D: last line of file ends without a newline
+  void refresh_7seg();
+../Inc/7segment.h(2): warning:  #1295-D: Deprecated declaration refresh_7seg - give arg types
+  void refresh_7seg();
+../Inc/object.h(11): warning:  #1295-D: Deprecated declaration get_plant_size - give arg types
+  char get_plant_size();
+../Inc/object.h(14): warning:  #1295-D: Deprecated declaration print_all_plant - give arg types
+  void print_all_plant();
+../Inc/object.h(15): warning:  #1295-D: Deprecated declaration start_plant_timer - give arg types
+  void start_plant_timer();
+../Inc/object.h(33): warning:  #1295-D: Deprecated declaration move_all_zombies - give arg types
+  void move_all_zombies();
+../Inc/object.h(34): warning:  #1295-D: Deprecated declaration print_all_zombies - give arg types
+  void print_all_zombies();
+../Inc/object.h(35): warning:  #1295-D: Deprecated declaration get_zombie_size - give arg types
+  char get_zombie_size();
+../Inc/object.h(45): warning:  #1295-D: Deprecated declaration create_bonus - give arg types
+  void create_bonus();
+../Inc/object.h(46): warning:  #1295-D: Deprecated declaration check_bonus - give arg types
+  void check_bonus();
+../Inc/object.h(47): warning:  #1295-D: Deprecated declaration print_bonus - give arg types
+  void print_bonus();
+../Inc/object.h(48): warning:  #1-D: last line of file ends without a newline
+  void click_bonus();
+../Inc/object.h(48): warning:  #1295-D: Deprecated declaration click_bonus - give arg types
+  void click_bonus();
+../Inc/LCDutill.h(5): warning:  #1295-D: Deprecated declaration show_blink - give arg types
+  void show_blink();
+../Inc/LCDutill.h(7): warning:  #1295-D: Deprecated declaration get_blink_row - give arg types
+  char get_blink_row();
+../Inc/LCDutill.h(8): warning:  #1295-D: Deprecated declaration get_blink_column - give arg types
+  char get_blink_column();
+../Inc/LCDutill.h(14): warning:  #1295-D: Deprecated declaration is_blink_enable - give arg types
+  char is_blink_enable();
+../Inc/LCDutill.h(15): warning:  #1295-D: Deprecated declaration enable_blink - give arg types
+  void enable_blink();
+../Inc/LCDutill.h(16): warning:  #1295-D: Deprecated declaration disable_blink - give arg types
+  void disable_blink();
+../Inc/LCDutill.h(26): warning:  #1-D: last line of file ends without a newline
+  void clear_lcd();
+../Inc/LCDutill.h(26): warning:  #1295-D: Deprecated declaration clear_lcd - give arg types
+  void clear_lcd();
+../Inc/LED.h(2): warning:  #1295-D: Deprecated declaration refresh_led - give arg types
+  void refresh_led();
+../Inc/LED.h(3): warning:  #1-D: last line of file ends without a newline
+  void set_enable(char, char);
+../Inc/player.h(2): warning:  #1295-D: Deprecated declaration get_score - give arg types
+  int get_score();
+../Inc/player.h(5): warning:  #1295-D: Deprecated declaration reset_score - give arg types
+  void reset_score();
+../Inc/player.h(6): warning:  #1295-D: Deprecated declaration calculate_score - give arg types
+  void calculate_score();
+../Inc/player.h(8): warning:  #1295-D: Deprecated declaration reset_hp - give arg types
+  void reset_hp();
+../Inc/player.h(9): warning:  #1295-D: Deprecated declaration get_hp - give arg types
+  char get_hp();
+../Inc/player.h(10): warning:  #1295-D: Deprecated declaration lost_hp - give arg types
+  void lost_hp();
+../Inc/player.h(14): warning:  #1295-D: Deprecated declaration get_level - give arg types
+  char get_level();
+../Inc/player.h(17): warning:  #1-D: last line of file ends without a newline
+  char get_remainig_zombie();
+../Inc/player.h(17): warning:  #1295-D: Deprecated declaration get_remainig_zombie - give arg types
+  char get_remainig_zombie();
+../Inc/keypadUtil.h(1): warning:  #1295-D: Deprecated declaration reset_keypad - give arg types
+  void reset_keypad();
+../Inc/keypadUtil.h(3): warning:  #1-D: last line of file ends without a newline
+  void press_keypad(char, char);
+../Inc/uartUtil.h(36): warning:  #1295-D: Deprecated declaration U_load_game - give arg types
+  void U_load_game();
+../Inc/uartUtil.h(39): warning:  #1-D: last line of file ends without a newline
+  void fill_buffer(char);
+../Inc/state.h(14): warning:  #1-D: last line of file ends without a newline
+  char get_state();
+../Inc/state.h(14): warning:  #1295-D: Deprecated declaration get_state - give arg types
+  char get_state();
+../Inc/time.h(4): warning:  #1295-D: Deprecated declaration getTime - give arg types
+  long getTime();
+../Inc/time.h(6): warning:  #1295-D: Deprecated declaration addTime - give arg types
+  void addTime();
+../Inc/time.h(9): warning:  #1295-D: Deprecated declaration get_game_time - give arg types
+  long get_game_time();
+../Inc/time.h(11): warning:  #1295-D: Deprecated declaration get_level_time - give arg types
+  long get_level_time();
+../Inc/time.h(12): warning:  #1-D: last line of file ends without a newline
+  void set_level_time(long);
+../Src/stm32f3xx_it.c(312): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+../Src/stm32f3xx_it.c(313): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+../Src/stm32f3xx_it.c(314): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+../Src/stm32f3xx_it.c(315): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+../Src/stm32f3xx_it.c(348): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+../Src/stm32f3xx_it.c(349): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+../Src/stm32f3xx_it.c(350): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+../Src/stm32f3xx_it.c(351): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+../Src/stm32f3xx_it.c(366): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+../Src/stm32f3xx_it.c(367): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+../Src/stm32f3xx_it.c(368): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+../Src/stm32f3xx_it.c(369): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+../Src/stm32f3xx_it.c(389): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+../Src/stm32f3xx_it.c(390): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+../Src/stm32f3xx_it.c(391): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+../Src/stm32f3xx_it.c(392): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+../Src/stm32f3xx_it.c(423): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, i==0);
+../Src/stm32f3xx_it.c(424): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, i==1);
+../Src/stm32f3xx_it.c(425): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, i==2);
+../Src/stm32f3xx_it.c(426): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, i==3);
+../Src/stm32f3xx_it.c(468): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, 1);
+../Src/stm32f3xx_it.c(469): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, 1);
+../Src/stm32f3xx_it.c(470): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, 1);
+../Src/stm32f3xx_it.c(471): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, 1);
+../Src/stm32f3xx_it.c(558): warning:  #514-D: pointless comparison of unsigned integer with a negative constant
+  				if (z_t.id != -1){
+../Src/stm32f3xx_it.c: 69 warnings, 0 errors
+linking...
+Program Size: Code=27484 RO-data=668 RW-data=244 ZI-data=3940  
+"micro\micro.axf" - 0 Error(s), 69 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +192,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.1
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

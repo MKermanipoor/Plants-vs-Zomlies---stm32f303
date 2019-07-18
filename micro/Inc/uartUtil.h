@@ -23,6 +23,7 @@ void U_round(char);
 
 //time
 void U_time(long);
+void U_game_time(long);
 
 //life
 void U_set_life(char);

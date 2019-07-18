@@ -1,8 +1,9 @@
 
 int get_score();
 void add_score(char);
-void set_score(char);
+void set_score(int);
 void reset_score();
+void calculate_score();
 
 void reset_hp();
 char get_hp();
